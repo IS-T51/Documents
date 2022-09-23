@@ -1,2 +1,2 @@
 # Documents
-Repo that contains all the document of the project
+Repo that contains all the documents of the project
