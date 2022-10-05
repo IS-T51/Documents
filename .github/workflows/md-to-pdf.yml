@@ -31,6 +31,10 @@ jobs:
   Convert-To-PDF:
     runs-on: ubuntu-latest
     steps:
+      - name: Ottieni i file sorgente
+        uses: actions/checkout@v3
+        with:
+          ref: main
       - name: Conversione Markdown in PDF
         continue-on-error: true
         run: |
