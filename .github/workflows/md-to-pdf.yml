@@ -38,8 +38,8 @@ jobs:
       - name: Conversione Markdown in PDF
         continue-on-error: true
         run: |
-          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra
-          pandoc D1-T51.md -o D1-T51.pdf     
+          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra texlive-xetex
+          pandoc D1-T51.md -s -o D1-T51.pdf --pdf-engine=xelatex
       - name: Commit PDF convertiti
         continue-on-error: true
         run: |
