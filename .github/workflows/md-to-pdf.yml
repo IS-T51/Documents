@@ -35,11 +35,17 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: main
-      - name: Conversione Markdown in PDF
+      - name: Setup di NodeJS
         continue-on-error: true
+        uses: actions/setup-node@v3.5.0
+        with:
+          cache: npm
+      - name: Installazione librerie
         run: |
-          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra texlive-xetex
-          pandoc D1-T51.md -s -o D1-T51.pdf --pdf-engine=xelatex
+          npm install -g md-to-pdf
+      - name: Conversione Markdown in PDF
+        run: |
+          md-to-pdf D1-T51.md
       - name: Commit PDF convertiti
         continue-on-error: true
         run: |
