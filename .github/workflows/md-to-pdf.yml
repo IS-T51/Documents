@@ -35,7 +35,7 @@ jobs:
         uses: rseng/pdf-generator@master
         with:        
           # The markdown file to render,path is relative to repository
-          paper_markdown: paper/paper.md
+          paper_markdown: D1-T51.md
           # The paper pdf to save
           paper_outfile: D1-T51.pdf
           # One of "minimal" or "pdf" for the template with image, etc.
