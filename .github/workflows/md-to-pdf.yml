@@ -32,15 +32,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Conversione Markdown in PDF
-        uses: rseng/pdf-generator@master
-        with:        
-          # The markdown file to render,path is relative to repository
-          paper_markdown: D1-T51.md
-          # The paper pdf to save
-          paper_outfile: D1-T51.pdf
-          # One of "minimal" or "pdf" for the template with image, etc.
-          pdf_type: minimal
-      
+        continue-on-error: true
+        run: |
+          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra
+          pandoc D1-T51.md -o D1-T51.pdf     
       - name: Commit PDF convertiti
         continue-on-error: true
         run: |
