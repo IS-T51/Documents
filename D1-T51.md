@@ -12,9 +12,7 @@ pdf_options:
             }
         </style>
         <section>
-            <span class="title"></span>
-            v1.0
-            <span class="date"></span>
+            D1 - Animati - Analisi dei Requisiti v1.0
         </section>
     footerTemplate: |-
         <section>
@@ -24,13 +22,15 @@ pdf_options:
             </div>
         </section>
 ---
-![Università degli Studi di Trento](https://www.agenziagiornalisticaopinione.it/wp-content/uploads/2019/09/Logo-UniTrento-2019.jpg)
+<img alt="Università degli Studi di Trento" src="https://www.agenziagiornalisticaopinione.it/wp-content/uploads/2019/09/Logo-UniTrento-2019.jpg" width="50%" />
 Dipartimento di Ingegneria e Scienza dell’Informazione
+
+---
 
 ### Progetto:
 <h1 align="center">Animati</h1>
 
-![Logo](https://github.com/IS-T51/animati/blob/main/assets/img/logo512.png?raw=true)
+<center><img alt="Logo" src="https://github.com/IS-T51/animati/blob/main/assets/img/logo512.png?raw=true" width="75%" /></center>
 
 ### Titolo del documento:
 <h1 align="center">Analisi dei Requisiti</h1>
