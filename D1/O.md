@@ -20,10 +20,10 @@ Nello specifico questa applicazione deve:
 > ### FISCHIETTO
 >> #### O2.4.
 >> Permette di riprodurre un suono
-> ### SEGNAPUNTI
+> ### SEGNA-PUNTI
 >> #### O2.5.
 >> Mette a disposizione molteplici contatori
-> ### SQUADRE
+> ### CREAZIONE SQUADRE
 >> #### O2.6.
 >> Permette la creazione rapida e semplificata di squadre in base a parametri personalizzabili, i quali possono essere specificati manualmente o compilati automaticamente in funzione dei vincoli dati da un gioco specifico selezionato dal catalogo
 
@@ -48,3 +48,5 @@ Nello specifico questa applicazione deve:
 
 > #### O9.
 > mostrare un breve tutorial guidato che illustri le principali funzionalità dell’applicazione
+
+<div style="page-break-after: always;"></div>

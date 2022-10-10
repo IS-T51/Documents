@@ -169,7 +169,7 @@ All'interno dei seguenti strumenti, il sistema deve permettere di:
 > Riprodurre il suono per il fischietto selezionato
 > <sub>[¶O2.4](#o24)</sub>
 
-### SEGNAPUNTI
+### SEGNA-PUNTI
 > #### RF30.
 > Scegliere il numero di contatori
 > <sub>[¶O2.5](#o25)</sub>
@@ -178,7 +178,7 @@ All'interno dei seguenti strumenti, il sistema deve permettere di:
 > Incrementare o decrementare ogni contatore separatamente
 > <sub>[¶O2.5](#o25)</sub>
 
-### SQUADRE
+### CREAZIONE SQUADRE
 > #### RF32.
 > Scegliere il numero di squadre
 > <sub>[¶O2.6](#o26)</sub>
@@ -202,3 +202,5 @@ All'interno dei seguenti strumenti, il sistema deve permettere di:
 > #### RF37.
 > Iniziare la divisione in squadre
 > <sub>[¶O2.6](#o26)</sub>
+
+<div style="page-break-after: always;"></div>

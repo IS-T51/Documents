@@ -7,3 +7,5 @@ Gli obiettivi di questo documento sono quelli di:
 - definire i [requisiti funzionali](#requisiti-funzionali-del-progetto) e [non funzionali](#requisiti-non-funzionali-del-progetto);
 - presentare i [requisiti del front-end](#requisiti-del-front-end-del-progetto);
 - presentare i [requisiti del back-end](#requisiti-del-back-end-del-progetto).
+
+<div style="page-break-after: always;"></div>
