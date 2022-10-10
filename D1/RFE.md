@@ -50,11 +50,13 @@ L’applicazione presenterà diverse schermate:
 
 ### Visualizzato da [Amministratore](#amministratore)
 > [RFE2.](#rfe2)
-> [RFE2.](#rfe3)
-> [RFE2.](#rfe4)
-> [RFE2.](#rfe5)
-> [RFE2.](#rfe6)
+> [RFE3.](#rfe3)
+> [RFE4.](#rfe4)
+> [RFE5.](#rfe5)
+> [RFE6.](#rfe6)
 > [RFE7.](#rfe7)
+> [RFE8.](#rfe8)
+> [RFE9.](#rfe9)
 
 > #### RFE11.
 > Pulsante di modifica dell’attività
@@ -68,7 +70,7 @@ L’applicazione presenterà diverse schermate:
 > Pulsante di collegamento alla schermata precedentemente utilizzata
 
 > #### RFE14.
-> Pallino che assume il colore grigio se l’utente non è connesso al    server, verde altrimenti
+> Pallino che assume il colore grigio se l’utente non è connesso al server, verde altrimenti
 
 > #### RFE15.
 > Pulsante di collegamento alla schermata del catalogo
@@ -87,6 +89,12 @@ L’applicazione presenterà diverse schermate:
 
 > #### RFE20.
 > Pulsante di collegamento alla schermata di autenticazione Google
+
+> #### RFE21.
+> Attività giornaliera presa casualmente dal catalogo
+
+> #### RFE21.
+> Attività giornaliera presa casualmente dal catalogo
 
 > #### RFE21.
 > Attività giornaliera presa casualmente dal catalogo

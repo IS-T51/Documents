@@ -201,7 +201,7 @@ All'interno dei seguenti strumenti, il sistema deve permettere di:
 > <sub>[¶O2.6](#o26)</sub>
 
 > #### RF37.
-> Iniziare la divisione in squadre
+> Iniziare la divisione, estraendo le squadre sequenzialmente
 > <sub>[¶O2.6](#o26)</sub>
 
 <div class="page-break"></div>
