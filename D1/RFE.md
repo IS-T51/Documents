@@ -27,9 +27,9 @@ L’applicazione presenterà diverse schermate:
 > #### RFE7.
 > Casella contrassegnabile con un clic per selezionare tutti i filtri eccetto "Numero Giocatori", "Età media giocatori" e "Durata (minuti)"
 
-![Catalogo](D1/img/RFE/catalogo.png)
+<center><img alt="Catalogo" src="D1/img/RFE/catalogo.png" width="20%"/></center>
 
-![Catalogo con filtro](D1/img/RFE/catalogo-filtri.png)
+<center><img alt="Catalogo con filtro" src="D1/img/RFE/catalogo-filtri.png" width="20%"/></center>
 
 ### Visualizzato da [Autenticato](#autenticato)
 > [RFE2.](#rfe2)
@@ -91,7 +91,7 @@ L’applicazione presenterà diverse schermate:
 > #### RFE21.
 > Attività giornaliera presa casualmente dal catalogo
 
-![Menu visualizzato da Anonimo](D1/img/RFE/menu-anonimo.png)
+<center><img alt="Menu visualizzato da Anonimo" src="D1/img/RFE/menu-anonimo.png" width="20%"/></center>
 
 ## Menu
 ### Visualizzato da [Autenticato](#autenticato) e da [Amministratore](#amministratore)
@@ -112,7 +112,7 @@ L’applicazione presenterà diverse schermate:
 > #### RFE25.
 > Foto profilo dell’account
 
-![Menu visualizzato da Autenticato](D1/img/RFE/menu-autenticato.png)
+<center><img alt="Menu visualizzato da Autenticato" src="D1/img/RFE/menu-autenticato.png" width="20%"/></center>
 
 ## Strumenti
 > [RFE2.](#rfe2)
@@ -154,7 +154,7 @@ L’applicazione presenterà diverse schermate:
 > #### RFE36.
 > Pulsante che apre un menu a tendina contenente altri suoni che è possibile selezionare
 
-![Strumento FISCHIETTO](D1/img/RFE/fischietto.png)
+<center><img alt="Strumento FISCHIETTO" src="D1/img/RFE/fischietto.png" width="20%"/></center>
 
 ## CRONOMETRO
 > [RFE32.](#rfe32)
@@ -288,7 +288,7 @@ L’applicazione presenterà diverse schermate:
 > #### RFE69.
 > Pulsante che aggiunge l’attività a una lista. Si apre un menu a tendina con tutte le liste e l’utente può selezionare le liste a cui aggiungere l’attività stessa
 
-![Attività](D1/img/RFE/attività.png)
+<center><img alt="Attività" src="D1/img/RFE/attività.png" width="20%"/></center>
 
 ### Visualizzato da [Amministratore](#amministratore)
 > [RFE64.](#rfe64)

@@ -23,6 +23,7 @@ pdf_options:
         </section>
 ---
 <img alt="Università degli Studi di Trento" src="https://www.agenziagiornalisticaopinione.it/wp-content/uploads/2019/09/Logo-UniTrento-2019.jpg" width="50%" />
+
 Dipartimento di Ingegneria e Scienza dell’Informazione
 
 ---
