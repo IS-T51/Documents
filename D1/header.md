@@ -29,7 +29,7 @@ pdf_options:
 ### Progetto:
 <h1 align="center">Animati</h1>
 
-<center><img alt="Logo" src="https://github.com/IS-T51/animati/blob/main/assets/img/logo512.png?raw=true" width="75%" /></center>
+<center><img alt="Logo" src="https://github.com/IS-T51/animati/blob/main/assets/img/logo.svg?raw=true" width="75%" /></center>
 
 ### Titolo del documento:
 <h1 align="center">Analisi dei Requisiti</h1>
