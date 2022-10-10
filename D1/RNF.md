@@ -40,15 +40,12 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 
 > #### RNF9.
 > Dati salvati per utenti anonimi.
-
-> ##### RNF9.1
-> Non saranno salvati dati lato server.
-
-> ##### RNF9.2
-> Qualora il browser dell'utente lo permetta, dopo che questi avrà visualizzato il contenuto di un tutorial e confermato di non volerlo più visualizzare in futuro, tale scelta sarà memorizzata sotto forma di cookie tecnici nel browser dell'utente stesso, previo consenso.
-
-> ##### RNF9.3
-> Qualora il browser dell'utente lo permetta, una copia del catalogo sarà memorizzata nel suo browser o, previa autorizzzione, nel filesystem del suo dispositivo.
+>> ##### RNF9.1
+>> Non saranno salvati dati lato server.
+>> ##### RNF9.2
+>> Qualora il browser dell'utente lo permetta, dopo che questi avrà visualizzato il contenuto di un tutorial e confermato di non volerlo più visualizzare in futuro, tale scelta sarà memorizzata sotto forma di cookie tecnici nel browser dell'utente stesso, previo consenso.
+>> ##### RNF9.3
+>> Qualora il browser dell'utente lo permetta, una copia del catalogo sarà memorizzata nel suo browser o, previa autorizzzione, nel filesystem del suo dispositivo.
 
 > #### RNF10.
 > Dati salvati per utenti autenticati.
@@ -71,10 +68,8 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 >> I dati di cui al punto RNF9.2 saranno visibili esclusivamente dall'utente direttamente interessato e solo su richiesta di accesso.
 >> ##### RNF12.2
 >> I dati delle liste di attività create da un utente autenticato saranno visibili esclusivamente dall'utente stesso.
-
 >> ##### RNF12.3
 >> I dati relativi alle valutazioni lasciate da un utente alle attività e alle sue proposte sono visibli all'utente stesso e, in forma anonimizzata, a tutti gli altri utenti.
-
 >> ##### RNF12.4
 >> I dati relativi a mail, id identificativo e segnalazioni di un utente sono visibili dall'utente stesso e da tutti gli utenti con privilegi di amministratore.
 
