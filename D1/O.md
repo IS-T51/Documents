@@ -49,5 +49,4 @@ Nello specifico questa applicazione deve:
 > #### O9.
 > mostrare un breve tutorial guidato che illustri le principali funzionalità dell’applicazione
 
-<div style="page-break-after: always;">~</div>
-
+<div class="page-break"></div>

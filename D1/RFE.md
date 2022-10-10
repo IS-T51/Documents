@@ -337,5 +337,4 @@ L’applicazione presenterà diverse schermate:
 > #### RFE80.
 > Per ogni finestra c’è un campo contrassegnabile che impedisce alla finestra stessa di essere nuovamente visualizzata
 
-<div style="page-break-after: always;">~</div>
-
+<div class="page-break"></div>

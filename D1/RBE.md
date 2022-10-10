@@ -16,5 +16,4 @@ Il server deve:
 
 ![Requisiti back-end](D1/img/RBE/schema.png)
 
-<div style="page-break-after: always;">~</div>
-
+<div class="page-break"></div>
