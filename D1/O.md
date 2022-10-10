@@ -1,3 +1,4 @@
+
 # Obiettivi del progetto
 L’obiettivo del progetto consiste nella realizzazione di una Progressive Web App che permetta ad educatori ed animatori di visualizzare in modo categorizzato e filtrato una serie di attività ludico-ricreative e fornisca ulteriori strumenti che ne facilitino l’organizzazione e la gestione.
 

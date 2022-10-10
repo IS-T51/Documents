@@ -1,3 +1,4 @@
+
 # Requisiti del back-end del progetto
 Nel presente capitolo vengono riportati i requisiti del backend (RBE) del sistema, ovvero quei sistemi esterni con i quali il sistema deve interfacciarsi.
 
@@ -15,5 +16,3 @@ Il server deve:
 > Attraverso i servizi offerti da MongoDB, sarà possibile distribuire la propria base di dati sulla rete, permettendo agli utenti di aggiornare catalogo di attività e di sincronizzare tra più dispositivi le liste create dall’utente autenticato.
 
 ![Requisiti back-end](D1/img/RBE/schema.png)
-
-<div class="page-break"></div>
