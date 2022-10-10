@@ -26,6 +26,10 @@ L’applicazione presenterà diverse schermate:
 > #### RFE7.
 > Casella contrassegnabile con un clic per selezionare tutti i filtri eccetto "Numero Giocatori", "Età media giocatori" e "Durata (minuti)"
 
+![Catalogo](D1/img/RFE/catalogo.png)
+
+![Catalogo con filtro](D1/img/RFE/catalogo-filtri.png)
+
 ### Visualizzato da [Autenticato](#autenticato)
 > [RFE2.](#rfe2)
 > [RFE2.](#rfe3)
@@ -44,7 +48,6 @@ L’applicazione presenterà diverse schermate:
 > Pulsante situato accanto al titolo, che aggiunge una segnalazione alla determinata attività
 
 ### Visualizzato da [Amministratore](#amministratore)
-
 > [RFE2.](#rfe2)
 > [RFE2.](#rfe3)
 > [RFE2.](#rfe4)
@@ -53,7 +56,7 @@ L’applicazione presenterà diverse schermate:
 > [RFE7.](#rfe7)
 
 > #### RFE11.
-> Pulsante di rimozione dell’attività
+> Pulsante di modifica dell’attività
 
 > #### RFE12.
 > Numero di segnalazioni per attività
@@ -87,6 +90,8 @@ L’applicazione presenterà diverse schermate:
 > #### RFE21.
 > Attività giornaliera presa casualmente dal catalogo
 
+![Menu visualizzato da Anonimo](D1/img/RFE/menu-anonimo.png)
+
 ## Menu
 ### Visualizzato da [Autenticato](#autenticato) e da [Amministratore](#amministratore)
 > [RFE13.](#rfe13)
@@ -105,6 +110,8 @@ L’applicazione presenterà diverse schermate:
 
 > #### RFE25.
 > Foto profilo dell’account
+
+![Menu visualizzato da Autenticato](D1/img/RFE/menu-autenticato.png)
 
 ## Strumenti
 > [RFE2.](#rfe2)
@@ -146,6 +153,8 @@ L’applicazione presenterà diverse schermate:
 > #### RFE36.
 > Pulsante che apre un menu a tendina contenente altri suoni che è possibile selezionare
 
+![Strumento FISCHIETTO](D1/img/RFE/fischietto.png)
+
 ## CRONOMETRO
 > [RFE32.](#rfe32)
 
@@ -165,14 +174,11 @@ L’applicazione presenterà diverse schermate:
 > #### RFE40.
 > imer inizialmente azzerato, con segnati ore, minuti e secondi nella forma 00:00:00. L’utente può impostare il tempo desiderato scorrendo sulle cifre.
 
-
 > #### RFE41.
 > Pulsante di avvio del timer. Una volta avviato quest’ultimo, il pulsante diventa pausa/avvio
 
-
 > #### RFE42.
 > Pulsante di stop. Quando il timer è avviato l’utente lo usa per fermarlo e il timer torna al tempo impostato precedentemente, in attesa di un nuovo avvio o di una modifica
-
 
 > #### RFE43.
 > Una volta finito il tempo del timer, viene riprodotto il suono selezionato
@@ -281,6 +287,8 @@ L’applicazione presenterà diverse schermate:
 > #### RFE69.
 > Pulsante che aggiunge l’attività a una lista. Si apre un menu a tendina con tutte le liste e l’utente può selezionare le liste a cui aggiungere l’attività stessa
 
+![Attività](D1/img/RFE/attività.png)
+
 ### Visualizzato da [Amministratore](#amministratore)
 > [RFE64.](#rfe64)
 > [RFE65.](#rfe65)
@@ -292,12 +300,11 @@ L’applicazione presenterà diverse schermate:
 > #### RFE70.
 > Pulsante che apre la schermata “[Modifica](#modifica)”
 
+## Modifica
 ### Visualizzato da [Amministratore](#amministratore)
 > #### RFE71.
 > Pulsante di collegamento alla schermata precedente, ovvero all’[attività](#attività)
 
-## Modifica
-### Visualizzato da [Amministratore](#amministratore)
 > #### RFE72.
 > Campo di inserimento del titolo
 
@@ -330,6 +337,5 @@ L’applicazione presenterà diverse schermate:
 > #### RFE80.
 > Per ogni finestra c’è un campo contrassegnabile che impedisce alla finestra stessa di essere nuovamente visualizzata
 
-<div style="page-break-after: always;">
-</div>
+<div style="page-break-after: always;">~</div>
 

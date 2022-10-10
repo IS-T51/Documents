@@ -14,8 +14,7 @@ Il server deve:
 >
 > Attraverso i servizi offerti da MongoDB, sarà possibile distribuire la propria base di dati sulla rete, permettendo agli utenti di aggiornare catalogo di attività e di sincronizzare tra più dispositivi le liste create dall’utente autenticato.
 
-![Requisiti back-end](D1/img/RBE.png)
+![Requisiti back-end](D1/img/RBE/schema.png)
 
-<div style="page-break-after: always;">
-</div>
+<div style="page-break-after: always;">~</div>
 

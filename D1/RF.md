@@ -203,6 +203,5 @@ All'interno dei seguenti strumenti, il sistema deve permettere di:
 > Iniziare la divisione in squadre
 > <sub>[¶O2.6](#o26)</sub>
 
-<div style="page-break-after: always;">
-</div>
+<div style="page-break-after: always;">~</div>
 
