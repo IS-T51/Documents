@@ -8,4 +8,6 @@ Gli obiettivi di questo documento sono quelli di:
 - presentare i [requisiti del front-end](#requisiti-del-front-end-del-progetto);
 - presentare i [requisiti del back-end](#requisiti-del-back-end-del-progetto).
 
-<div style="page-break-after: always;"></div>
+<div style="page-break-after: always;">
+</div>
+
