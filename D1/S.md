@@ -1,3 +1,4 @@
+
 # Scopo del documento
 Il presente documento riporta l’analisi dei requisiti di sistema del progetto Animati in linguaggio naturale.
 
