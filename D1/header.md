@@ -12,7 +12,7 @@ pdf_options:
             }
         </style>
         <section>
-            D1 - Animati - Analisi dei Requisiti v1.1
+            D1 - Animati - Analisi dei Requisiti v1.2
         </section>
     footerTemplate: |-
         <section>
