@@ -43,7 +43,7 @@ L’applicazione presenterà diverse schermate:
 > Lista di attività del catalogo comprensiva delle attività proposte dagli utenti, dove cliccando sul nome o sull’immagine l’utente viene reindirizzato alla schermata della relativa attività
 
 > #### RFE9.
-> Pulsante situato accanto al titolo, che aggiunge un like alla determinata attività
+> Cinque stelle situate sotto il titolo, grazie alle quali l'utente può aggiungere una valutazione che va da 1 a 5 stelle alla determinata attività
 
 > #### RFE10.
 > Pulsante situato accanto al titolo, che aggiunge una segnalazione alla determinata attività
