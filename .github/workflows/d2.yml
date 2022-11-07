@@ -20,7 +20,7 @@ jobs:
           ref: main
       - name: Unione dei file Markdown
         run: |
-          cat D2/header.md D2/S.md D2/RF.md D2/RNF.md > D2-T51.md
+          cat D2/header.md D2/S.md D2/UC.md D2/RNF.md D2/CXD.md D2/CPD.md > D2-T51.md
       - name: Setup di NodeJS
         continue-on-error: true
         uses: actions/setup-node@v3.5.0

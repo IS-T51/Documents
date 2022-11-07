@@ -1,0 +1,2 @@
+
+# Diagramma delle componenti
