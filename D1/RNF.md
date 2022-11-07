@@ -171,7 +171,7 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 > Il sistema potrà supportare fino a 10.000 attività presenti contemporaneamente nel catalogo senza senza perdita di prestazione negli aggiornamenti alle copie locali degli utenti sfruttando la tecnica di aggiornamento sequenziale.
 
 > #### RNF36.
-> Il sistema potrà gestire fino a 1000 richieste per unità di tempo senza perdita di prestazioni grazie alla possibilità di gestire le richieste degli utenti, qualora i loro dispositivi lo permettano, anche offline, rimuovendo quindi lavoro dal server.
+> Il sistema potrà gestire fino a 10.000 richieste per unità di tempo senza perdita di prestazioni grazie alla possibilità di gestire le richieste degli utenti, qualora i loro dispositivi lo permettano, anche offline, rimuovendo quindi lavoro dal server.
 
 ## Accessibilità
 > #### RNF37.
