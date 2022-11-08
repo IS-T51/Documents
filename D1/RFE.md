@@ -123,6 +123,9 @@ L’applicazione presenterà diverse schermate:
 > #### RFE27.
 > Foto profilo dell’account
 
+> #### RFE88.
+> Pulsante per effettuare il logout
+
 <center><img alt="Menu visualizzato da Autenticato" src="D1/img/RFE/menu-autenticato.png" width="30%"/></center>
 
 ### Visualizzato da [Amministratore](#amministratore)
@@ -137,6 +140,7 @@ L’applicazione presenterà diverse schermate:
 > [RFE25.](#rfe25)
 > [RFE26.](#rfe26)
 > [RFE27.](#rfe27)
+> [RFE88.](#rfe88)
 
 > #### RFE28.
 Pulsante di collegamento alle schermata di gestione utenti
