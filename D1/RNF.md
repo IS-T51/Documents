@@ -45,8 +45,10 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 > Dati salvati per utenti anonimi.
 >> ##### RNF11.1.
 >> Non saranno salvati dati lato server.
+>
 >> ##### RNF11.2.
 >> Qualora il browser dell'utente lo permetta, dopo che questi avrà visualizzato il contenuto di un tutorial e confermato di non volerlo più visualizzare in futuro, tale scelta sarà memorizzata sotto forma di cookie tecnici nel browser dell'utente stesso, previo consenso.
+>
 >> ##### RNF11.3.
 >> Qualora il browser dell'utente lo permetta, una copia del catalogo sarà memorizzata nel suo browser o, previa autorizzzione, nel filesystem del suo dispositivo.
 
@@ -56,6 +58,7 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 >> [RNF11.3.](#rnf93)
 >> ##### RNF12.1.
 >> Lato server saranno raccolte le seguenti informazioni sugli utenti autenticati: mail, valutazioni lasciate alle attività, proposte di nuovi giochi, liste di attività, segnalazioni inviate, presenza o meno di privilegi di amministratore.
+>
 >> ##### RNF12.2.
 >> Qualora il dispositivo dell'utente lo permetta, le informazioni menzionate in RNF12.1 saranno memorizzate sul dispositivo dell'utente.
 
@@ -67,10 +70,13 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 > Visibilità dei dati.
 >> ##### RNF14.1.
 >> I dati di cui al punto RNF9.2 saranno visibili esclusivamente dall'utente direttamente interessato e solo su richiesta di accesso.
+>
 >> ##### RNF14.2.
 >> I dati delle liste di attività create da un utente autenticato saranno visibili esclusivamente dall'utente stesso.
+>
 >> ##### RNF14.3.
 >> I dati relativi alle valutazioni lasciate da un utente alle attività e alle sue proposte sono visibli all'utente stesso e, in forma anonimizzata, a tutti gli altri utenti.
+>
 >> ##### RNF14.4.
 >> I dati relativi a mail, id identificativo e segnalazioni di un utente sono visibili dall'utente stesso e da tutti gli utenti con privilegi di amministratore.
 
@@ -78,6 +84,7 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 > Il trattamento dei dati degli utenti sarà conforme alla normativa vigente espressa dal GDPR. In particolare:
 >> ##### RNF15.1.
 >> Per il trattamento dei dati sarà richiesto agli utenti il consenso preventivo ed esplicito, che l'utente potrà negare in qualsiasi momento tranne che per i cookie tecnici (RNF9.1), di cui comunque sarà informato.
+>
 >> ##### RNF15.2.
 >> Agli utenti verrà garantito il diritto all'oblio: su esplicita richiesta di un utente saranno cancellati tutti i dati che lo riguardano dal sistema, eccetto per le valutazioni lasciate ad attività, le proposte di attività e le segnalazioni di attività, che saranno conservati in forma anonima.
 
@@ -107,8 +114,10 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 > Tempi di addestramento.
 >> ##### RNF19.1.
 >> Dopo 10 minuti di navigazione nell'app l'utente avrà compreso come utilizzare tutte le funzionalità offerte agli utenti anonimi.
+>
 >> ##### RNF19.2.
 >> Dopo ulteriori 20 minuti di navigazione nell'app l'utente avrà compreso come utilizzare tutte le funzionalità offerte agli utenti autenticati.
+>
 >> ##### RNF19.3.
 >> Dopo ulteriori 15 minuti di navigazione nell'app l'utente avrà compreso come utilizzare tutte le funzionalità offerte agli amministratori.
 
@@ -119,8 +128,10 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 > L'aspetto, il funzionamento e lo sviluppo del sistema rispetteranno i principali aspetti dello [standard di ux design](https://www.interaction-design.org/literature/article/user-interface-design-guidelines-10-rules-of-thumb), ad esempio:
 >> ##### RNF21.1.
 >>  L'utente è avvisato visivamente e chiaramente dello stato attuale del sistema (anonimo/autenticato/admin, account con cui è loggato, offline/online/errore) tramite un banner nel menù.
+>
 >> ##### RNF21.2.
 >> Qualora il dispositivo dell'utente lo permetta, in caso di malfunzionamento invece di generici errori del browser verranno mostrati messaggi di errore specifici, per garantire una migliore comprensione da parte dell'utente.
+>
 >> ##### RNF21.3
 >> L'attività di testing e validazione verrà effettuata con la presenza di 50 veri animatori ed educatori.
 
@@ -178,6 +189,7 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 > Il funzionamento del sistema adotterà provvedimenti per facilitarne l'uso da parte di persone con disabilità ispirati da [Web Content Accessibility Guidelines (WCAG) 2.2](https://www.w3.org/TR/WCAG22/), ad esempio:
 >> ##### RNF37.1.
 >> lo stile del sistema prevederà colori ad alto contrasto per facilitare la navigazione di ipovedenti;
+>
 >> ##### RNF37.2.
 >> la web app sarà completamente navigabile da tastiera per facilitare persone con mobilità limitata e non vedenti, in particolare:
 >> 1. ogni elemento interagibile tramite posizionamento del click del mouse sarà raggiungibile per chi naviga tramite tastiera (usando frecce e tab) spostando il "focus" su di esso, per facilitare la navigazione per persone con capacità motorie o visive ridotte;
@@ -198,8 +210,10 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 >> [RNF13.](#rnf13)
 >> ##### RNF40.1.
 >> Qualora il dispositivo dell'utente lo permetta, parte dell'app può essere caricata ed eseguita anche mentre il dispositivo dell'utente è offline.
+>
 >> ##### RNF40.2.
 >> L'app deve avere un Web App Manifest di riferimento con almeno quattro proprietà chiave: name, short_name, start_url, e display.
+>
 >> ##### RNF40.3.
 >> L'app deve avere una icona grande almeno 144×144 pixel in formato png.
 

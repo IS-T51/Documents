@@ -12,7 +12,7 @@ pdf_options:
             }
         </style>
         <section>
-            D2 - Animati - ??? v1.0
+            D2 - Animati - Specifica dei Requisiti v1.0
         </section>
     footerTemplate: |-
         <section>
@@ -32,7 +32,7 @@ pdf_options:
 <center><img alt="Logo" src="https://github.com/IS-T51/animati/blob/main/assets/img/logo.svg?raw=true" width="75%" /></center>
 
 ### Titolo del documento:
-<h1 align="center">???</h1>
+<h1 align="center">Specifica dei Requisiti</h1>
 
 ### Gruppo:
 <h1 align="center">T51</h1>
