@@ -200,8 +200,4 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 | RNF40.2 | Manifest | L'app deve avere un Web App Manifest di riferimento con almeno quattro proprietà chiave: name, short_name, start_url, e display | Conforme |
 | RNF40.3 | Icona | L'app deve avere una icona grande almeno 144×144 pixel in formato png. | Conforme |
 
-
-
-
-
 <div class="page-break"></div>
