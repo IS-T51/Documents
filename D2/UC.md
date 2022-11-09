@@ -44,5 +44,63 @@ Nel presente capitolo vengono descritti i casi d'uso del sistema.
 >> - [extension 1] Nello step [1](#descrizione-1), qualora sia stata salvata una copia del catalogo delle attività sul dispositivo dell’utente, il sistema può consultare quei dati senza interagire con sistemi esterni (“Consultare catalogo locale”)
 >> - [extension 2] Nello step [1](#descrizione-1), qualora ci sia connessione ad internet il server può chiedere la lista a MongoDB (“Consultare catalogo remoto”)
 
+----
+> #### **Titolo:**
+>> Visualizzare attività
+
+> #### **Riassunto:**
+>> Questo use case descrive come l’utente può visualizzare i dettagli specifici di ogni attività a partire dalla schermata del catalogo o di una lista, unicamente nel caso dell’utente autenticato
+
+> #### **Descrizione:**
+>> 1. L’utente clicca sull’immagine o sul nome dell’attività scelta
+>> 2. Il sistema reindirizza l’utente a una schermata con i dettagli dell’attività stessa [[extension 1](#exceptions-2)]
+
+> #### **Exceptions:**
+>> - [exception 1] L’attività scelta non è più presente nel catalogo, MongoDB non aggiornato. Viene mostrato un messaggio di errore
+
+> #### **Extension points:**
+>> - [extension 1] Nello step [2](#descrizione-2), l’utente può accedere al tool di creazione squadre con i parametri richiesti dalla specifica attività
+
+----
+> #### **Titolo:**
+>> Utilizzare i tool
+
+> #### **Riassunto:**
+>> Questo use case descrive come l’utente può consultare la lista di tool presenti nell’applicazione
+
+> #### **Descrizione:**
+>> 1. Il sistema fornisce la lista di tool con titolo degli stessi, sui quali è possibile cliccare
+>> 2. Cliccando su un tool, l’utente viene reindirizzato alla schermata di utilizzo del tool stesso [[extension 1](#extension-points-3)] [[extension 2](#extension-points-3)] [[extension 3](#extension-points-3)] [[extension 4](#extension-points-3)] [[extension 5](#extension-points-3)] [[extension 6](#extension-points-3)]
+
+> #### **Exceptions:**
+>> - 
+
+> #### **Extension points:**
+> - [extension 1] Nello step [2](#descrizione-3), l’utente può cliccare sul tool DADI e quindi venire reindirizzato alla schermata di questo specifico tool (Utilizzare strumento DADI)
+> - [extension 2] Nello step [2](#descrizione-3), l’utente può cliccare sul tool TIMER e quindi venire reindirizzato alla schermata di questo specifico tool (Utilizzare strumento TIMER)
+> - [extension 3] Nello step [2](#descrizione-3), l’utente può cliccare sul tool CRONOMETRO e quindi venire reindirizzato alla schermata di questo specifico tool (Utilizzare strumento CRONOMETRO)
+> - [extension 4] Nello step [2](#descrizione-3), l’utente può cliccare sul tool FISCHIETTO e quindi venire reindirizzato alla schermata di questo specifico tool (Utilizzare strumento FISCHIETTO)
+> - [extension 5] Nello step [2](#descrizione-3), l’utente può cliccare sul tool SEGNA-PUNTI e quindi venire reindirizzato alla schermata di questo specifico tool (Utilizzare strumento SEGNA-PUNTI)
+> - [extension 6] Nello step [2](#descrizione-3), l’utente può cliccare sul tool CREAZIONE SQUADRE e quindi venire reindirizzato alla schermata di questo specifico tool (Utilizzare strumento CREAZIONE SQUADRE)
+
+----
+> #### **Titolo:**
+>> Visualizzare attività
+
+> #### **Riassunto:**
+>> Questo use case descrive come l’utente può visualizzare i dettagli specifici di ogni attività a partire dalla schermata del catalogo o di una lista, unicamente nel caso dell’utente autenticato
+
+> #### **Descrizione:**
+>> 1. L'utente clicca sull'immagine o sul nome dell'attività scelta [[exception 1](#exceptions-4)]
+>> 2. Il sistema reindirizza l’utente a una schermata con i dettagli dell’attività stessa [[extension 1](#extension-points-4)]
+
+> #### **Exceptions:**
+>> - [exception 1] L’attività scelta non è presente nel catalogo, MongoDB non aggiornato. Viene mostrato un messaggio di errore
+
+> #### **Extension points:**
+>> - [extension 1] Nello step [2](#descrizione-4), l’utente può accedere al tool di creazione squadre con i parametri richiesti dalla specifica attività
+
+----
+
 
 <div class="page-break"></div>
