@@ -1,5 +1,8 @@
 
-# Definizione dei Componenti
+# Analisi dei Componenti
+Nel presente capitolo viene presentata l’architettura in termini di componenti interni al sistema.
+Essi verranno definiti sulla base dei requisiti analizzati nei precedenti documenti.<br>Vengono poi raffigurate le interfacce dei vari componenti per permettere il collegamento fra di essi e con sistemi esterni.
+## Definizione dei componenti
 In questa sezione vengono definiti i componenti.
 > ### Gestione Catalogo
 > #### *Motivazione*
@@ -75,6 +78,7 @@ In questa sezione vengono definiti i componenti.
 >> #### *Spiegazione*
 >> [...]
 
-<center><img alt="Diagramma delle Componenti" src="D2/img/CPD/component-diagram.png" width="100%"/></center>
+## Diagramma dei componenti
+<center><img alt="Diagramma dei Componenti" src="D2/img/CPD/component-diagram.png" width="100%"/></center>
 
 <div class="page-break"></div>

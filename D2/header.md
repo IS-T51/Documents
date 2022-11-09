@@ -12,7 +12,7 @@ pdf_options:
             }
         </style>
         <section>
-            D2 - Animati - Specifica dei Requisiti v1.0
+            D2 - Animati - Specifica dei Requisiti v0.1 [pre-release]
         </section>
     footerTemplate: |-
         <section>
