@@ -14,7 +14,7 @@ I seguenti requisiti assumono che l'utente disponga di una connessione a Interne
 > Il sistema risponde a richieste di modifica dati da parte dell'utente (da [RF8.](#rf8) a [RF20.](#rf21) escluso [RF11.](#rf11)) in meno di 1 secondo grazie a meccanismi di aggiornamento sequenziale.
 
 > #### RNF3.
-> Qualora il dispositivo utilizzato dall'utente lo permetta (si veda Portabilità), una copia locale del catalogo delle attività sarà creata sul dispositivo dell'utente ([RF1.](#rf1)) al primo utilizzo dell'app o qualvolta l'utente elimini tali dati, ed essa sarà successivamente aggiornata con frequenza di massimo un'ora od ogni volta che l'utente avvierà l'app e sarà connesso ad Internet.
+> Qualora il dispositivo utilizzato dall'utente lo permetta (si veda Portabilità), una copia locale del catalogo delle attività sarà creata sul dispositivo dell'utente ([RF1.](#rf1)) al primo utilizzo dell'app o qualvolta l'utente elimini tali dati, ed essa sarà successivamente aggiornata con frequenza di massimo 30 minuti od ogni volta che l'utente avvierà l'app e sarà connesso ad Internet.
 
 > #### RNF4.
 > La creazione della copia locale del catalogo impiegherà fino a 10 secondi, l'aggiornamento fino a 1 secondo, e nessuna delle due operazioni impedirà o interromperà la navigazione all'interno dell'app da parte dell'utente.

@@ -14,7 +14,7 @@ I primi 7 requisiti assumono che l'utente disponga di una connessione a Internet
 | RNF1. | Tempo consultazione e filtraggio catalogo | Tempo massimo di risposta del sistema a richieste di consultazione e filtraggio del catalogo da parte dell'utente | 1 secondo |
 | RNF1.1 | Tempo consultazione liste personali | Tempo massimo di risposta del sistema a richieste di consultazione delle proprie liste da parte dell'utente | 1 secondo |
 | RNF2. | Tempo modifica dati | Tempo massimo di risposta del sistema a richieste di modifica dati da parte dell'utente | 1 secondo, garantito dall'impiego di meccanismi di aggiornamento sequenziale |
-| RNF3. | Frequenza aggiornamento catalogo locale | Frequenza di aggiornamento della copia locale del catalogo sul dispositivo dell'utente, qualora esso (il dispositivo) lo permetta | Almeno una volta ogni ora e ad ogni avvio dell'app da parte dell'utente, a condizione che il dispositivo sia connesso ad Internet |
+| RNF3. | Frequenza aggiornamento catalogo locale | Frequenza di aggiornamento della copia locale del catalogo sul dispositivo dell'utente, qualora esso (il dispositivo) lo permetta | Almeno una volta ogni 30 minuti e ad ogni avvio dell'app da parte dell'utente, a condizione che il dispositivo sia connesso ad Internet |
 | RNF4. | Tempo aggiornamento catalogo locale | Tempo massimo impiegato dal sistema per l'aggiornamento della copia locale del catalogo sul dispositivo dell'utente, qualora esso (il dispositivo) lo permetta | 10 secondi la prima volta che viene creato, 1 secondo dalle volte successive, e nessuna delle due operazioni impedirà o interromperà la navigazione all'interno dell'app da parte dell'utente |
 | RNF5. | Tempo utilizzo tools | Tempo massimo di risposta del sistema per operazioni concernente le funzionalità dei tools  | 1 secondo |
 | RNF6. | Tempo login | Tempo massimo di risposta da parte del sistema nell'operazione di login | Tempo impiegato dall'utente per inserire i propri dati quando si trova sull'interfaccia di Google, più ulteriori 10 secondi |
@@ -196,7 +196,7 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 | --- | --- | --- | --- |
 | RNF40. | Criteri PWA | Criteri affinché il sistema sia considerato una Progressive Web App | Conforme |
 | [RNF13.](#rnf13) | - | - | - |
-| RNF40.1 | Funzionamento offline | Qualora il dispositivo dell'utente lo permetta, parte dell'app può essere caricata ed eseguita anche mentre il dispositivo dell'utente è offline | Conforme |
+| RNF40.1 | Funzionamento offline | Qualora il dispositivo dell'utente lo permetta, parte dell'app può essere caricata ed eseguita anche mentre il dispositivo dell'utente è offline | Garantito grazie all'installazione di un service worker (sui browser che lo supportano [RNF17.](#rnf17)), che avrà il ruolo di proxy web: intercetterà ogni richiesta del front-end dell'applicazione, deciderà se inoltrare la richiesta al back-end o se costruire la risposta autonomamente sfruttando Cache API, inoltrerà la risposta ottenuta al front-end. |
 | RNF40.2 | Manifest | L'app deve avere un Web App Manifest di riferimento con almeno quattro proprietà chiave: name, short_name, start_url, e display | Conforme |
 | RNF40.3 | Icona | L'app deve avere una icona grande almeno 144×144 pixel in formato png. | Conforme |
 
