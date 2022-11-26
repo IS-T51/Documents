@@ -10,13 +10,16 @@ Nel presente capitolo vengono descritti i casi d'uso del sistema.
 >> 1. L’utente clicca sul pulsante login.
 >> 2. Il sistema reindirizza l’utente sulla pagina di accesso di Google.
 >> 3. L’utente inserisce le sue credenziali Google.
->> 4. Google Oauth genera un token e reindirizza l’utente sull’applicazione. [[exception 1](#exceptions)]
->> 5. Il sistema verifica il token ricevuto tramite l’api di Google. [[exception 2](#exceptions)]
->> 6. Se è il primo accesso dell’utente, viene creata una nuova entry su MongoDB, con un id personale e la mail.
->> 7. Se è già avvenuto almeno un accesso, vengono recuperati i dati dell’utente da MongoDB. [[extension 1](#extension-points)]
+>> 4. Google genera un codice di autorizzazione e reindirizza l’utente sull’applicazione, inoltrando il codice al sistema. [[exception 1](#exceptions)]
+>> 5. Il sistema valida il codice di autorizzazione e lo utilizza per richiedere un token a Google tramite APIs. [[exception 2](#exceptions)]
+>> 6. Google invia al sistema un token con le informazioni sull'account dell'utente.
+>> 7. Il sistema estrae le informazioni necessarie dal token ricevuto. [[exception 3](#exceptions)]
+>> 8. Se è il primo accesso dell’utente, viene creata una nuova entry su MongoDB, con un id personale e la mail.
+>> 9. Se è già avvenuto almeno un accesso, vengono recuperati i dati dell’utente da MongoDB. [[extension 1](#extension-points)]
 > #### **Exceptions:**
->> - [exception 1] Le credenziali non sono corrette, e non viene generato nessun token.
->> - [exception 2] Errore nella verifica del token, token non valido.
+>> - [exception 1] Le credenziali non sono corrette, e non viene generato nessun codice, all'utente viene chiesto di reinserire le proprie credenziali.
+>> - [exception 2] Se il codice ricevuto risulta non valido il sistema informa l'utente che si è verificato un errore e non è stato possibile effettuare il login.
+>> - [exception 3] Errore nella verifica del token, il sistema informa l'utente che si è verificato un errore e non è stato possibile effettuare il login.
 > #### **Extension points:**
 >> - [extension 1] Allo step [7](#descrizione), se il browser dell’utente lo permette, i dati individuali dell’utente verranno memorizzati sul dispositivo dell’utente.
 

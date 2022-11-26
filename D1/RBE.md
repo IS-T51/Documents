@@ -5,10 +5,10 @@ Nel presente capitolo vengono riportati i requisiti del backend (RBE) del sistem
 Il server deve:
 
 > #### RBE1.
-> interfacciarsi con le API di Google per verificare l'autenticazione dell'utente
+> interfacciarsi con le API di Google per autenticare l'utente
 > <sub>[¶O3](#o3)</sub>
 >
-> Attraverso questo sistema, sarà possibile autenticare gli utenti per permettere l’accesso a numerose funzionalità dell’applicativo esclusive. Il ruolo degli utenti autenticati verrà invece gestito all’interno dell’applicativo stesso.
+> Attraverso questo sistema, sarà possibile autenticare gli utenti per permettere l’accesso a numerose funzionalità dell’applicativo riservate agli utenti autenticati. Il controllo dei permessi degli utenti sarà invece gestito all’interno dell’applicativo stesso.
 
 > #### RBE2.
 > utilizzare il servizio per la gestione di basi di dati offerto da MongoDB

@@ -144,7 +144,7 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 | Indice | Proprietà | Descrizione | Misura |
 | --- | --- | --- | --- |
 | RNF29. | MongoDB | Interazione del sistema con un database non relazionale offerto da MongoDB | Usato per memorizzare dati e rispondere alle richieste degli utenti |
-| RNF30. | Google OAuth 2.0 | Interazione del sistema con l'API di Google OAuth 2.0 | Usato per identificare gli utenti |
+| RNF30. | Google APIs | Interazione del sistema con le API di Google con il protocollo OAuth 2.0 | Usato per identificare gli utenti |
 | RNF31. | API catalogo | Esposizione da parte del sistema di API che consentano la consultazione e il filtraggio del catalogo online | Esposta dal sistema |
 | RNF32. | API liste | Esposizione da parte del sistema di API che consentano la creazione ed esportazione di liste di attività | Esposta dal sistema |
 | RNF33. | Filesystem | Interazione del sistema con il filesystem del dispositivo dell'utente | Usato per la memorizzazione di dati in locale sotto previo consenso da parte dell'utente e qualora il dispositivo dell'utente lo permetta |

@@ -163,7 +163,7 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 > Il sistema interagirà con un database non relazionale offerto da MongoDB per memorizzare dati e rispondere alle richieste degli utenti.
 
 > #### RNF30.
-> Il sistema userà l'API di Google OAuth 2.0 per identificare gli utenti.
+> Il sistema userà l'API di Google con il protocollo OAuth 2.0 per identificare gli utenti.
 
 > #### RNF31.
 > Il sistema esporrà API per la consultazione e il filtraggio del catalogo online.
