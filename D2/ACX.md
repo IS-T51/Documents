@@ -15,7 +15,7 @@ In questa sezione vengono presentati gli utenti e i sistemi esterni con cui l’
 
 ## Diagramma di contesto
 
-<center><img alt="Diagramma di Contesto" src="D2/img/CXD/context-diagram.png" width="100%"/></center>
+<center><img alt="Diagramma di Contesto" src="D2/img/CXD/context-diagram_v2.png" width="100%"/></center>
 
 La figura mostra le principali interazioni tra attori o sistemi esterni e l’applicazione Animati. Segue una descrizione delle interazioni evidenziate dal diagramma.
 
