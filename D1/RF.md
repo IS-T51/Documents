@@ -32,7 +32,7 @@ Per ogni tipologia di utente, il sistema deve permettere di:
 > Effettuare l’accesso tramite le credenziali di autenticazione Google
 > <sub>[¶O3](#o3)</sub>
 
-### In assenza di connessione al server 
+### In assenza di connessione al server
 > [RF1.](#rf1)
 > [RF2.](#rf3)
 > [RF3.](#rf4)
@@ -111,6 +111,7 @@ Per ogni tipologia di utente, il sistema deve permettere di:
 > [RF11.](#rf11)
 > [RF12.](#rf12)
 > [RF16.](#rf16)
+> [RF17.](#rf17)
 
 > #### RF18.
 > Inserire nuove attività nel catalogo di attività
@@ -135,7 +136,7 @@ Per ogni tipologia di utente, il sistema deve permettere di:
 ### In assenza di connessione al server
 per gli [Amministratori](#amministratore) i requisiti funzionali del sistema sono i medesimi di un qualsiasi altro [Autenticato](#autenticato)
 
---- 
+---
 
 All'interno dei seguenti strumenti, il sistema deve permettere di:
 
