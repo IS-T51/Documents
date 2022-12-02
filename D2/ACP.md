@@ -1,12 +1,12 @@
 
 # Analisi dei Componenti
 Nel presente capitolo viene presentata l’architettura in termini di componenti interni al sistema.
-Essi verranno definiti sulla base dei requisiti analizzati nei precedenti documenti.<br>Vengono poi raffigurate le interfacce dei vari componenti per permettere il collegamento fra di essi e con sistemi esterni.
+Essi verranno definiti sulla base dei requisiti analizzati nei precedenti documenti.<br>Viene poi adottato l’uso di Component Diagram per rappresentare l’interconnessione tra i vari componenti, identificando quindi le interfacce tra questi e verso sistemi esterni.
 ## Definizione dei componenti
 In questa sezione vengono definiti i componenti.
 > ### Gestione Catalogo
 > #### *Motivazione*
-> 
+>
 > #### *Spiegazione*
 > Il componente gestisce le attività presenti nel catalogo, [...]
 
@@ -24,7 +24,7 @@ In questa sezione vengono definiti i componenti.
 > Il componente permette all'utente di effettuare l'accesso nell'app, accedendo alle funzioni riservate agli autenticati.<br>
 > Esso si occupa di inoltrare il token ricevuto dall'utente al servizio di Google OAuth per la validazione.<br>
 > Qualora il token risultasse essere autentico, il componente si occuperà di recuperare le informazioni dell'account Google (lista completa delle informazioni acquisite al RNF[...]).<br>
-> Su richiesta dell'utente, il componente permetterà il logout, rimuovendo i file personali salvati localmente.
+> Su richiesta dell'utente, il componente permetterà il logout, rimuovendo i file personali salvati localmente se presenti.
 
 > ### Gestione Utenti
 > #### *Motivazione*
@@ -80,5 +80,8 @@ In questa sezione vengono definiti i componenti.
 
 ## Diagramma dei componenti
 <center><img alt="Diagramma dei Componenti" src="D2/img/CPD/component-diagram.png" width="100%"/></center>
+La figura mostra i componenti di sistema e la loro interconnessione. A seguire una descrizione delle interfacce presenti nel diagramma.
+
+
 
 <div class="page-break"></div>

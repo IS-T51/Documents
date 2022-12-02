@@ -266,7 +266,7 @@ Nel presente capitolo vengono descritti i casi d'uso del sistema.
 > #### **Riassunto:**
 >> Questo use case descrive come un utente autenticato online può creare una nuova lista di attività a partire dalla schermata “Liste”.
 > #### **Descrizione:**
->> 1. L’utente clicca sul pulsante +. [[exception 1](#exceptions-15)]
+>> 1. L’utente clicca sul pulsante +. [[exception 1](#exceptions-15)][[exception 4](#exceptions-15)]
 >> 2. L’utente inserisce il nome che intende dare alla nuova lista. [[exception 2](#exceptions-15)]
 >> 3. L’utente clicca sul pulsante per confermare. [[exception 3](#exceptions-15)] [[exception 1](#exceptions-15)]
 >> 4. Il sistema invia la lista di attività a MongoDB. [[extension 1](#extension-points-15)]
@@ -274,6 +274,7 @@ Nel presente capitolo vengono descritti i casi d'uso del sistema.
 >> - [exception 1] In assenza di connessione ad Internet il sistema mostrerà all’utente un messaggio di errore che indicherà l’assenza di connessione.
 >> - [exception 2] Dopo aver inserito 20 caratteri nel campo relativo al nome, se l’utente proverà ad inserire altri caratteri questi non verranno inseriti, il campo di inserimento sarà evidenziato di rosso e riporterà una scritta che informa l’utente che il limite massimo di caratteri è stato raggiunto.
 >> - [exception 3] Se l’utente ha inserito un nome corrispondente a quello di una lista di attività presente tra le sue liste personali, o se l'utente ha lasciato il campo del nome vuoto, il sistema mostrerà un messaggio di errore ed evidenzierà in rosso il campo di inserimento del nome.
+>> - [exception 4] Se l'utente ha già creato 99 liste di attività, il pulsante più non sarà disponibile e il sistema mostrerà all'utente un messaggio di errore per informarlo.
 > #### **Extension points:**
 >> - [extension 1] Allo step [4](#descrizione-15), se il browser dell’utente è compatibile con service workers, la lista creata verrà memorizzata anche sul dispositivo dell’utente.
 
