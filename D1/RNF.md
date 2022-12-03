@@ -32,7 +32,7 @@ I seguenti requisiti assumono che l'utente disponga di una connessione a Interne
 > Il tempo di risposta da parte del sistema nell'operazione di logout ([RF16.](#rf16)) sarà inferiore a 100ms.
 
 > #### RNF9.
-> L'aplicazione richiederà il consumo da parte del dispositivo dell'utente di 3MB di dati Internet mediamente in settimana, fino a 20MB in occasione della creazione della copia locale del catalogo.
+> L'aplicazione richiederà un consumo da parte del dispositivo dell'utente inferiore a 20MB di dati Internet mediamente in settimana, con un'aggiunta inferiore a 20MB in occasione della creazione della copia locale del catalogo.
 
 
 Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da parte dell'utente dipende, oltre che dal tempo di risposta del sistema, anche dal tempo di che caricamento del browser, che non è di competenza dell'applicazione.
@@ -47,10 +47,10 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 >> Non saranno salvati dati lato server.
 >
 >> ##### RNF11.2.
->> Qualora il browser dell'utente lo permetta, dopo che questi avrà visualizzato il contenuto di un tutorial e confermato di non volerlo più visualizzare in futuro, tale scelta sarà memorizzata sotto forma di cookie tecnici nel browser dell'utente stesso, previo consenso.
+>> Qualora il browser dell'utente lo permetta, dopo che questi avrà visualizzato il contenuto di un tutorial, gli verrà chiesta conferma di non volerlo più visualizzare in futuro; inoltre, qualora il browser dell'utente lo permetta, all'utente verrà chiesto il consenso di memorizzare dati sul browsere in stato persistente. Tali scelte saranno memorizzate sotto forma di cookie tecnici nel browser dell'utente stesso, sotto previo consenso.
 >
 >> ##### RNF11.3.
->> Qualora il browser dell'utente lo permetta, una copia del catalogo sarà memorizzata nel suo browser o, previa autorizzzione, nel filesystem del suo dispositivo.
+>> Qualora il browser dell'utente lo permetta, una copia del catalogo sarà memorizzata nel suo browser.
 
 > #### RNF12.
 > Dati salvati per utenti autenticati.
@@ -93,7 +93,7 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 > Le funzionalità online (sezioni "in presenza di connessione" negli RF) dell'app saranno garantite su qualsiasi browser che supporti HTML5.
 
 > #### RNF17.
-> Le funzionalità offline (sezioni "in assenza di connessione" negli RF) dell'app saranno garantite su qualsiasi browser che supporti service workers, nello specifico:
+> Le funzionalità offline (sezioni "in assenza di connessione" negli RF) dell'app che non richiedono memorizzazione di dati strutturati saranno garantite su qualsiasi browser che supporti service workers, nello specifico:
 > 1. Chrome da versione 40
 > 2. Edge da versione 17
 > 3. Firefox da versione 44
@@ -106,115 +106,129 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 > 10. Samsung Internet da versione 4.0
 > 11. WebView Android da versione 40
 
-## Usabilità
 > #### RNF18.
+> Le funzionalità offline (sezioni "in assenza di connessione" negli RF) dell'app che richiedono memorizzazione di dati strutturati saranno garantite su qualsiasi browser che supporti sia service workers sia IndexedDB API, nello specifico saranno sicuramente garantite su:
+> 1. Chrome da versione 83
+> 2. Edge da versione 83
+> 3. Firefox non garantito, ma è consigliata almeno la versione 58
+> 4. Opera da versione 70
+> 5. Safari non garantito, ma è consigliata almeno la versione 15
+> 6. Chrome Android da versione 83
+> 7. Firefox for Android non garantito, ma è consigliata almeno la versione 58
+> 8. Opera Android da versione 59
+> 9. Safari on iOS non garantito, ma è consigliata almeno la  versione 15
+> 10. Samsung Internet da versione 13.0
+> 11. WebView Android da versione 83
+
+## Usabilità
+> #### RNF19.
 > Le principali funzionalità dell'app avranno delle schermate di spiegazione che ne faciliterà la comprensione all'utente.
 
-> #### RNF19.
+> #### RNF20.
 > Tempi di addestramento.
->> ##### RNF19.1.
+>> ##### RNF20.1.
 >> Dopo 10 minuti di navigazione nell'app l'utente avrà compreso come utilizzare tutte le funzionalità offerte agli utenti anonimi.
 >
->> ##### RNF19.2.
+>> ##### RNF20.2.
 >> Dopo ulteriori 20 minuti di navigazione nell'app l'utente avrà compreso come utilizzare tutte le funzionalità offerte agli utenti autenticati.
 >
->> ##### RNF19.3.
+>> ##### RNF20.3.
 >> Dopo ulteriori 15 minuti di navigazione nell'app l'utente avrà compreso come utilizzare tutte le funzionalità offerte agli amministratori.
 
-> #### RNF20.
+> #### RNF21.
 > Dopo questo addestramento, gli utenti esperti non dovrebbero superare, in media, i 2 errori al giorno.
 
-> #### RNF21.
+> #### RNF22.
 > L'aspetto, il funzionamento e lo sviluppo del sistema rispetteranno i principali aspetti dello [standard di ux design](https://www.interaction-design.org/literature/article/user-interface-design-guidelines-10-rules-of-thumb), ad esempio:
->> ##### RNF21.1.
+>> ##### RNF22.1.
 >>  L'utente è avvisato visivamente e chiaramente dello stato attuale del sistema (anonimo/autenticato/admin, account con cui è loggato, offline/online/errore) tramite un banner nel menù.
 >
->> ##### RNF21.2.
+>> ##### RNF22.2.
 >> Qualora il dispositivo dell'utente lo permetta, in caso di malfunzionamento invece di generici errori del browser verranno mostrati messaggi di errore specifici, per garantire una migliore comprensione da parte dell'utente.
 >
->> ##### RNF21.3
+>> ##### RNF22.3
 >> L'attività di testing e validazione verrà effettuata con la presenza di 50 veri animatori ed educatori.
 
 ## Affidabilità e robustezza
-> #### RNF22.
+> #### RNF23.
 > Il sistema sarà disponibile mediamente per almeno 20 giorni al mese nel primo anno dal deployment.
 
-> #### RNF23.
+> #### RNF24.
 > Il tempo medio di malfunzionamento del sistema sarà di 3 giorni in presenza di segnalazioni di malfunzionamento da parte degli utenti.
 
-> #### RNF24.
+> #### RNF25.
 > Nel caso in cui si dovesse verificare un malfunzionamento del sistema mentre un utente è connesso ad esso via Internet, è garantito che i dati che l'utente ha memorizzato sul suo account fino a 10 secondi prima del malfunzionamento saranno preservati.
 
-> #### RNF25.
+> #### RNF26.
 > Nel caso in cui il server del sistema non fosse raggiungibile a causa di un malfunzionamento, è garantito, qualora il dispositivo dell'utente lo permetta, il funzionamento delle funzionalità offline (sezioni "in assenza di connessione" negli RF).
 
 ## Sicurezza
-> #### RNF26.
+> #### RNF27.
 > Qualora un utente rilevi un contenuto inappropriato in una delle attività nel catalogo avrà la possibilità di segnalarlo agli amministratori del sistema.
 
-> #### RNF27.
+> #### RNF28.
 > È garantito che le segnalazioni sulle attività vengano controllate dagli amministratori con una frequenza minima di 4 ore nella fascia oraria tra le 8:00 del mattino e le 00:00 (mezzanotte).
 
-> #### RNF28.
+> #### RNF29.
 > Il funzionamento dell'app deve garantire che per lo svolgimento delle attività di animazione sia sufficiente che solo un dispositivo (quello dell'organizzatore) sia connesso all'app e che i partecipanti all'attività usino l'app per un tempo limitato a meno di 10 secondi, in modo che non debbano passare troppo tempo davanti allo schermo e che non debbano necessariamente possedere un dispositivo proprio per poter partecipare.
 
 ## Interoperabilità
-> #### RNF29.
-> Il sistema interagirà con un database non relazionale offerto da MongoDB per memorizzare dati e rispondere alle richieste degli utenti.
-
 > #### RNF30.
-> Il sistema userà l'API di Google con il protocollo OAuth 2.0 per identificare gli utenti.
+> Il sistema interagirà con un servizio in cloud di database non relazionale offerto da MongoDB per memorizzare dati e rispondere alle richieste degli utenti online.
 
 > #### RNF31.
-> Il sistema esporrà API per la consultazione e il filtraggio del catalogo online.
+> Il sistema userà l'API di Google con il protocollo OAuth 2.0 per identificare gli utenti.
 
 > #### RNF32.
-> Il sistema esporrà API per la creazione ed esportazione di liste di attività.
+> Il sistema esporrà API per la consultazione e il filtraggio del catalogo online.
 
 > #### RNF33.
-> Sotto previo consenso da parte dell'utente e qualora il dispositivo dell'utente lo permetta, il sistema potrà interagire con il filesystem del dispositivo dell'utente per la memorizzazione di dati locali.
+> Il sistema esporrà API per la creazione ed esportazione di liste di attività.
+
+> #### RNF34.
+> Sotto previo consenso da parte dell'utente e qualora il dispositivo dell'utente lo permetta, il sistema interagirà con un sistema di gestione di database non relazionale fornito dalle API di IndexedDB per memorizzare dati in locale e rispondere alle richieste degli utenti offline.
 
 ## Scalabilità
-> #### RNF34.
+> #### RNF35.
 > Il sistema potrà supportare fino a 10.000 utenti autenticati registrati contemporaneamente nel sistema senza perdita di prestazioni grazie alla possibilità di gestire le richieste degli utenti, qualora i loro dispositivi lo permettano, anche offline, rimuovendo quindi lavoro dal server.
 
-> #### RNF35.
+> #### RNF36.
 > Il sistema potrà supportare fino a 10.000 attività presenti contemporaneamente nel catalogo senza senza perdita di prestazione negli aggiornamenti alle copie locali degli utenti sfruttando la tecnica di aggiornamento sequenziale.
 
-> #### RNF36.
+> #### RNF37.
 > Il sistema potrà gestire fino a 10.000 richieste per unità di tempo senza perdita di prestazioni grazie alla possibilità di gestire le richieste degli utenti, qualora i loro dispositivi lo permettano, anche offline, rimuovendo quindi lavoro dal server.
 
 ## Accessibilità
-> #### RNF37.
+> #### RNF38.
 > Il funzionamento del sistema adotterà provvedimenti per facilitarne l'uso da parte di persone con disabilità ispirati da [Web Content Accessibility Guidelines (WCAG) 2.2](https://www.w3.org/TR/WCAG22/), ad esempio:
->> ##### RNF37.1.
+>> ##### RNF38.1.
 >> lo stile del sistema prevederà colori ad alto contrasto per facilitare la navigazione di ipovedenti;
 >
->> ##### RNF37.2.
+>> ##### RNF38.2.
 >> la web app sarà completamente navigabile da tastiera per facilitare persone con mobilità limitata e non vedenti, in particolare:
 >> 1. ogni elemento interagibile tramite posizionamento del click del mouse sarà raggiungibile per chi naviga tramite tastiera (usando frecce e tab) spostando il "focus" su di esso, per facilitare la navigazione per persone con capacità motorie o visive ridotte;
 >> 2. l'ordine con cui viene messo il "focus" sugli elementi all'interno di una pagina rispetterà il flow logico della stessa, per facilitare la navigazione per persone con capacità motorie o visive ridotte;
 >> 3. ogni elemento quando il focus viene messo su di esso farà comparire un riquadro con breve suggerimento o spiegazione riguardo l'elemento stesso in modo che questo possa essere letto da eventuali sistemi di screen-reader o VoiceOver, per facilitare la navigazione per persone con capacità visive o di processo del linguaggio scritto ridotte.
 
 ## Lingua
-> #### RNF38.
+> #### RNF39.
 > Il sistema sarà distribuito in lingua italiana.
 
 ## Distribuzione
-> #### RNF39.
+> #### RNF40.
 > Il codice sorgente dell'applicativo sarà distribuito sotto licenza GPL3.0.
 
 ## Progressive Web App
-> #### RNF40.
+> #### RNF41.
 > Il sistema sarà distribuito come Progressive Web App, pertanto dovrà rispettare i seguenti vincoli:
 >> [RNF13.](#rnf13)
->> ##### RNF40.1.
+>> ##### RNF41.1.
 >> Qualora il dispositivo dell'utente lo permetta, parte dell'app può essere caricata ed eseguita anche mentre il dispositivo dell'utente è offline.
 >
->> ##### RNF40.2.
+>> ##### RNF41.2.
 >> L'app deve avere un Web App Manifest di riferimento con almeno quattro proprietà chiave: name, short_name, start_url, e display.
 >
->> ##### RNF40.3.
+>> ##### RNF41.3.
 >> L'app deve avere una icona grande almeno 144×144 pixel in formato png.
 
 <div class="page-break"></div>

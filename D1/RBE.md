@@ -15,4 +15,10 @@ Il server deve:
 >
 > Attraverso i servizi offerti da MongoDB, sarà possibile distribuire la propria base di dati sulla rete, permettendo agli utenti di aggiornare catalogo di attività e di sincronizzare tra più dispositivi le liste create dall’utente autenticato.
 
+> #### RBE3.
+> utilizzare il sistema per la gestione di basi di dati sul browser IndexedDB
+>
+> Attraverso le API esposte da IndexedDB, sarà possibile memorizzare e gestire parte della propria base di dati sul dispositivo dell'utente, permettendo agli utenti di salvare in locale e consultare anche in assenza di connessione ad Internet il catalogo e, in caso di utente autenticato, alcuni dati personali come le liste.
+
+
 ![Requisiti back-end](D1/img/RBE/schema.png)
