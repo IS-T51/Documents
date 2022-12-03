@@ -1,6 +1,19 @@
 
-# Use Case
-Nel presente capitolo vengono descritti i casi d'uso del sistema.
+# Casi d'uso
+Nel presente capitolo vengono riportati i requisiti funzionali (RF) del sistema utilizzando il linguaggio naturale e Use Case Diagram (UCD) scritti in UML.
+
+## Diagramma dei casi d'uso
+
+<center><img alt="D2/Diagramma strategico" src="img/UCD/alto_livello.png" width="100%"/></center>
+
+La prima figura mostra i principali casi d'uso dell’applicazione Animati, raggruppati per omogeneità, e gli attori coinvolti.
+
+<center><img alt="D2/Diagramma dettagliato" src="img/UCD/basso_livello.png" width="100%"/></center>
+
+La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazione Animati e gli attori coinvolti. Segue una descrizione dei casi d'uso.
+
+
+## Descrizione dei casi d'uso
 
 > #### **Titolo:**
 >> Effettuare l'accesso
@@ -29,28 +42,32 @@ Nel presente capitolo vengono descritti i casi d'uso del sistema.
 > #### **Riassunto:**
 >> Questo use case descrive come l'utente può consultare il catalogo di attività dell’applicazione e interagire con le singole attività presenti nell’elenco.
 > #### **Descrizione:**
->> 1. Il sistema chiede la lista di attività a un database. [[extension 1](#extension-points-1)] [[extension 2](#extension-points-1)] [[exception 2](#exceptions-1)]
->> 2. Il sistema fornisce la lista di attività con titolo e immagine delle stesse, sulle quali è possibile cliccare.
+>> 1. Il sistema chiede l'elenco di attività a un database (MongoDB o IndexedDB). [[extension 1](#extension-points-1)] [[extension 2](#extension-points-1)] [[exception 2](#exceptions-1)]
+>> 2. Il database fornisce l'elenco di attività con titolo e immagine delle stesse al sistema, e il sistema lo mostra all'utente.
 >> 3. Cliccando su un’attività, l’utente viene reindirizzato alla schermata con le informazioni sull’attività stessa. [[exception 1](#exceptions-1)]
 > #### **Exceptions:**
 >> - [exception 1] Utente viene reindirizzato ad attività eliminata, catalogo non aggiornato.
 >> - [exception 2] Non c’è connessione ad internet e non c’è una copia locale del catalogo, quindi non viene mostrato nessun catalogo e compare un messaggio di errore.
 > #### **Extension points:**
->> - [extension 1] Allo step [1](#descrizione-1), qualora sia stata salvata una copia del catalogo delle attività sul dispositivo dell’utente, il sistema può consultare quei dati senza interagire con sistemi esterni (“Consultare catalogo locale”).
+>> - [extension 1] Allo step [1](#descrizione-1), qualora sia stata salvata una copia del catalogo delle attività sul dispositivo dell’utente, il sistema può consultare quei dati attraverso IndexedDB senza l'uso di connessione ad Internet (“Consultare catalogo locale”).
 >> - [extension 2] Allo step [1](#descrizione-1), qualora ci sia connessione ad internet il server può chiedere la lista a MongoDB (“Consultare catalogo remoto”).
 
 ----
 > #### **Titolo:**
 >> Visualizzare attività
 > #### **Riassunto:**
->> Questo use case descrive come l’utente può visualizzare i dettagli specifici di ogni attività a partire dalla schermata del catalogo o di una lista, unicamente nel caso dell’utente autenticato.
+>> Questo use case descrive come l’utente può visualizzare i dettagli specifici di ogni attività a partire dalla schermata del catalogo o, unicamente nel caso dell’utente autenticato, di una lista.
 > #### **Descrizione:**
 >> 1. L’utente clicca sull’immagine o sul nome dell’attività scelta. [[exception 1](#exceptions-2)]
->> 2. Il sistema reindirizza l’utente a una schermata con i dettagli dell’attività stessa. [[extension 1](#exceptions-2)]
+>> 2. Il sistema chiede le informazioni relative all'attività a un database (MongoDB o IndexedDB). [[extension 1](#extension-points-1)] [[extension 2](#extension-points-2)] [[exception 2](#exceptions-2)]
+>> 3. Il database fornisce al sistema le informazioni, e il sistema reindirizza l’utente a una schermata con i dettagli dell’attività stessa. [[extension 3](#exceptions-2)]
 > #### **Exceptions:**
 >> - [exception 1] L’attività scelta non è più presente nel catalogo, MongoDB non aggiornato. Viene mostrato un messaggio di errore.
+>> - [exception 2] Se non c’è connessione ad Internet e non c’è una copia locale del catalogo, non viene mostrata nessuna informazione e compare un messaggio di errore.
 > #### **Extension points:**
->> - [extension 1] Allo step [2](#descrizione-2), l’utente può accedere al tool di creazione squadre con i parametri richiesti dalla specifica attività.
+>> - [extension 1] Allo step [2](#descrizione-2), qualora sia stata salvata una copia del catalogo delle attività sul dispositivo dell’utente, il sistema può consultare quei dati attraverso IndexedDB senza l'uso di connessione ad Internet ("Visualizzare attività locali").
+>> - [extension 2] Allo step [2](#descrizione-1), qualora ci sia connessione ad internet il server può chiedere le informazioni sull'attività a MongoDB (“Visualizzare attività locali”).
+>> - [extension 3] Allo step [3](#descrizione-2), l’utente può accedere al tool di creazione squadre con i parametri richiesti dalla specifica attività.
 
 ----
 > #### **Titolo:**
@@ -479,15 +496,16 @@ Nel presente capitolo vengono descritti i casi d'uso del sistema.
 > #### **Titolo:**
 >> Aggiornare catalogo locale
 > #### **Riassunto:**
->> Questo use case descrive come il sistema effettua la creazione o l'aggiornamento della copia del catalogo di attività presente sul dispositivo dell'utente.
+>> Questo use case descrive come il sistema effettua la creazione o l'aggiornamento della copia del catalogo di attività (e dei dati relativi all'utente nel caso di un utente autenticato) presente sul dispositivo dell'utente.
 > #### **Descrizione:**
->> 1. L'utente avvia l'applicazione o il tempo trascorso dall'ultimo aggiornamento del catalogo locale supera 30 minuti. [[exception 2](#exceptions-26)]
->> 2. Il sistema chiede a MongoDB le modifiche avvenute al catalogo remoto dall'ultimo aggiornamento del catalogo locale. [[exception 1](#exceptions-26)] [[extension 1](#extension-points-26)]
->> 3. Il sistema integra i dati locali con le modifiche avvenute.
+>> 1. L'utente avvia l'applicazione o il tempo trascorso dall'ultimo aggiornamento del catalogo locale supera 30 minuti. [[exception 2](#exceptions-26)][[exception 3](#exceptions-26)]
+>> 2. Il sistema chiede a MongoDB le modifiche avvenute al catalogo remoto (e ai dati relativi all'utente nel caso di un utente autenticato) dall'ultimo aggiornamento del catalogo locale (posto di default a zero se questo non è presente in memoria). [[exception 1](#exceptions-26)] [[extension 1](#extension-points-26)]
+>> 3. Il sistema integra attraverso IndexedDB i dati locali con le modifiche avvenute.
 >> 4. Il sistema imposta la data dell'ultimo aggiornamento del catalogo locale alla data corrente nel momento in cui ha ricevuto risposta da MongoDB (comprensiva di ore, minuti, secondi, millisecondi e nanosecondi).
 > #### **Exceptions:**
 >> - [exception 1] In assenza di connessione ad Internet il sistema mostrerà all’utente un messaggio di errore che indicherà l’assenza di connessione.
 >> - [exception 2] Nel caso in cui il browser dell'utente non supporti l'installazione di service worker, il sistema mostrerà all’utente un messaggio di errore che indicherà che non è stato possibile creare una copia locale del catalogo e che non sarà possibile utilizzare alcuna funzionalità in assenza di connessione.
+>> - [exception 2] Nel caso in cui il browser dell'utente non supporti l'uso di IndexedDB API ma supporti service workers, il sistema mostrerà all’utente un messaggio di errore che indicherà che non è stato possibile creare una copia locale del catalogo, che non sarà possibile consultare il catalogo (o i dati personali in caso di un utente autenticato) in assenza di connessione, ma che sarà comunque possibile utilizzare i tools in assenza di connessione.
 > #### **Extension points:**
 >> - [extension 1] Se l'utente ha effettuato l'accesso sull'applicazione, il sistema richiederà a MongoDB anche le modifiche avvenute ai dati riguardanti l'utente.
 
@@ -498,7 +516,7 @@ Nel presente capitolo vengono descritti i casi d'uso del sistema.
 >> Questo use case descrive come l'utente può consultare le proprie liste di attività a partire dal menù.
 > #### **Descrizione:**
 >> 1. L'utente clicca su "Liste".
->> 2. Il sistema chiede l'elenco delle liste di attività a un database. [[extension 1](#extension-points-27)] [[extension 2](#extension-points-27)] [[exception 2](#exceptions-27)]
+>> 2. Il sistema chiede l'elenco delle liste di attività a un database (MongoDB o IndexedDB). [[extension 1](#extension-points-27)] [[extension 2](#extension-points-27)] [[exception 2](#exceptions-27)]
 >> 2. Il sistema fornisce l'elenco di lista di attività con titolo della lista, sulle quali è possibile cliccare. [[extension 4](#extension-points-27)]
 >> 3. L'utente clicca su una lista e il sistema mostrà all'utente l'elenco di attività presenti in quella lista. [[extension 3](#extension-points-27)]
 >> 4. Cliccando su un’attività, l’utente viene reindirizzato alla schermata con le informazioni sull’attività stessa. [[exception 1](#exceptions-27)]
@@ -506,7 +524,7 @@ Nel presente capitolo vengono descritti i casi d'uso del sistema.
 >> - [exception 1] Se il catalogo non è aggiornato, l'utente potrebbe essere reindirizzato ad una attività eliminata, in tal caso il sistema mostrerà all'utente un messaggio di errore.
 >> - [exception 2] Se non c’è connessione ad Internet e non c’è una copia locale delle liste, non viene mostrato nessun elenco e compare un messaggio di errore.
 > #### **Extension points:**
->> - [extension 1] Allo step [2](#descrizione-27), qualora sia stata salvata una copia dell'elenco delle liste di attività sul dispositivo dell’utente, il sistema può consultare quei dati senza interagire con sistemi esterni (“Consultare le liste locali”).
+>> - [extension 1] Allo step [2](#descrizione-27), qualora sia stata salvata una copia dell'elenco delle liste di attività sul dispositivo dell’utente, il sistema può consultare quei dati attraverso IndexedDB senza l'uso di connessione ad Internet (“Consultare le liste locali”).
 >> - [extension 2] Allo step [2](#descrizione-27), qualora ci sia connessione ad Internet il server può chiedere l'elenco di liste a MongoDB (“Consultare le liste remote”).
 >> - [extension 3] L'utente può cliccare sul pulsante per esportare la lista, scegliere un'opzione tra formato pdf e JSON in cui esportare la lista, scegliere se salvare la lista sul dispositivo specificando il percorso o trasferirla ad un'altra applicazione (quando il dispositivo lo permette).
 >> - [extension 4] [["Manipolare liste"](#titolo-14)]

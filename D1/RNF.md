@@ -47,7 +47,7 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 >> Non saranno salvati dati lato server.
 >
 >> ##### RNF11.2.
->> Qualora il browser dell'utente lo permetta, dopo che questi avrà visualizzato il contenuto di un tutorial, gli verrà chiesta conferma di non volerlo più visualizzare in futuro; inoltre, qualora il browser dell'utente lo permetta, all'utente verrà chiesto il consenso di memorizzare dati sul browsere in stato persistente. Tali scelte saranno memorizzate sotto forma di cookie tecnici nel browser dell'utente stesso, sotto previo consenso.
+>> Qualora il browser dell'utente lo permetta, dopo che questi avrà visualizzato il contenuto di un tutorial o di determinati messaggi di errore, gli verrà chiesta conferma di non volerlo più visualizzare in futuro; inoltre, qualora il browser dell'utente lo permetta, all'utente verrà chiesto il consenso di memorizzare dati sul browser in stato persistente. Tali scelte saranno memorizzate sotto forma di cookie tecnici nel browser dell'utente stesso, sotto previo consenso.
 >
 >> ##### RNF11.3.
 >> Qualora il browser dell'utente lo permetta, una copia del catalogo sarà memorizzata nel suo browser.
