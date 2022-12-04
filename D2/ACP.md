@@ -79,7 +79,7 @@ In questa sezione vengono definiti i componenti.
 >> [...]
 
 ## Diagramma dei componenti
-<center><img alt="Diagramma dei Componenti" src="D2/img/CPD/component-diagram.png" width="100%"/></center>
+<center><img alt="Diagramma dei Componenti" src="D2/img/CPD/component-diagram_v2.png" width="100%"/></center>
 La figura mostra i componenti di sistema e la loro interconnessione. A seguire una descrizione delle interfacce presenti nel diagramma.
 
 
