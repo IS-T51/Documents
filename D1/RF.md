@@ -33,9 +33,9 @@ Per ogni tipologia di utente, il sistema deve permettere di:
 > <sub>[¶O3](#o3)</sub>
 
 ### In assenza di connessione al server
-> [RF1.](#rf1)
-> [RF2.](#rf3)
-> [RF3.](#rf4)
+> [RF2.](#rf2)
+> [RF3.](#rf3)
+> [RF4.](#rf4)
 
 > #### RF6.
 > Consultare la copia locale del catalogo di attività
@@ -89,7 +89,7 @@ Per ogni tipologia di utente, il sistema deve permettere di:
 > <sub>[¶O3](#o3)</sub>
 
 ### In assenza di connessione al server
-> [RF1.](#rf1)
+> [RF2.](#rf2)
 > [RF3.](#rf3)
 > [RF4.](#rf4)
 > [RF6.](#rf6)

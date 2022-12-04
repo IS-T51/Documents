@@ -127,12 +127,12 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 2. L’utente amministratore clicca sull’icona della matita. [[exception 1](#exceptions-6)] [[exception 2](#exceptions-6)]
 >> 3. Il sistema permette all’utente di modificare tutto ciò riguardante l’attività.
 >> 4. L’utente clicca sul pulsante di conferma per terminare la modifica.
->> 5. Il sistema invia a MongoDB l’attività aggiornata.
+>> 5. Il sistema invia a MongoDB l’attività aggiornata. [[extension 1](#extension-points-6)]
 > #### **Exceptions:**
 >> - [exception 1] L’attività sulla quale si clicca non è aggiornata e una modifica causerebbe delle collisioni, MongoDB non aggiornato.
 >> - [exception 2] In assenza di connessione internet, viene inviato un messaggio di errore.
 > #### **Extension points:**
->> --
+>> - [extension 1] Qualora il dispositivo dell'utente lo permetta, avverrà un aggiornamento della copia locale dei dati dell'utente e del catalogo (["Aggiornare catalogo locale"](#titolo-26)).
 
 ----
 > #### **Titolo:**
@@ -253,14 +253,15 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> Questo use case descrive come un utente autenticato online può modificare una propria proposta di attività a partire dalla pagina di visualizzazione delle informazioni dell’attività.
 > #### **Descrizione:**
 >> 1. L’utente clicca sul bottone “Modifica proposta” e viene reindirizzato alla schermata di modifica di una proposta di attività. [extension 1]
->> 2. [[extention 1](#extension-points-13)]
+>> 2. [[extension 1](#extension-points-13)]
 >> 3. L’utente clicca sul pulsante per confermare. [[exception 1](#exceptions-13)] [[exception 2](#exceptions-13)]
->> 4. Il sistema invia i dati modificati a MongoDB.
+>> 4. Il sistema invia i dati modificati a MongoDB. [[extension 2](#extension-points-13)]
 > #### **Exceptions:**
 >> - [exception 1] In assenza di connessione ad Internet il sistema mostrerà all’utente un messaggio di errore che indicherà l’assenza di connessione.
 >> - [exception 2] Se l’utente ha inserito un titolo corrispondente a quello di un’attività già presente nel catalogo o proposta da un’altro utente, il sistema mostrerà un messaggio di errore ed evidenzierà in rosso il campo di inserimento del titolo.
 > #### **Extension points:**
->> - [extension 1] Allo step ’utente può modificare uno qualsiasi dei campi dell’attività, con modalità, eccezioni ed estensioni descritte negli step 2.-8. dello use case “Proporre un’attività”.
+>> - [extension 1] Allo step 2 l’utente può modificare uno qualsiasi dei campi dell’attività, con modalità, eccezioni ed estensioni descritte negli step 2.-8. dello use case “Proporre un’attività”.
+>> - [extension 2] Qualora il dispositivo dell'utente lo permetta, avverrà un aggiornamento della copia locale dei dati dell'utente e del catalogo (["Aggiornare catalogo locale"](#titolo-26)).
 
 ----
 > #### **Titolo:**
@@ -269,6 +270,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> Questo use case descrive come un utente autenticato online può effettuare un’azione di modifica delle sue liste di attività, a partire dalla schermata "Liste".
 > #### **Descrizione:**
 >> 1. [[extension 1](#extension-points-14)] [[extension 2](#extension-points-14)] [[extension 3](#extension-points-14)] [[extension 4](#extension-points-14)] [[exception 1](#exceptions-14)]
+>> 2. [[extension 5](#extension-points-14)]
 > #### **Exceptions:**
 >> - [exception 1] Tentando di inziare una qualsiasi attività di manipolazione di liste in assenza di connessione ad Internet, il sistema mostrerà all’utente un messaggio di errore che indicherà l’assenza di connessione (ulteriore chiarimento nelle descrzioni degli use case delle singole operazioni di manipolazione di liste).
 > #### **Extension points:**
@@ -276,6 +278,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [extension 2] Allo step [2](#descrizione-14), use case “Rimuovere una lista di attività”.
 >> - [extension 3] Allo step [2](#descrizione-14), l’utente clicca una lista di attività, passa alla schermata della lista, use case “Rimuovere un’attività da una lista”.
 >> - [extension 4] Allo step [2](#descrizione-14), spostarsi sulla pagina di visualizzazione delle informazioni di un’attività, use case “Aggiungere un’attività ad una lista di attività”.
+>> - [extension 5] Qualora il dispositivo dell'utente lo permetta, dopo una qualsiasi operazione di manipolazione di liste, avverrà un aggiornamento della copia locale dei dati dell'utente e del catalogo (["Aggiornare catalogo locale"](#titolo-26)).
 
 ----
 > #### **Titolo:**
@@ -498,7 +501,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 > #### **Riassunto:**
 >> Questo use case descrive come il sistema effettua la creazione o l'aggiornamento della copia del catalogo di attività (e dei dati relativi all'utente nel caso di un utente autenticato) presente sul dispositivo dell'utente.
 > #### **Descrizione:**
->> 1. L'utente avvia l'applicazione o il tempo trascorso dall'ultimo aggiornamento del catalogo locale supera 30 minuti. [[exception 2](#exceptions-26)][[exception 3](#exceptions-26)]
+>> 1. L'utente avvia l'applicazione o il tempo trascorso dall'ultimo aggiornamento del catalogo locale supera 30 minuti o l'utente autenticato effettua un'operazione di modifica del catalogo o delle liste personali. [[exception 2](#exceptions-26)][[exception 3](#exceptions-26)]
 >> 2. Il sistema chiede a MongoDB le modifiche avvenute al catalogo remoto (e ai dati relativi all'utente nel caso di un utente autenticato) dall'ultimo aggiornamento del catalogo locale (posto di default a zero se questo non è presente in memoria). [[exception 1](#exceptions-26)] [[extension 1](#extension-points-26)]
 >> 3. Il sistema integra attraverso IndexedDB i dati locali con le modifiche avvenute.
 >> 4. Il sistema imposta la data dell'ultimo aggiornamento del catalogo locale alla data corrente nel momento in cui ha ricevuto risposta da MongoDB (comprensiva di ore, minuti, secondi, millisecondi e nanosecondi).
