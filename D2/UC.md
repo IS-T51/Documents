@@ -442,8 +442,9 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 5. [[extension 2](#extension-points-23)]
 > #### **Exceptions:**
 >> - [exception 1] Nel caso l'utente non abbia inserito il nome di tutte o alcune squadre, alle squadre senza nome verrà assegnato di default il nome "Squadra i", dove i è un numero che va da 1 al numero di squadre senza nome.
+>> - [exception 2] L'utente può inserire fino a un massimo di 99 squadre.
 > #### **Extension points:**
->> - [extension 1] Allo step [3](#descrizione-23), l'utente può inserire nella casella di testo apposita, il numero di contatori desiderati.
+>> - [extension 1] Allo step [3](#descrizione-23), l'utente può inserire nella casella di testo apposita, il numero di contatori desiderati. [[exception 2](#exceptions-23)]
 >> - [extension 2] Allo step [5](#descrizione-23), l'utente può incrementare o decrementare di 1, il contatore di ciascun segna punti.
 
 ----
