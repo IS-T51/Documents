@@ -4,11 +4,11 @@ Nel presente capitolo vengono riportati i requisiti funzionali (RF) del sistema 
 
 ## Diagramma dei casi d'uso
 
-<center><img alt="D2/Diagramma strategico" src="img/UCD/alto_livello.png" width="100%"/></center>
+<center><img alt="D2/Diagramma strategico" src="D2/img/UCD/alto_livello.png" width="100%"/></center>
 
 La prima figura mostra i principali casi d'uso dell’applicazione Animati, raggruppati per omogeneità, e gli attori coinvolti.
 
-<center><img alt="D2/Diagramma dettagliato" src="img/UCD/basso_livello.png" width="100%"/></center>
+<center><img alt="D2/Diagramma dettagliato" src="D2/img/UCD/basso_livello.png" width="100%"/></center>
 
 La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazione Animati e gli attori coinvolti. Segue una descrizione dei casi d'uso.
 
