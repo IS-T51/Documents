@@ -1,5 +1,5 @@
 
-# Tabella requisiti non funzionali
+# 2. Tabella requisiti non funzionali
 
 Nel presente capitolo vengono riportati i requisiti non funzionali (RNF) del sistema utilizzando tabelle strutturate e specificando misure facilmente verificabili.
 

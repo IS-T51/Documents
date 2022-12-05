@@ -1,9 +1,9 @@
 
-# Analisi dei Componenti
+# 4. Analisi dei Componenti
 Nel presente capitolo viene presentata l’architettura in termini di componenti interni al sistema.
 Essi verranno definiti sulla base dei requisiti analizzati nei precedenti documenti.<br>Viene poi adottato l’uso di Component Diagram per rappresentare l’interconnessione tra i vari componenti, identificando quindi le interfacce tra questi e verso sistemi esterni.
 
-## Definizione dei componenti
+## 4.1 Definizione dei componenti
 In questa sezione vengono definiti i componenti.
 
 > ### Catalogo
@@ -100,7 +100,7 @@ Qualora l'utente decida di creare una nuova attività o proposta di attività, i
 >> #### *Spiegazione*
 >> [...]
 
-## Diagramma dei componenti
+## 4.2 Diagramma dei componenti
 <center><img alt="Diagramma dei Componenti" src="D2/img/CPD/component-diagram_v2.png" width="100%"/></center>
 La figura mostra i componenti di sistema e la loro interconnessione. A seguire una descrizione delle interfacce presenti nel diagramma.
 

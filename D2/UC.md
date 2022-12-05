@@ -1,8 +1,8 @@
 
-# Casi d'uso
+# 1. Casi d'uso
 Nel presente capitolo vengono riportati i requisiti funzionali (RF) del sistema utilizzando il linguaggio naturale e Use Case Diagram (UCD) scritti in UML.
 
-## Diagramma dei casi d'uso
+## 1.1 Diagramma dei casi d'uso
 
 <center><img alt="D2/Diagramma strategico" src="D2/img/UCD/alto_livello.png" width="100%"/></center>
 
@@ -13,7 +13,7 @@ La prima figura mostra i principali casi d'uso dell’applicazione Animati, ragg
 La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazione Animati e gli attori coinvolti. Segue una descrizione dei casi d'uso.
 
 
-## Descrizione dei casi d'uso
+## 1.2 Descrizione dei casi d'uso
 
 > #### **Titolo:**
 >> Effettuare l'accesso

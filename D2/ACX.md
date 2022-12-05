@@ -1,8 +1,8 @@
 
-# Analisi del contesto
+# 3. Analisi del contesto
 Nel presente capitolo viene discusso il contesto del funzionamento del sistema, fornendo una descrizione testuale e un diagramma di contesto.
 
-## Utenti e sistemi esterni
+## 3.1 Utenti e sistemi esterni
 In questa sezione vengono presentati gli utenti e i sistemi esterni con cui l’applicazione Animati si interfaccerà.
 
 ### Utente
@@ -19,7 +19,7 @@ Inoltre per le funzionalità "in presenza di connessione" il sistema si interfac
 Sistema subordinato, IndexedDB è un API Javascript che fornisce un database management system di tipo non relazionale con cui il sistema si interfaccerà per l'immagazzinamento e il recupero di dati strutturati lato client, ovvero sul browser dell'utente, relativi al catalogo delle attività, agli utenti e alle liste personali degli utenti, come da **O5**. IndexedDB sarà quindi usato, sui dispositivi che lo consentono, per la realizzazione dell'**RF1** (aggiornamento catalogo locale), per garantire le funzionalità "in assenza di connessione" comprendenti l'uso di dati strutturati, ovvero **RF3**, **RF6**, **RF17**.
 
 
-## Diagramma di contesto
+## 3.2 Diagramma di contesto
 
 <center><img alt="Diagramma di Contesto" src="D2/img/CXD/context-diagram_v3.png" width="100%"/></center>
 

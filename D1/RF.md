@@ -1,5 +1,5 @@
 
-# Requisiti funzionali del progetto
+# 2. Requisiti funzionali del progetto
 Nel presente capitolo vengono riportati i requisiti funzionali (RF) del sistema, assumendo che le tipologie di utente che hanno accesso all’app siano:
 
 - [Anonimo](#anonimo)
