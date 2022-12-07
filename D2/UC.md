@@ -198,10 +198,11 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 > #### **Descrizione:**
 >> 1. L’utente clicca sul pulsante segnala.
 >> 2. Il sistema fornisce all’utente una casella di testo e un pulsante di invio.
->> 3. L’utente inserisce un breve messaggio di motivazione della segnalazione nella casella di testo.
+>> 3. L’utente inserisce un breve messaggio di motivazione della segnalazione nella casella di testo. [[exception 2](#exceptions-10)]
 >> 4. L’utente clicca sul pulsante d’invio. [[exception 1](#exceptions-10)]
 > #### **Exceptions:**
 >> - [exception 1] In assenza di connessione ad Internet il sistema mostrerà all’utente un messaggio di errore che indicherà l’assenza di connessione.
+>> - [exception 2] Il messaggio può avere lunghezza massima di 500 caratteri.
 > #### **Extension points:**
 >> --
 
@@ -439,10 +440,12 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 4. L'utente deve inserire nelle caselle di testo apposite, i nomi che vuole assegnare a ciascun segna punti.
 >> 5. L'utente clicca sul pulsante di conferma. [[exception 1](#descrizione-23)]
 >> 4. Il sistema mostrerà una lista di coppie di pulsanti "+1" e "-1" con il relativo nome e contatore inizialmente impostato a 0.
->> 5. [[extension 2](#extension-points-23)]
+>> 5. [[extension 2](#extension-points-23)] [[exception 3](#exceptions-23)] [[exception 4](#exceptions-23)]
 > #### **Exceptions:**
 >> - [exception 1] Nel caso l'utente non abbia inserito il nome di tutte o alcune squadre, alle squadre senza nome verrà assegnato di default il nome "Squadra i", dove i è un numero che va da 1 al numero di squadre senza nome.
 >> - [exception 2] L'utente può inserire fino a un massimo di 99 squadre.
+>> - [exception 3] Il nome di ogni squadra può avere al massimo 99 caratteri.
+>> - [exception 4] Il contatore di ogni squadra può assumere valore massimo 500 e minimo -500.
 > #### **Extension points:**
 >> - [extension 1] Allo step [3](#descrizione-23), l'utente può inserire nella casella di testo apposita, il numero di contatori desiderati. [[exception 2](#exceptions-23)]
 >> - [extension 2] Allo step [5](#descrizione-23), l'utente può incrementare o decrementare di 1, il contatore di ciascun segna punti.
