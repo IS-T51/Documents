@@ -90,18 +90,18 @@ Nel presente capitolo vengono descritti i vincoli OCL delle classi.
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-|aggiornaCatalogo() : Attività[0...N|||
-|filtra(cerca : String, etichette : Etichette[0...N]) : Attività[0...N]|||
-|creaAttività(attività : Attività)|||
+|aggiornaCatalogo() : Attività[0...N]||il catalogo viene aggiornato|
+|filtra(cerca : String, etichette : Etichette[0...N]) : Attività[0...N]|<ul><li>nella barra di ricerca del titolo non si possono inserire più di 20 caratteri</li><li>i due valori della durata media sono compresi tra 0 e 999, sono interi e il primo è minore del secondo</li><li>il numero di partecipanti non può superare 99</li></ul>|il catalogo viene filtrato secondo le etichette previste|
+|creaAttività(attività : Attività)|<ul><li>la descrizione non può superare i 2000 caratteri</li><li>i due valori della durata media sono compresi tra 0 e 999, sono interi e il primo è minore del secondo</li><li>il numero di partecipanti non può superare 99</li><li>il titolo non può superare i 20 caratteri di lunghezza</li></ul>|viene aggiunta una nuova attività al catalogo|
 
 ## **Lista di attività**
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-|creaLista() : listaAttivita|||
-|aggiungiAttività(attività : Attività)|||
-|esporta(formato : String) : File|||
-|eliminaAttività(indice : int)|||
+|creaLista() : listaAttivita|<ul><li>il nome della lista di attività non può superare i 20 caratteri di lunghezza</li><li>un utente non può creare più di 99 liste di attività</li><li>il nome della lista di attività non può essere uguale al nome di un'altra lista già presente</li><li>il nome della lista di attività non può essere nessuno</li></ul>|viene creata una nuova lista di attività|
+|aggiungiAttività(attività : Attività)|il numero di attività in una lista non può superare 9999|l'attività scelta viene aggiunta alla lista|
+|esporta(formato : String) : File||la lista viene esportata in formato pdf o json|
+|eliminaAttività(indice : int)||l'attività con l'indice scelto viene rimossa dalla lista|
 
 ## **Attività**
 
