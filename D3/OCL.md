@@ -73,12 +73,12 @@ post: self.contatori[nome] = 0
 ```js
 context Segna-Punti::incrementa(nome : String)
 pre: self.contatori[nome] < 500
-post: self.contatori[nome] = self.contatori[nome] + 1
+post: self.contatori[nome] = self.contatori[nome]@pre + 1
 ```
 ```js
 context Segna-Punti::decrementa(nome : String)
 pre: self.contatori[nome] > -500
-post: self.contatori[nome] = self.contatori[nome] - 1
+post: self.contatori[nome] = self.contatori[nome]@pre - 1
 ```
 ---
 
