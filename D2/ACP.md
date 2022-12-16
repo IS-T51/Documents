@@ -20,7 +20,6 @@ In questa sezione vengono definiti i componenti.
 > #### *Spiegazione*
 > Su richiesta di visualizzazione di un'attività da parte del componente Catalogo o del componente Liste, il componente Attività richiede le informazioni dell'attività corrispondente al sistema esterno MongoDB, oppure delega il recupero delle informazioni al componente Gestione Dati Offline. Dopo aver recuperato i dati necessari, mostra i dettagli dell'attività all'utente.
 
-
 > ### Liste
 > #### *Motivazione*
 > Dati gli **RF8-11**, è stato indiividuato un componente Liste per gestire l'elenco, la visualizzazione, l'esportazione, lacreazione e il manipolamento delle liste di attività.
@@ -47,15 +46,16 @@ In questa sezione vengono definiti i componenti.
 > #### *Motivazione*
 > Dato il **RF20-21**, è stato identificato un componente Utenti, che si occupa di tutte operazioni riguardanti la aggiunta, visualizzazione e modifica del ruolo degli utenti.
 > #### *Spiegazione*
-> Il componente permette di recuperare la lista di utenti dal sistema esterno MongoDB per poi permettere agli utenti amministratori di visualizzarlo <br>
+> Il componente permette di recuperare la lista di utenti dal sistema esterno MongoDB per poi permettere agli utenti amministratori di visualizzarlo. <br>
 > Il componente permette agli utenti amministratori di modificare il ruolo degli altri utenti, aggiornando il sistema esterno MongoDB.<br>
 > Una volta fatta per la prima volta da parte di un utente l'operazione di login, tramite il componente Autenticazione, il componente Utente aggiorna il sistema esterno MongoDB, aggiungendo il nuovo utente con i rispettivi dati.
 
 > ### Feedback
 > #### *Motivazione*
-> [...]
+> Dato il **RF12-13** e **RF22**, è stato identificato un componente Feedback, che si occupa di tutte le operazioni riguardanti la valutazione e/o segnalazione di un'attività.
 > #### *Spiegazione*
-> [...]
+> Il componente permette di recuperare le segnalazioni di ogni attività dal sistema esterno MongoDB e di mostrare agli utenti amministratori la lista di attività segnalate e la lista di segnalazioni per ogni attività. <br>
+> Il componente permette all'utente per ogni attività, di visualizzare la valutazione corrente e di modificare/dare la propria, all'interno della schermata di informazioni dell'attività.<br>
 
 > ## Strumenti
 > #### *Motivazione*
