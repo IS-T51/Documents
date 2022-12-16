@@ -154,6 +154,8 @@ All'interno dei seguenti strumenti, il sistema deve permettere di:
 > <sub>[¶O2.1](#o21)</sub>
 
 ### TIMER
+> [RF29.](#rf29)
+> [RF31.](#rf31)
 > #### RF26.
 > Scegliere un valore di partenza, far partire, mettere in pausa o fermare il timer
 > <sub>[¶O2.2](#o22)</sub>
@@ -169,7 +171,7 @@ All'interno dei seguenti strumenti, il sistema deve permettere di:
 
 ### FISCHIETTO
 > #### RF29.
-> Selezionare un suono per il fischietto
+> Selezionare un suono
 > <sub>[¶O2.4](#o24)</sub>
 
 > #### RF30.
@@ -177,7 +179,7 @@ All'interno dei seguenti strumenti, il sistema deve permettere di:
 > <sub>[¶O2.4](#o24)</sub>
 
 > #### RF31.
-> Riprodurre il suono per il fischietto selezionato
+> Riprodurre il suono selezionato
 > <sub>[¶O2.4](#o24)</sub>
 
 ### SEGNA-PUNTI
