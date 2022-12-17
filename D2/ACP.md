@@ -75,9 +75,9 @@ In questa sezione vengono definiti i componenti.
 >
 >> ### Gestore Suoni
 >> #### *Motivazione*
->> [...]
+>> Per soddisfare il **RF29** e **RF31**, è stato individuato un componente Gestore Suoni, che si occupa della gestione delle funzionalità di riproduzione e selezione di suoni per le componenti Timer e Fischietto.
 >> #### *Spiegazione*
->> [...]
+>> Il componente Gestore Suoni permette di selezionare, visualizzare e riprodurre un suono, o anche di aggiungerne uno dal dispositivo utilizzato.
 >
 >> ### Fischietto
 >> #### *Motivazione*
