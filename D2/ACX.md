@@ -21,7 +21,7 @@ Sistema subordinato, IndexedDB è un API Javascript che fornisce un database man
 
 ## 3.2 Diagramma di contesto
 
-<center><img alt="Diagramma di Contesto" src="D2/img/CXD/context-diagram_v3.png" width="100%"/></center>
+<center><img alt="Diagramma di Contesto" src="D2/img/CXD/context-diagram_v4.png" width="100%"/></center>
 
 La figura mostra le principali interazioni tra attori o sistemi esterni e l’applicazione Animati. Segue una descrizione delle interazioni evidenziate dal diagramma.
 
