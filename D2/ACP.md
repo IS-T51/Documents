@@ -41,6 +41,11 @@ In questa sezione vengono definiti i componenti.
 > Il componente permette all'utente di effettuare l'accesso nell'app, accedendo alle funzioni riservate agli autenticati.<br>
 > Su richiesta dell'utente, esso si occupa in primo luogo di inviare una richiesta di autenticazione a Google e riceve da esso codice autorizzativo. Il componente effettua in seguito dei controlli interni su tale codice, e, qualora questo risulti valido, il componente scambia il codice con Google per ottenere le informazioni desiderate sull'account Google dell'utente.<br>
 > Sempre su richiesta dell'utente, il componente permetterà il logout, rimuovendo i file personali salvati localmente se presenti.
+> #### *Interfaccia richiesta - dettagli account*
+> L'interfaccia dettagli account richiede la mail dell'account google dell'utente e la relativa password
+> Dopodiché esiste un valore booleano per il consenso alle autorizzazioni richieste dall'applicazione
+> #### *Interfaccia richiesta - codice autorizzativo*
+> L'interfaccia chiederà una stringa contenente il codice autorizzativo necessario ad ottenere le informazioni riguardanti un account Google specifico.
 
 > ### Utenti
 > #### *Motivazione*
@@ -49,6 +54,12 @@ In questa sezione vengono definiti i componenti.
 > Il componente permette di recuperare la lista di utenti dal sistema esterno MongoDB per poi permettere agli utenti amministratori di visualizzarlo. <br>
 > Il componente permette agli utenti amministratori di modificare il ruolo degli altri utenti, aggiornando il sistema esterno MongoDB.<br>
 > Una volta fatta per la prima volta da parte di un utente l'operazione di login, tramite il componente Autenticazione, il componente Utente aggiorna il sistema esterno MongoDB, aggiungendo il nuovo utente con i rispettivi dati.
+> #### *Interfaccia fornita - verifica ruolo*
+> L'interfaccia verifica ruolo, permette di controllare il ruolo dell'utente e determinare a quali funzionalità ha accesso.<br>
+> Nel caso del Catalogo, può variare tra non autenticato, autenticato e amministratore, il che filtra il catalogo escludendo o meno alcune attività.<br>
+> Nel caso di Feedback, esso è permesso se il ruolo dell'utente è autenticato o amministratore. <br>
+> Nel caso di Liste, al componente vi si può accedere solo se il ruolo è autenticato o amministratore. <br>
+> Nel caso di Attività, le attività che è possibile consultare variano se si è autenticati o meno, come anche la capacità di modificarle.
 
 > ### Feedback
 > #### *Motivazione*
@@ -97,7 +108,9 @@ In questa sezione vengono definiti i componenti.
 >> Dato il **RF34-39**, è stato individuato un componente Creazione Squadre, che si occupa della suddivisione dei partecipanti alle attività in squadre distinte, secondo dei parametri di divisione decisi dall'utente.
 >> #### *Spiegazione*
 >> Grazie al componente Creazione Squadre, l'utente può scegliere il numero di squadre, persone per squadra e partecipanti totali, oltre che i nomi delle squadre e il metodo di divisione.<br>
->> Una volta definiti tutti i parametri lo schermo mostrerà ad ogni tocco a quale squadra appartiene l'utente che ha interagito, fino all'esaurimento dei posti.
+>> Una volta definiti tutti i parametri si procede alla divisione in squadre.
+>> #### *Interfaccia fornita - estrae squadra*
+>> Ogni volta che lo schermo viene premuto, appare il nome della squadra a cui appartiene l'utente che ha interagito. Questo appare seguendo la metodologia di divisione scelta. Ogni squadra ha un contatore rappresentante il totale di posti rimasti. Ogniqualvolta un utente viene assegnato ad una squadra, il contatore della stessa viene decrementato di uno.
 >
 >> ### Segna-Punti
 >> #### *Motivazione*
