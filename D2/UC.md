@@ -27,7 +27,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 5. Il sistema valida il codice di autorizzazione e lo utilizza per richiedere un token a Google tramite APIs. [[exception 2](#exceptions)]
 >> 6. Google invia al sistema un token con le informazioni sull'account dell'utente.
 >> 7. Il sistema estrae le informazioni necessarie dal token ricevuto. [[exception 3](#exceptions)]
->> 8. Se è il primo accesso dell’utente, viene creata una nuova entry su MongoDB, con un id personale e la mail.
+>> 8. Se è il primo accesso dell’utente, viene creata una nuova entry su MongoDB, con un id personale, la mail e l'url della foto profilo dell'account Google.
 >> 9. Se è già avvenuto almeno un accesso, vengono recuperati i dati dell’utente da MongoDB. [[extension 1](#extension-points)]
 > #### **Exceptions:**
 >> - [exception 1] Le credenziali non sono corrette, e non viene generato nessun codice, all'utente viene chiesto di reinserire le proprie credenziali.
@@ -43,11 +43,12 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> Questo use case descrive come l'utente può consultare il catalogo di attività dell’applicazione e interagire con le singole attività presenti nell’elenco.
 > #### **Descrizione:**
 >> 1. Il sistema chiede l'elenco di attività a un database (MongoDB o IndexedDB). [[extension 1](#extension-points-1)] [[extension 2](#extension-points-1)] [[exception 2](#exceptions-1)]
->> 2. Il database fornisce l'elenco di attività con titolo e immagine delle stesse al sistema, e il sistema lo mostra all'utente.
+>> 2. Il database fornisce l'elenco di attività con titolo e immagine delle stesse al sistema, e il sistema lo mostra all'utente. [[exception 3](#exceptions-1)]
 >> 3. Cliccando su un’attività, l’utente viene reindirizzato alla schermata con le informazioni sull’attività stessa. [[exception 1](#exceptions-1)]
 > #### **Exceptions:**
 >> - [exception 1] Utente viene reindirizzato ad attività eliminata, catalogo non aggiornato.
 >> - [exception 2] Non c’è connessione ad internet e non c’è una copia locale del catalogo, quindi non viene mostrato nessun catalogo e compare un messaggio di errore.
+>> - [exception 3] In assenza di connessione a Internet non saranno visualizzate le immagini delle attività.
 > #### **Extension points:**
 >> - [extension 1] Allo step [1](#descrizione-1), qualora sia stata salvata una copia del catalogo delle attività sul dispositivo dell’utente, il sistema può consultare quei dati attraverso IndexedDB senza l'uso di connessione ad Internet (“Consultare catalogo locale”).
 >> - [extension 2] Allo step [1](#descrizione-1), qualora ci sia connessione ad internet il server può chiedere la lista a MongoDB (“Consultare catalogo remoto”).
@@ -121,18 +122,19 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 > #### **Titolo:**
 >> Modificare attività
 > #### **Riassunto:**
->> Questo use case descrive come l’amministratore può modificare un’attività presente nel catalogo a partire dalla schermata catalogo.
+>> Questo use case descrive come un amministratore online può modificare un’attività presente nel catalogo a partire dalla pagina di visualizzazione delle informazioni dell’attività.
 > #### **Descrizione:**
->> 1. L’utente amministratore clicca sull’attività scelta.
->> 2. L’utente amministratore clicca sull’icona della matita. [[exception 1](#exceptions-6)] [[exception 2](#exceptions-6)]
->> 3. Il sistema permette all’utente di modificare tutto ciò riguardante l’attività.
->> 4. L’utente clicca sul pulsante di conferma per terminare la modifica.
->> 5. Il sistema invia a MongoDB l’attività aggiornata. [[extension 1](#extension-points-6)]
+>> 1. L’utente amministratore clicca sul pulsante "Modifica attività" e viene reindirizzato alla schermata di modifica di una proposta di attività. [[exception 1](#exceptions-6)] [[exception 2](#exceptions-6)]
+>> 2. [[extension 1](#extension-points-6)].
+>> 3. L’utente clicca sul pulsante di conferma per terminare la modifica. [[exception 1](#exceptions-13)], [[exception 2](#exceptions-13)], [[exception 3](#exceptions-13)]
+>> 4. Il sistema invia a MongoDB l’attività aggiornata. [[extension 2](#extension-points-6)]
 > #### **Exceptions:**
 >> - [exception 1] L’attività sulla quale si clicca non è aggiornata e una modifica causerebbe delle collisioni, MongoDB non aggiornato.
->> - [exception 2] In assenza di connessione internet, viene inviato un messaggio di errore.
+>> - [exception 2] In assenza di connessione ad Internet, viene inviato un messaggio di errore.
+>> - [exception 3] Se l’utente ha inserito un titolo corrispondente a quello di un’attività già presente nel catalogo o proposta da un’altro utente, il sistema mostrerà un messaggio di errore ed evidenzierà in rosso il campo di inserimento del titolo.
 > #### **Extension points:**
->> - [extension 1] Qualora il dispositivo dell'utente lo permetta, avverrà un aggiornamento della copia locale dei dati dell'utente e del catalogo (["Aggiornare catalogo locale"](#titolo-26)).
+>> - [extension 1] Allo step 2 l’utente può modificare uno qualsiasi dei campi dell’attività, con modalità, eccezioni ed estensioni descritte negli step 2.-8. dello use case “Aggiungere una nuova attività”.
+>> - [extension 2] Qualora il dispositivo dell'utente lo permetta, avverrà un aggiornamento della copia locale dei dati dell'utente e del catalogo (["Aggiornare catalogo locale"](#titolo-26)).
 
 ----
 > #### **Titolo:**
@@ -147,19 +149,22 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 5. L’utente sceglie un’unità di misura per la durata media dell’attività da un menù a tendina.
 >> 6. L’utente inserisce la durata media dell’attività nell’unità di misura scelta. [[exception 4](#exceptions-7)]
 >> 7. L’utente inserisce il range del numero di giocatori per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale. [[exception 3](#exceptions-7)]
->> 8. [[extension 1](#exceptions-7)]
+>> 8. [[extension 1](#extension points-7)], [[extension 3](#extension points-7)], [[extension 4](#extension points-7)], [[extension 5](#extension points-7)]
 >> 9. L’utente clicca sul pulsante per confermare [[extension 2](#extension-points-7)] [[exception 5](#exceptions-7)] [[exception 1](#descrizione-7)]
->> 10. Il sistema invia la proposta di attività a MongoDB [[extension 2](#exceptions-7)]
+>> 10. Il sistema invia l'attività creata a MongoDB [[extension 2](#exceptions-7)]
 > #### **Exceptions:**
 >> - [exception 1] In assenza di connessione ad Internet il sistema mostrerà all’utente un messaggio di errore che indicherà l’assenza di connessione
 >> - [exception 2] Dopo aver inserito 2000 caratteri nel campo relativo alla descrizione, se l’utente proverà ad inserire altri caratteri questi non verranno inseriti, il campo di inserimento sarà evidenziato di rosso e riporterà una scritta che informa l’utente che il limite massimo di caratteri è stato raggiunto
 >> - [exception 3] Se il valore finale è strettamente minore del valore iniziale o se uno dei due valori non è intero o se uno dei due valori è negativo o se uno dei due valori è maggiore di 99, il campo di inserimento del range sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati
->> - [exception 4] Se l’utente ha inserito un valore non intero o negativo o maggiore di 999, il campo di inserimento della durata sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati
+>> - [exception 4] Se l’utente ha inserito un valore non intero o negativo o maggiore di 999, il campo di inserimento del campo in questione sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati
 >> - [exception 5] Se l’utente ha inserito un titolo corrispondente a quello di un’attività già presente nel catalogo o proposta da un’altro utente, o se l'utente ha lasciato il campo del titolo vuoto, il sistema mostrerà un messaggio di errore ed evidenzierà in rosso il campo di inserimento del titolo
 >> - [exception 6] Dopo aver inserito 20 caratteri nel campo relativo al titolo, se l’utente proverà ad inserire altri caratteri questi non verranno inseriti, il campo di inserimento sarà evidenziato di rosso e riporterà una scritta che informa l’utente che il limite massimo di caratteri è stato raggiunto
 > #### **Extension points:**
 >> - [extension 1] Allo step [8](#descrizione-7), l’utente può scegliere una o più etichette con cui contrassegnare l’attività da un menù a tendina.
->> - [extension 2] Allo step [9](#descrizione-7), se il browser dell’utente è compatibile con service workers, un id corrispondente alla proposta di attività verrà memorizzato anche sul dispositivo dell’utente.
+>> - [extension 2] Allo step [9](#descrizione-7), se il browser dell’utente è compatibile con service workers, un id corrispondente all'attività creata verrà memorizzato anche sul dispositivo dell’utente.
+>> - [extension 3] L'utente può inserire uno o più collegamenti esterni inerenti alla descrizione dell'attività.
+>> - [extension 4] L'utente può inserire un collegamento esterno all'immagine dell'attività.
+>> - [extension 5] L'utente può inserire il numero di partecipanti per squadra e/o il numero di squadre indicati per svolgere l'attività, qualora questa preveda una divisione in squadre. [[exception 3](#exceptions-7)]
 
 ----
 > #### **Titolo:**
@@ -233,7 +238,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 5. L’utente sceglie un’unità di misura per la durata media dell’attività da un menù a tendina.
 >> 6. L’utente inserisce la durata media dell’attività nell’unità di misura scelta. [[exception 4](#exceptions-12)]
 >> 7. L’utente inserisce il range del numero di partecipanti per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale. [[exception 3](#exceptions-12)]
->> 8. [[extension 1](#extension-points-12)]
+>> 8. [[extension 1](#extension-points-12)], [[extension 3](#extension-points-12)], [[extension 4](#extension-points-12)], [[extension 5](#extension-points-12)]
 >> 9. L’utente clicca sul pulsante per confermare [[extension 2](#extension-points-12)] [[exception 5](#exceptions-12)] [[exception 1](#descrizione-12)]
 >> 10. Il sistema invia la proposta di attività a MongoDB [[extension 2](#exceptions-12)]
 > #### **Exceptions:**
@@ -246,6 +251,9 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 > #### **Extension points:**
 >> - [extension 1] Allo step [8](#descrizione-12), l’utente può scegliere una o più etichette con cui contrassegnare l’attività da un menù a tendina.
 >> - [extension 2] Allo step [9](#descrizione-12), se il browser dell’utente è compatibile con service workers, un id corrispondente alla proposta di attività verrà memorizzato anche sul dispositivo dell’utente.
+>> - [extension 3] L'utente può inserire uno o più collegamenti esterni inerenti alla descrizione dell'attività.
+>> - [extension 4] L'utente può inserire un collegamento esterno all'immagine dell'attività.
+>> - [extension 5] L'utente può inserire il numero di partecipanti per squadra e/o il numero di squadre indicati per svolgere l'attività, qualora questa preveda una divisione in squadre. [[exception 3](#exceptions-12)]
 
 ----
 > #### **Titolo:**
@@ -253,7 +261,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 > #### **Riassunto:**
 >> Questo use case descrive come un utente autenticato online può modificare una propria proposta di attività a partire dalla pagina di visualizzazione delle informazioni dell’attività.
 > #### **Descrizione:**
->> 1. L’utente clicca sul bottone “Modifica proposta” e viene reindirizzato alla schermata di modifica di una proposta di attività. [extension 1]
+>> 1. L’utente clicca sul bottone “Modifica proposta” e viene reindirizzato alla schermata di modifica di una proposta di attività. [[exception 1](#exceptions-13)]
 >> 2. [[extension 1](#extension-points-13)]
 >> 3. L’utente clicca sul pulsante per confermare. [[exception 1](#exceptions-13)] [[exception 2](#exceptions-13)]
 >> 4. Il sistema invia i dati modificati a MongoDB. [[extension 2](#extension-points-13)]
@@ -489,7 +497,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 > #### **Exceptions:**
 >> - [exception 1] Non verrà mostrato alcun risultato se nessun elemento del catalogo corrisponde ai filtri selezionati.
 >> - [exception 2] Dopo aver inserito 20 caratteri nel campo relativo al titolo, se l’utente proverà ad inserire altri caratteri questi non verranno inseriti, il campo di inserimento sarà evidenziato di rosso e riporterà una scritta che informa l’utente che il limite massimo di caratteri è stato raggiunto.
->> - [exception 3] Dopo aver inserito 2000 caratteri nel campo relativo alla descrizione, se l’utente proverà ad inserire altri caratteri questi non verranno inseriti, il campo di inserimento sarà evidenziato di rosso e riporterà una scritta che informa l’utente che il limite massimo di caratteri è stato raggiunto.
+>> - [exception 3] Dopo aver inserito 20 caratteri nel campo relativo alla descrizione, se l’utente proverà ad inserire altri caratteri questi non verranno inseriti, il campo di inserimento sarà evidenziato di rosso e riporterà una scritta che informa l’utente che il limite massimo di caratteri è stato raggiunto.
 >> - [exception 4] Se il valore finale è strettamente minore del valore iniziale o se uno dei due valori non è intero o se uno dei due valori è negativo o se uno dei due valori è maggiore di 99, il campo di inserimento del range sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati.
 >> - [exception 5] Se l’utente ha inserito un valore non intero o negativo o maggiore di 999, il campo di inserimento della durata sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati.
 >> - [exception 6] Se il valore inserito non è intero o se è negativo o maggiore di 99, il campo di inserimento del range sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati.
@@ -499,7 +507,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [extension 3] L'utente può inserire un'espressione che deve essere presente per intero (e non frammentata) all'interno della descrizione di un'attività; di default il campo è vuoto. [[exception 3](#exceptions-25)]
 >> - [extension 4] L’utente può inserire un range di età dei partecipanti all'attività che deve essere compreso (estremi inclusi) nel range di età per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale; di default il primo valore è 0, il secondo è 99. [[exception 4](#exceptions-25)]
 >> - [extension 5] L’utente può scegliere un’unità di misura per la durata media dell’attività da un menù a tendina e un intervallo di tempo all'interno del quale deve essere compresa la durata media dell'attività, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale; di default l'unità di misura è in ore, il primo valore è 0, il secondo è 999. [[exception 5](#exceptions-25)]
->> - [extension 6] L'utente può inserire un numero partecipanti che deve essere compreso nel ange del numero di partecipanti per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo; di default il campo è vuoto. [[exception 6](#exceptions-25)]
+>> - [extension 6] L'utente può inserire un numero partecipanti che deve essere compreso nel range del numero di partecipanti per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo; di default il campo è vuoto. [[exception 6](#exceptions-25)]
 >> - [extension 7] L'utente può aprire la lista dei tag e selezionare un insieme di tag che l'attività deve avere; di default il campo è vuoto.
 
 ----

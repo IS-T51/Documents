@@ -57,7 +57,7 @@ Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da pa
 >> [RNF11.2.](#rnf92)
 >> [RNF11.3.](#rnf93)
 >> ##### RNF12.1.
->> Lato server saranno raccolte le seguenti informazioni sugli utenti autenticati: mail, valutazioni lasciate alle attività, proposte di nuovi giochi, liste di attività, segnalazioni inviate, presenza o meno di privilegi di amministratore.
+>> Lato server saranno raccolte le seguenti informazioni sugli utenti autenticati: mail, foto profilo, valutazioni lasciate alle attività, proposte di nuovi giochi, liste di attività, segnalazioni inviate, presenza o meno di privilegi di amministratore.
 >
 >> ##### RNF12.2.
 >> Qualora il dispositivo dell'utente lo permetta, le informazioni menzionate in RNF12.1 saranno memorizzate sul dispositivo dell'utente.

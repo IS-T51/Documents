@@ -40,7 +40,7 @@ Nota2: si renderà necessaria la creazione della copia locale del catalogo ogni 
 | RNF12. | Dati utenti autenticati | Informazioni sui dati raccolti per gli utenti autenticati | - |
 | [RNF11.2.](#rnf112) | Come sopra | - | - |
 | [RNF11.3.](#rnf113) | Come sopra | - | - |
-| RNF12.1 | Dati individuali sul server | Dati raccolti sugli utenti autenticati e memorizzati su un server | Mail, valutazioni lasciate alle attività, proposte di nuovi giochi, liste di attività, segnalazioni inviate, presenza o meno di privilegi di amministratore |
+| RNF12.1 | Dati individuali sul server | Dati raccolti sugli utenti autenticati e memorizzati su un server | Mail, foto profilo, valutazioni lasciate alle attività, proposte di nuovi giochi, liste di attività, segnalazioni inviate, presenza o meno di privilegi di amministratore |
 | RNF12.2 | Dati individuali sul dispositivo | Dati raccolti sugli utenti autenticati e memorizzati sul dispositivo dell'utente | Come RNF12.1 |
 
 
