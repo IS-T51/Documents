@@ -160,7 +160,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [exception 5] Se l’utente ha inserito un titolo corrispondente a quello di un’attività già presente nel catalogo o proposta da un’altro utente, o se l'utente ha lasciato il campo del titolo vuoto, il sistema mostrerà un messaggio di errore ed evidenzierà in rosso il campo di inserimento del titolo
 >> - [exception 6] Dopo aver inserito 20 caratteri nel campo relativo al titolo, se l’utente proverà ad inserire altri caratteri questi non verranno inseriti, il campo di inserimento sarà evidenziato di rosso e riporterà una scritta che informa l’utente che il limite massimo di caratteri è stato raggiunto
 > #### **Extension points:**
->> - [extension 1] Allo step [8](#descrizione-7), l’utente può scegliere una o più etichette con cui contrassegnare l’attività da un menù a tendina.
+>> - [extension 1] Allo step [8](#descrizione-7), l’utente può scegliere una o più etichette con cui contrassegnare l’attività da un menù a tendina, o crearne una nuova impostando il nome e la categoria di appartenza da un menù a tendina, o creandone una nuova.
 >> - [extension 2] Allo step [9](#descrizione-7), se il browser dell’utente è compatibile con service workers, un id corrispondente all'attività creata verrà memorizzato anche sul dispositivo dell’utente.
 >> - [extension 3] L'utente può inserire uno o più collegamenti esterni inerenti alla descrizione dell'attività.
 >> - [extension 4] L'utente può inserire un collegamento esterno all'immagine dell'attività.
