@@ -124,16 +124,16 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 > #### **Riassunto:**
 >> Questo use case descrive come un amministratore online può modificare un’attività presente nel catalogo a partire dalla pagina di visualizzazione delle informazioni dell’attività.
 > #### **Descrizione:**
->> 1. L’utente amministratore clicca sul pulsante "Modifica attività" e viene reindirizzato alla schermata di modifica di una proposta di attività. [[exception 1](#exceptions-6)] [[exception 2](#exceptions-6)]
+>> 1. L’utente amministratore clicca sul pulsante "Modifica attività" e viene reindirizzato alla schermata di modifica di un'attività. [[exception 1](#exceptions-6)] [[exception 2](#exceptions-6)]
 >> 2. [[extension 1](#extension-points-6)].
->> 3. L’utente clicca sul pulsante di conferma per terminare la modifica. [[exception 1](#exceptions-13)], [[exception 2](#exceptions-13)], [[exception 3](#exceptions-13)]
+>> 3. L’utente clicca sul pulsante di conferma per terminare la modifica. [[exception 1](#exceptions-6)], [[exception 2](#exceptions-6)], [[exception 3](#exceptions-6)]
 >> 4. Il sistema invia a MongoDB l’attività aggiornata. [[extension 2](#extension-points-6)]
 > #### **Exceptions:**
 >> - [exception 1] L’attività sulla quale si clicca non è aggiornata e una modifica causerebbe delle collisioni, MongoDB non aggiornato.
 >> - [exception 2] In assenza di connessione ad Internet, viene inviato un messaggio di errore.
 >> - [exception 3] Se l’utente ha inserito un titolo corrispondente a quello di un’attività già presente nel catalogo o proposta da un’altro utente, il sistema mostrerà un messaggio di errore ed evidenzierà in rosso il campo di inserimento del titolo.
 > #### **Extension points:**
->> - [extension 1] Allo step 2 l’utente può modificare uno qualsiasi dei campi dell’attività, con modalità, eccezioni ed estensioni descritte negli step 2.-8. dello use case “Aggiungere una nuova attività”.
+>> - [extension 1] Allo step 2 l’utente può modificare uno qualsiasi dei campi dell’attività, con modalità, eccezioni ed estensioni descritte negli step 2.-8. dello use case ([“Aggiungere una nuova attività”](#titolo-7)).
 >> - [extension 2] Qualora il dispositivo dell'utente lo permetta, avverrà un aggiornamento della copia locale dei dati dell'utente e del catalogo (["Aggiornare catalogo locale"](#titolo-26)).
 
 ----
@@ -269,7 +269,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [exception 1] In assenza di connessione ad Internet il sistema mostrerà all’utente un messaggio di errore che indicherà l’assenza di connessione.
 >> - [exception 2] Se l’utente ha inserito un titolo corrispondente a quello di un’attività già presente nel catalogo o proposta da un’altro utente, il sistema mostrerà un messaggio di errore ed evidenzierà in rosso il campo di inserimento del titolo.
 > #### **Extension points:**
->> - [extension 1] Allo step 2 l’utente può modificare uno qualsiasi dei campi dell’attività, con modalità, eccezioni ed estensioni descritte negli step 2.-8. dello use case “Proporre un’attività”.
+>> - [extension 1] Allo step 2 l’utente può modificare uno qualsiasi dei campi dell’attività, con modalità, eccezioni ed estensioni descritte negli step 2.-8. dello use case ([“Proporre un’attività”](#titolo-12)).
 >> - [extension 2] Qualora il dispositivo dell'utente lo permetta, avverrà un aggiornamento della copia locale dei dati dell'utente e del catalogo (["Aggiornare catalogo locale"](#titolo-26)).
 
 ----
@@ -303,7 +303,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [exception 1] In assenza di connessione ad Internet il sistema mostrerà all’utente un messaggio di errore che indicherà l’assenza di connessione.
 >> - [exception 2] Dopo aver inserito 20 caratteri nel campo relativo al nome, se l’utente proverà ad inserire altri caratteri questi non verranno inseriti, il campo di inserimento sarà evidenziato di rosso e riporterà una scritta che informa l’utente che il limite massimo di caratteri è stato raggiunto.
 >> - [exception 3] Se l’utente ha inserito un nome corrispondente a quello di una lista di attività presente tra le sue liste personali, o se l'utente ha lasciato il campo del nome vuoto, il sistema mostrerà un messaggio di errore ed evidenzierà in rosso il campo di inserimento del nome.
->> - [exception 4] Se l'utente ha già creato 99 liste di attività, il pulsante più non sarà disponibile e il sistema mostrerà all'utente un messaggio di errore per informarlo.
+>> - [exception 4] Se l'utente ha già creato 99 liste di attività, il pulsante più non sarà disponibile e il sistema mostrerà all'utente un messaggio di avviso per informarlo.
 > #### **Extension points:**
 >> - [extension 1] Allo step [4](#descrizione-15), se il browser dell’utente è compatibile con service workers, la lista creata verrà memorizzata anche sul dispositivo dell’utente.
 
@@ -403,12 +403,12 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 4. Il sistema mostra due pulsanti, "Avvia" e "Parziale" con quest'ultimo inizialmente non disponibile, in quanto il cronometro non è ancora stato avviato.
 >> 4. [[extension 1](#extension-points-21)] [[extension 2](#extension-points-21)] [[extension 3](#extension-points-21)] [[extension 4](#extension-points-21)]
 > #### **Exceptions:**
->> --
+>> [exception 1] Se l'utente ha già salvato 99 tempi parziali, il pulsante più non sarà disponibile e il sistema mostrerà all'utente un messaggio di avviso per informarlo.
 > #### **Extension points:**
 >> - [extension 1] Allo step [4](#descrizione-21), l'utente può far partire il cronometro cliccando sul pulsante "Avvia", rappresentato da un triangolino. In quel momento al posto del pulsante "Avvia", comparirà il pulsante "Ferma" e il pulsante "Parziale" diventerà disponibile.
 >> - [extension 2] Allo step [4](#descrizione-21), l'utente può mettere in pausa il cronometro cliccando sul pulsante "Ferma". Il valore verrà momentaneamente fermato e compariranno il pulsante "Riprendi" al posto di "Ferma" e "Ripristina" al posto di "Parziale".
 >> - [extension 3] Allo step [4](#descrizione-21), l'utente può fermare il cronometro cliccando sul pulsante "Ripristina". Il valore verrà riportato a 00:00:00 e compariranno nuovamente i pulsanti "Avvia" e "Parziale".
->> - [extension 4] Allo step [4](#descrizione-21), l'utente può cliccare sul pulsante "Parziale" per salvare il tempo mostrato in quel momento dal sistema e scriverlo a carattere ridotto sotto quello principale.
+>> - [extension 4] Allo step [4](#descrizione-21), l'utente può cliccare sul pulsante "Parziale" per salvare il tempo mostrato in quel momento dal sistema e scriverlo a carattere ridotto sotto quello principale. [[exception 1](#exceptions-21)]
 
 ----
 > #### **Titolo:**
