@@ -27,9 +27,9 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 ### Colore
 > La classe **Colore** è una classe di supporto che con i suoi attributi, va a rappresentare un colore espresso tramite codice RGB, uno spazio di colore che riproduce i colori visibili all’uomo tramite la mescolanza additiva dei tre colori di base: rosso, verde e blu.
 ### Info, Filtro ed Etichetta
-> La classe **Etichetta** è una classe di supporto che con i suoi attributi, va a rappresentare nome, descrizione e categoria di un'etichettà che può essere assegnata ad un'attività.<br>
+> La classe **Etichetta** è una classe di supporto che con i suoi attributi, va a rappresentare nome, descrizione e categoria di un'etichettà che può essere assegnata ad un'attività. Viene usata nella classe Info.<br>
 > La classe **Info** è una classe di supporto che con i suoi attributi va a definire tutte le informazioni riguardanti un'attività.<br>
-> La classe **Filtro** è una classe di supporto ed è una generalizzazione della classe Info. Viene utilizzata per contenere le informazioni secondo le quali le attività devono essere filtrate.
+> La classe **Filtro** è una classe di supporto ed è collegata tramite una generalizzazione alla classe Info. Viene utilizzata per contenere le informazioni secondo le quali le attività devono essere filtrate.
 
 ## Dado e Faccia
 > La classe **Faccia** è una classe di supporto alla classe Dado, e presenta tutti gli attributi necessari a definire qual è il tipo di una faccia del dado e cosa vi è rappresentato.
@@ -51,9 +51,27 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 > La classe **SegnaPunti** è una classe il quale compito è quello di fornire gli attributi e i metodi necessari all'utilizzo dello strumento segna punti.<br>
 > L'attributo contatori rappresenta i contatori delle varie squadre, che vengono incrementati e/o decrementati grazie ai metodi presenti.
 ## Utente
+> La classe **Utente** è una classe che rappresenta colui che utilizza l'applicazione. Ci sono quindi attributi che rappresentano i dati identificativi di quell'utente, come anche il ruolo e lo stato, che può essere offline o online.<br>
+> Il metodo login() crea un'istanza di Autenticazione<br>
+> Un utente può promuovere gli altri utenti, ma l'attributo promossoDa, serve nel caso un utente voglia declassare un altro utente che ha il ruolo di amministratore. In tal caso, l'utente deve essere quello che lo ha promosso a tale.<br>
+> Un utente può creare una o più attività e/o liste di attività, rappresentate rispettivamente dalle classi Attività e ListaAttività.<br>
+> Un utente può effettuare una o più segnalazioni e/o valutazioni, rappresentate rispettivamente dalle classi Segnalazione e Valutazione.
 ## Autenticazione
+> La classe **Autenticazione** è una classe che rappresenta il processo di login di un utente. <br>
+> Quando viene chiamato il metodo login() della classe Utente, viene creata un'istanza di Autenticazione e viene chiamata richiestaAutorizzativa().<br>
+> Se il codice è valido viene chiamato il metodo richiestaToken() e successivamente dettagliAccount() che mette i risultati negli attributi id e mail dell'utente. <br>
+> Viene chiesto a MongoDB il ruolo dell'utente e la sua foto profilo che vengono a loro volta assegnati agli attributi ruolo e immagine dell'utente.<br>
+> Infine avviene un aggiornamento dei dati locali.
 ## Segnalazione
+> La classe **Segnalazione** è una classe che rappresenta la segnalazione fatta da un utente ad un'attività. Più segnalazioni possono riferirsi ad una stessa attività. Ogni segnalazione è stata effettuata da un solo utente. <br>
+> Gli attributi rappresentano le informazioni relative alla segnalazione, ovvero descrizione, utente da cui è stata fatta e attività alla quale si riferisce. <br>
+> Un utente può effettuare una segnalazione grazie al metodo presente.<br>
+> Se un utente non esiste più le segnalazioni effettuate dallo stesso rimangono.
 ## Valutazione
+> La classe **Valutazione** è una classe che rappresenta la valutazione fatta da un utente ad un'attività. Più valutazioni possono riferirsi ad una stessa attività. Un utente può dare una sola valutazione ad un'attività. <br>
+> Gli attributi rappresentano le informazioni relative alla valutazione, ovvero il voto espresso con un numero intero, l'attività a cui si riferisce e l'utente da cui è stata fatta. <br>
+> Un utente può effettuare una segnalazione grazie al metodo presente. <br>
+> Se un utente non esiste più le valutazioni effettuate dallo stesso rimangono.
 ## GestoreDatiOffline
 ## Attività
 ## Catalogo
