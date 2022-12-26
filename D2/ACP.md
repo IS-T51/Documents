@@ -13,6 +13,10 @@ In questa sezione vengono definiti i componenti.
 > Il componente permette all'utente di selezionare i filtri desiderati sulle attività da visualizzare (eventualmente nessuno), e richiede l'elenco di attività corrispondenti al sistema esterno MongoDB, oppure delega il recupero delle informazioni al componente Gestione Dati Offline. Dopo aver recuperato i dati necessari, mostra il catalogo filtrato all'utente.<br>
 > Qualora l'utente selezioni un'attività da visualizzare, il componente passa l'informazione al componente Attività.<br>
 > Qualora l'utente decida di creare una nuova attività o proposta di attività, il catalogo richiede al componente Gestione Utenti di verificare che l'utente attualmente in sessione abbia i permessi necessari a svolgere l'operazione di creazione attività, e in caso affermativo delega il compito di creazione attività al componente Gestione Attività.
+> #### *Interfaccia richiesta - catalogo remoto*
+> L'interfaccia catalogo remoto manda una richiesta a MongoDB e ottiene in ritorno il catalogo locale.
+> #### *Interfaccia fornita - catalogo locale*
+> L'interfaccia catalogo locale, dopo aver ricevuto una richiesta da MongoDB, fornisce in ritorno il catalogo stesso.
 
 > ### Attività
 > #### *Motivazione*
@@ -32,6 +36,8 @@ In questa sezione vengono definiti i componenti.
 > Dato il **RF6** e **RF17**, il componente Gestione Dati Offline, si occupa di tutte le operazioni riguardanti la memorizzazione di dati offline, come per esempio il catalogo e le liste offline e della loro visualizzazione. 
 > #### *Spiegazione*
 > Il componente permette di visualizzare liste, catalogo e attività locali.
+> #### *Interfaccia richiesta - lista modifiche remote*
+> L'interfaccia lista modifiche remote, in base a un parametro interno a Gestione Dati Offline, che corrisponde al momento in cui è avvenuto l'ultimo aggiornamento del catalogo locale, chiede a MongoDB quali sono le attività che hanno subito una modifica e date quelle attività integra le modifiche nel database locale.
 
 > ### Autenticazione
 > #### *Motivazione*
@@ -77,6 +83,8 @@ In questa sezione vengono definiti i componenti.
 >> Per soddisfare il **RF23-25**, il sistema deve prevedere un componente che si occupi della creazione di un dado personalizzato (un'urna di valori composti da immagini, numeri, colori o parole) e dell'estrazione di un valore casuale presente su di esso con o senza re-immisione.
 >> #### *Spiegazione*
 >> Il componente Dado si occupa di raccogliere dall'utente gli elementi estraibili dal dado, di esprimere la volontà o meno di avere un ripescaggio e di permettere l'estrazione di un elemento.
+>> #### *Interfaccia richiesta - consenti reimmissione*
+>> L'interfaccia consenti reimissione, permette di determinare se gli elementi già estratti dal campione possano o meno essere riestratti tramite un attributo booleano. Se tale attributo assume valore True, gli elementi possono essere riestratti, altrimenti no.
 >
 >> ### Cronometro
 >> #### *Motivazione*
