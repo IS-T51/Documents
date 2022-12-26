@@ -23,6 +23,12 @@ In questa sezione vengono definiti i componenti.
 > Dati gli **RF12-15** e **RF18-19**, è stato individuato un componente Attività distinto dal componente Catalogo per gestire le operazioni che riguardano le singole attività, ovvero la loro visualizzazione e la loro modifica.
 > #### *Spiegazione*
 > Su richiesta di visualizzazione di un'attività da parte del componente Catalogo o del componente Liste, il componente Attività richiede le informazioni dell'attività corrispondente al sistema esterno MongoDB, oppure delega il recupero delle informazioni al componente Gestione Dati Offline. Dopo aver recuperato i dati necessari, mostra i dettagli dell'attività all'utente.
+> #### *Interfaccia richiesta - crea nuova attività*
+> L'interfaccia crea nuova attività raccoglie il titolo della nuova attività per poi reindirizzare l'utente al modulo di modifica attività.
+> #### *Interfaccia richiesta - campi attività*
+> L'interfaccia campi attività richiede un modulo che l'utente deve riempire con le informazioni riguardanti l'attività.<br>
+> Se l'attività viene creata da zero, tutti i campi saranno inizialmente vuoti, altrimenti conterranno le informazioni precedentemente inserite.<br>
+> Se l'attività è proposta sarà presente un tag non rimuovibile "proposta", mentre se l'attività viene creata dall'amministratore non ci sarà.
 
 > ### Liste
 > #### *Motivazione*
@@ -30,6 +36,8 @@ In questa sezione vengono definiti i componenti.
 > #### *Spiegazione*
 > Il componente permette all'utente di creare o eliminare delle liste di attività, aggiungere o togliere un'attività da una lista inviando tali modifiche al sistema esterno MongoDB e richiedendo l'aggiornamento dei Dati Offline.<br>
 > L'utente può, inoltre, richiedere la visualizzazione di una lista salvata localmente e l'esportazione della stessa in formato PDF.
+> #### *Interfaccia richiesta - nuova lista*
+> L'interfaccia nuova lista richiede da parte dell'utente di cliccare sul pulsante + e di inserire il titolo rispettando i vincoli descritti dagli use case.
 
 > ### Gestione Dati Offline
 > #### *Motivazione*
@@ -38,6 +46,8 @@ In questa sezione vengono definiti i componenti.
 > Il componente permette di visualizzare liste, catalogo e attività locali.
 > #### *Interfaccia richiesta - lista modifiche remote*
 > L'interfaccia lista modifiche remote, in base a un parametro interno a Gestione Dati Offline, che corrisponde al momento in cui è avvenuto l'ultimo aggiornamento del catalogo locale, chiede a MongoDB quali sono le attività che hanno subito una modifica e date quelle attività integra le modifiche nel database locale.
+> #### *Interfaccia fornita - aggiorna dati locali*
+> L'interfaccia aggiorna dati locali, quando l'utente compie un'azione di modifica sulle liste o sulle sue proposte di attività, la relativa classe comunica al gestore dati offline che bisogna effettuare un aggiornamento dei dati locali.
 
 > ### Autenticazione
 > #### *Motivazione*
@@ -73,6 +83,8 @@ In questa sezione vengono definiti i componenti.
 > #### *Spiegazione*
 > Il componente permette di recuperare le segnalazioni di ogni attività dal sistema esterno MongoDB e di mostrare agli utenti amministratori la lista di attività segnalate e la lista di segnalazioni per ogni attività. <br>
 > Il componente permette agli utenti autenticati per ogni attività, di visualizzare la valutazione corrente e di modificare/dare la propria, all'interno della schermata di informazioni dell'attività.<br>
+> #### *Interfaccia richiesta - segnalazione attività*
+> L'interfaccia segnalazione attività richiede un titolo e una breve descrizione secondo i vincoli imposti negli use case.
 
 > ## Strumenti
 > #### *Motivazione*
@@ -91,12 +103,16 @@ In questa sezione vengono definiti i componenti.
 >> Per soddisfare il **RF27-28**, è stato individuato un componenete Cronometro, che si occupa della gestione delle funzionalità dello strumento Timer.
 >> #### *Spiegazione*
 >> Grazie al componenete Cronometro, l'utente può avviare, fermare, ripristinare e registrare i tempi parziali di un cronometro, e quindi sapere quanto tempo è passato da un determinato momento, visualizzando sia il tempo totale che i tempi parziali.
+>> #### *Interfaccia richiesta - salva tempo parziale*
+>> L'interfaccia salva tempo parziale richiede all'utente di cliccare sul pulsante parziale ogniqualvolta lo stesso vuole salvare un tempo senza fermare il cronometro. Questi tempi verranno salvati in una lista.
 >
 >> ### Gestore Suoni
 >> #### *Motivazione*
 >> Per soddisfare il **RF29** e **RF31**, è stato individuato un componente Gestore Suoni, che si occupa della gestione delle funzionalità di riproduzione e selezione di suoni per le componenti Timer e Fischietto.
 >> #### *Spiegazione*
 >> Il componente Gestore Suoni permette di selezionare, visualizzare e riprodurre un suono, o anche di aggiungerne uno dal dispositivo utilizzato.
+> #### *Interfaccia richiesta - mostra suono*
+> L'interfaccia mostra suono, dato il menù a tendina chiuso, mostra all'utente il suono selezionato in quel momento nel rettangolino che serve per aprire il menù.
 >
 >> ### Fischietto
 >> #### *Motivazione*
@@ -119,6 +135,8 @@ In questa sezione vengono definiti i componenti.
 >> Una volta definiti tutti i parametri si procede alla divisione in squadre.
 >> #### *Interfaccia fornita - estrae squadra*
 >> Ogni volta che lo schermo viene premuto, appare il nome della squadra a cui appartiene l'utente che ha interagito. Questo appare seguendo la metodologia di divisione scelta. Ogni squadra ha un contatore rappresentante il totale di posti rimasti. Ogniqualvolta un utente viene assegnato ad una squadra, il contatore della stessa viene decrementato di uno.
+>> #### *Interfaccia richiesta - metodologia divisione*
+>> L'interfaccia metodologia divisione si occupa di chiedere all'utente come voglia estrarre le squadre, ritornando un valore enumerativo
 >
 >> ### Segna-Punti
 >> #### *Motivazione*
