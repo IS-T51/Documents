@@ -12,7 +12,7 @@ pdf_options:
             }
         </style>
         <section>
-            D3 - Animati - Architettura v0.1 [pre-release]
+            D3 - Animati - Sviluppo v0.1 [pre-release]
         </section>
     footerTemplate: |-
         <section>
@@ -32,7 +32,7 @@ pdf_options:
 <center><img alt="Logo" src="https://github.com/IS-T51/animati/blob/main/assets/img/logo.svg?raw=true" width="75%" /></center>
 
 ### Titolo del documento:
-<h1 align="center">Architettura</h1>
+<h1 align="center">Sviluppo</h1>
 
 ### Gruppo:
 <h1 align="center">T51</h1>
