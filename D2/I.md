@@ -3,7 +3,7 @@
 <span class=horizontal_dotted_line>Scopo del documento<span class=dot></span>3</span>
 <span class=horizontal_dotted_line>1. Casi d'uso<span class=dot></span>4</span>
 <span class=horizontal_dotted_line>1.1 Diagramma dei casi d'uso<span class=dot></span>4</span>
-<span class=horizontal_dotted_line>1.2 Descrizione dei casi d'uso class=dot></span>6</span>
+<span class=horizontal_dotted_line>1.2 Descrizione dei casi d'uso<span class=dot></span>6</span>
 <span class=horizontal_dotted_line>2. Tabella dei requisiti non funzionali<span class=dot></span>25</span>
 <span class=horizontal_dotted_line>3. Analisi del contesto<span class=dot></span>36</span>
 <span class=horizontal_dotted_line>3.1 Utenti e sistemi esterni<span class=dot></span>36</span>
