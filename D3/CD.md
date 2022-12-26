@@ -29,7 +29,9 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 ### Info, Filtro ed Etichetta
 
 ## Dado e Faccia
-> Le classi **Dado** e **Faccia** sono due classi che servono ad utilizzare lo strumento dado. Faccia è di supporto a Dado e presenta gli attributi necessari a capire di che tipo è la faccia e cosa vi è rappresentato.
+> La classe **Faccia** è una classe di supporto alla classe Dado, e presenta tutti gli attributi necessari a definire qual è il tipo di una faccia del dado e cosa vi è rappresentato.
+> La classe **Dado** è una classe il quale compito è quello di fornire gli attributi e i metodi necessari all'utilizzo dello strumento dado. <br>
+> Una volta determinati i parametri definiti dagli attributi, grazie ai metodi presenti, il metodo estrai() è quello che fa funzionare lo strumento.
 ## Cronometro
 > La classe **Cronometro** è una classe il quale compito è quello di fornire gli attributi e i metodi necessari all'utilizzo dello strumento cronometro.<br>
 >Il tempo viene rappresentato grazie alla classe di supporto Time.
