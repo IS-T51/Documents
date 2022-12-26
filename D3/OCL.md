@@ -3,14 +3,6 @@
 In questo capitolo è descritta in modo formale la logica prevista nell’ambito di alcune operazioni di alcune classi. Tale logica viene descritta in Object Constraint Language (OCL) perché tali concetti non sono esprimibili in nessun altro modo formale nel contesto di UML.
 
 ## **Cronometro**
-#### stato : Enum
-#### **Invarianti**:
-- stato assume i valori “reset”, “run”, “pause”
-
-```js
-context Cronometro inv :
-(stato = "reset") OR (stato = "run") OR (stato = "pause")
-```
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | ---|
@@ -44,9 +36,9 @@ post: (self.stato = "run") AND (self.parziali -> size() = self.parziali@pre -> s
 
 ## **Segna-Punti**
 
-#### contatori : Map<String,int>
+#### contatori : Tuple{nome : String, punteggio : int}[0..N]
 #### **Invarianti**:
-- contatori contiente alpiù 99 elementi
+- contatori contiente al più 99 elementi
 
 ```js
 context Segna-Punti inv :
@@ -279,7 +271,7 @@ post: self.ultimoAggiornamento = Data.now()
 | --- | --- | --- |
 ---
 
-## **GestioneDatiOffline**
+## **GestoreDatiOffline**
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
@@ -305,7 +297,7 @@ post: self.ultimoAggiornamento = Data.now()
 ---
 
 
-## **TipoDado**
+## **Faccia**
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
@@ -332,6 +324,12 @@ post: self.ultimoAggiornamento = Data.now()
 ---
 
 ## **Time**
+
+| Metodo | Precondizioni | Postcondizioni |
+| --- | --- | --- |
+---
+
+## **Etichetta**
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
