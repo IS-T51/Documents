@@ -315,7 +315,6 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [extension 5] Qualora il dispositivo dell'utente lo permetta, dopo una qualsiasi operazione di manipolazione di liste, avverrà un aggiornamento della copia locale dei dati dell'utente e del catalogo (["Aggiornare catalogo locale"](#titolo-26)).
 
 ----
-![Creare una lista di attività](D2/img/UCD/15.png)
 > #### **Titolo:**
 >> Creare una lista di attività
 > #### **Riassunto:**
@@ -334,7 +333,6 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [extension 1] Allo step [4](#descrizione-15), se il browser dell’utente è compatibile con service workers, la lista creata verrà memorizzata anche sul dispositivo dell’utente.
 
 ----
-![Rimuovere una lista di attività](D2/img/UCD/16.png)
 > #### **Titolo:**
 >> Rimuovere una lista di attività
 > #### **Riassunto:**
@@ -351,7 +349,6 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [extension 1] Allo step [3](#descrizione-16), se il browser dell’utente è compatibile con service workers, la lista rimossa verrà rimossa anche dal dispositivo dell’utente.
 
 ----
-![Aggiungere un'attività ad una lista](D2/img/UCD/17.png)
 > #### **Titolo:**
 >> Aggiungere un'attività ad una lista
 > #### **Riassunto:**
@@ -370,7 +367,6 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [extension 2] Allo step [4](#descrizione-17), se il browser dell’utente è compatibile con service workers, l’id dell’attività aggiunta verrà memorizzato anche sul dispositivo dell’utente.
 
 ----
-![Rimuovere un’attività da una lista](D2/img/UCD/18.png)
 > #### **Titolo:**
 >> Rimuovere un’attività da una lista
 > #### **Riassunto:**
@@ -397,10 +393,10 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 2. L'utente clicca sul pulsante "FISCHIETTO".
 >> 3. [[extension 1](#extension-points-19)] [[extension 2](#extension-points-19)] [[extension 3](#extension-points-19)]
 > #### **Exceptions:**
->> --
+>> [exception 1] Il file selezionato supera i 100MB, il sistema informa l'utente che non è possibile caricare il suono selezionato.
 > #### **Extension points:**
 >> - [extension 1] Allo step [3](#descrizione-19), cliccando sul pulsante "Suoni", che apre un menù a tendina, l'utente può selezionare il suono desiderato.
->> - [extension 2] Allo step [3](#descrizione-19), cliccando sul pulsante "Suoni", che apre un menù a tendina, in fondo è presente un "+", che una volta cliccato permette all'utente di caricare un nuovo suono da utilizzare.
+>> - [extension 2] Allo step [3](#descrizione-19), cliccando sul pulsante "Suoni", che apre un menù a tendina, in fondo è presente un "+", che una volta cliccato permette all'utente di caricare un nuovo suono da utilizzare. [[exception 1](#exception-points-19)]
 >> - [extension 3] Allo step [3](#descrizione-19), l'utente può cliccare sull'immagine del fischietto per riprodurre il suono selezionato.
 
 ----
@@ -415,14 +411,14 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 3. Il sistema mostra di default il timer impostato al valore 00:00:00.
 >> 4. [[extension 1](#extension-points-20)] [[extension 2](#extension-points-20)] [[extension 3](#extension-points-20)] [[extension 4](#extension-points-20)] [[extension 5](#extension-points-20)] [[extension 6](#extension-points-20)] [[extension 7](#extension-points-20)]
 > #### **Exceptions:**
->> --
+>> [exception 1] Il file selezionato supera i 100MB, il sistema informa l'utente che non è possibile caricare il suono selezionato.
 > #### **Extension points:**
 >> - [extension 1] Allo step [4](#descrizione-20), l'utente può scorrere sulle cifre per modificare il valore di partenza del timer.
 >> - [extension 2] Allo step [4](#descrizione-20), l'utente può far partire il timer cliccando sul pulsante "Avvia". In quel momento al posto del pulsante "Avvia", compariranno due pulsanti, "Pausa" e "Annulla".
 >> - [extension 3] Allo step [4](#descrizione-20), l'utente può mettere in pausa il timer cliccando sul pulsante "Pausa". Il valore verrà momentaneamente fermato e comparirà il pulsante "Riprendi".
 >> - [extension 4] Allo step [4](#descrizione-20), l'utente può fermare il timer cliccando sul pulsante "Annulla". Il valore verrà resettato a quello impostato precedentemente e comparirà nuovamente il pulsante "Avvia", che andrà a sostituire "Pausa"/"Riprendi" e "Annulla".
 >> - [extension 5] Allo step [4](#descrizione-20), cliccando sul pulsante "Suoni", che apre un menù a tendina, l'utente può selezionare il suono desiderato.
->> - [extension 6] Allo step [4](#descrizione-20), cliccando sul pulsante "Suoni", che apre un menù a tendina, in fondo è presente un "+", che una volta cliccato permette all'utente di caricare un nuovo suono da utilizzare.
+>> - [extension 6] Allo step [4](#descrizione-20), cliccando sul pulsante "Suoni", che apre un menù a tendina, in fondo è presente un "+", che una volta cliccato permette all'utente di caricare un nuovo suono da utilizzare. [[exception 1](#exception-points-20)]
 >> - [extension 7] Allo step [4](#descrizione-20), allo scadere del timer verrà riprodotto il suono selezionato.
 
 ----
@@ -494,7 +490,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [extension 1] Allo step [5](#descrizione-23), l'utente può incrementare o decrementare di 1, il contatore di ciascun segna punti.
 
 ----
-![Utilizzare strumento CREAZIONE ](D2/img/UCD/24.png)
+![Utilizzare strumento CREAZIONE SQUADRE](D2/img/UCD/24.png)
 > #### **Titolo:**
 >> Utilizzare strumento CREAZIONE SQUADRE
 > #### **Riassunto:**
@@ -517,7 +513,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [extension 2] Allo step [3](#descrizione-24), l'utente può inserire nella casella di testo apposita, il numero di componenti per squadra.
 >> - [extension 3] Allo step [3](#descrizione-24), l'utente può inserire nella casella di testo apposita, il numero di partecipanti dell'attività.
 >> - [extension 4] Allo step [5](#descrizione-24), cliccando sul pulsante "Metodo divisione", l'utente può selezionare la metodologia di divisione in squadre desiderata.
->> - [extension 5] Allo step [5](#descrizione-24), il sistema inizialmente mostra uno schermo interamente colorato con nessuna scritta, e ogniqualvolta esso viene premuto dall'utente appare il nome della squadra a cui l'utente viene assegnato. Questa operazione si ripete un numero di volte corrispondente al numero di partecipanti.
+>> - [extension 5] Allo step [5](#descrizione-24), il sistema inizialmente mostra uno schermo interamente colorato con nessuna scritta, e ogni qualvolta esso viene premuto dall'utente appare il nome della squadra a cui l'utente viene assegnato. Questa operazione si ripete un numero di volte corrispondente al numero di partecipanti.
 
 ----
 ![Filtrare catalogo](D2/img/UCD/25.png)
@@ -539,7 +535,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [exception 5] Se l’utente ha inserito un valore non intero o negativo o maggiore di 999, il campo di inserimento della durata sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati.
 >> - [exception 6] Se il valore inserito non è intero o se è negativo o maggiore di 99, il campo di inserimento del range sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati.
 > #### **Extension points:**
->> - [extension 1] L'utente può svuotare un campo in cui ha inserito un valore premendo un apposito pulsante accanto al campo, o, nel caso dei tag, può rimuovere un singolo tag tenendo premuto su di esso e cliccando sul pulsante per rimuoverlo.
+>> - [extension 1] L'utente può svuotare un campo in cui ha inserito un valore premendo un apposito pulsante accanto al campo, o, nel caso dei tag, può rimuovere un singolo tag cliccando su di esso.
 >> - [extension 2] L'utente può inserire un'espressione che deve essere presente per intero (e non frammentata) all'interno del titolo di un'attività; di default il campo è vuoto. [[exception 2](#exceptions-25)]
 >> - [extension 3] L'utente può inserire un'espressione che deve essere presente per intero (e non frammentata) all'interno della descrizione di un'attività; di default il campo è vuoto. [[exception 3](#exceptions-25)]
 >> - [extension 4] L’utente può inserire un range di età dei partecipanti all'attività che deve essere compreso (estremi inclusi) nel range di età per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale; di default il primo valore è 0, il secondo è 99. [[exception 4](#exceptions-25)]
@@ -555,7 +551,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 > #### **Riassunto:**
 >> Questo use case descrive come il sistema effettua la creazione o l'aggiornamento della copia del catalogo di attività (e dei dati relativi all'utente nel caso di un utente autenticato) presente sul dispositivo dell'utente.
 > #### **Descrizione:**
->> 1. L'utente avvia l'applicazione o il tempo trascorso dall'ultimo aggiornamento del catalogo locale supera 30 minuti o l'utente autenticato effettua un'operazione di modifica del catalogo o delle liste personali. [[exception 2](#exceptions-26)][[exception 3](#exceptions-26)]
+>> 1. L'utente avvia l'applicazione o il tempo trascorso dall'ultimo aggiornamento del catalogo locale supera 30 minuti o l'utente autenticato effettua un'operazione di modifica del catalogo o delle liste personali o tramite il pulsante di sincronizzazione manuale. [[exception 2](#exceptions-26)][[exception 3](#exceptions-26)]
 >> 2. Il sistema chiede a MongoDB le modifiche avvenute al catalogo remoto (e ai dati relativi all'utente nel caso di un utente autenticato) dall'ultimo aggiornamento del catalogo locale (posto di default a zero se questo non è presente in memoria). [[exception 1](#exceptions-26)] [[extension 1](#extension-points-26)]
 >> 3. Il sistema integra attraverso IndexedDB i dati locali con le modifiche avvenute.
 >> 4. Il sistema imposta la data dell'ultimo aggiornamento del catalogo locale alla data corrente nel momento in cui ha ricevuto risposta da MongoDB (comprensiva di ore, minuti, secondi, millisecondi e nanosecondi).
@@ -575,7 +571,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 > #### **Descrizione:**
 >> 1. L'utente clicca su "Liste".
 >> 2. Il sistema chiede l'elenco delle liste di attività a un database (MongoDB o IndexedDB). [[extension 1](#extension-points-27)] [[extension 2](#extension-points-27)] [[exception 2](#exceptions-27)]
->> 2. Il sistema fornisce l'elenco di lista di attività con titolo della lista, sulle quali è possibile cliccare. [[extension 4](#extension-points-27)]
+>> 2. Il sistema fornisce l'elenco di lista di attività con titolo della lista, sulle quali è possibile cliccare.
 >> 3. L'utente clicca su una lista e il sistema mostrà all'utente l'elenco di attività presenti in quella lista. [[extension 3](#extension-points-27)]
 >> 4. Cliccando su un’attività, l’utente viene reindirizzato alla schermata con le informazioni sull’attività stessa. [[exception 1](#exceptions-27)]
 > #### **Exceptions:**
@@ -585,7 +581,6 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [extension 1] Allo step [2](#descrizione-27), qualora sia stata salvata una copia dell'elenco delle liste di attività sul dispositivo dell’utente, il sistema può consultare quei dati attraverso IndexedDB senza l'uso di connessione ad Internet (“Consultare le liste locali”).
 >> - [extension 2] Allo step [2](#descrizione-27), qualora ci sia connessione ad Internet il server può chiedere l'elenco di liste a MongoDB (“Consultare le liste remote”).
 >> - [extension 3] L'utente può cliccare sul pulsante per esportare la lista, scegliere un'opzione tra formato pdf e JSON in cui esportare la lista, scegliere se salvare la lista sul dispositivo specificando il percorso o trasferirla ad un'altra applicazione (quando il dispositivo lo permette).
->> - [extension 4] [["Manipolare liste"](#titolo-14)]
 
 ----
 <div class="page-break"></div>
