@@ -443,20 +443,18 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> Questo use case descrive come l'utente può utilizzare lo strumento SEGNA-PUNTI, a partire dal menù.
 > #### **Descrizione:**
 >> 1. L'utente clicca sul pulsante "Strumenti" presente nel menù e viene reindirizzato alla schermata contenente la lista di tool.
->> 2. L'utente clicca sul pulsante "SEGNA-PUNTI".
->> 3. [[extension 1](#extension-points-23)]
->> 4. L'utente deve inserire nelle caselle di testo apposite, i nomi che vuole assegnare a ciascun segna punti.
->> 5. L'utente clicca sul pulsante di conferma. [[exception 1](#descrizione-23)]
->> 4. Il sistema mostrerà una lista di coppie di pulsanti "+1" e "-1" con il relativo nome e contatore inizialmente impostato a 0.
->> 5. [[extension 2](#extension-points-23)] [[exception 3](#exceptions-23)] [[exception 4](#exceptions-23)]
+>> 2. L'utente clicca sul pulsante "SEGNA-PUNTI"
+>> 3. Per ogni contatore che vuole creare, l'utente clicca sul pulsante + e inserisce nella casella apposita il nome che vuole assegnare al contatore corrente. [[exception 1](#descrizione-23)] [[exception 2](#descrizione-23)] [[exception 3](#exceptions-23)]
+>> 4. L'utente clicca sul pulsante di conferma.
+>> 5. Il sistema mostrerà una lista di coppie di pulsanti "+1" e "-1" con il relativo nome e contatore inizialmente impostato a 0.
+>> 6. [[extension 1](#extension-points-23)] [[exception 4](#exceptions-23)]
 > #### **Exceptions:**
->> - [exception 1] Nel caso l'utente non abbia inserito il nome di tutte o alcune squadre, alle squadre senza nome verrà assegnato di default il nome "Squadra i", dove i è un numero che va da 1 al numero di squadre senza nome.
->> - [exception 2] L'utente può inserire fino a un massimo di 99 squadre.
->> - [exception 3] Il nome di ogni squadra può avere al massimo 99 caratteri.
->> - [exception 4] Il contatore di ogni squadra può assumere valore massimo 500 e minimo -500.
+>> - [exception 1] L'utente non può procedere alla creazione di un nuovo contatore se ha lasciato vuoto il campo relativo al nome di quello corrente.
+>> - [exception 2] L'utente può inserire fino a un massimo di 99 contatori.
+>> - [exception 3] Il nome di ogni contatore può avere al massimo 99 caratteri.
+>> - [exception 4] Ogni contatore può assumere valore massimo 500 e minimo -500.
 > #### **Extension points:**
->> - [extension 1] Allo step [3](#descrizione-23), l'utente può inserire nella casella di testo apposita, il numero di contatori desiderati. [[exception 2](#exceptions-23)]
->> - [extension 2] Allo step [5](#descrizione-23), l'utente può incrementare o decrementare di 1, il contatore di ciascun segna punti.
+>> - [extension 1] Allo step [5](#descrizione-23), l'utente può incrementare o decrementare di 1, il contatore di ciascun segna punti.
 
 ----
 > #### **Titolo:**
