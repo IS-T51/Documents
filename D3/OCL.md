@@ -191,36 +191,45 @@ post: self.campione@pre->includes(result) AND self.estrazioni = self.estrazione@
 ---
 ## **Suono**
 
+#### **Invarianti**:
+
+#### dimesnione : int
+- la dimensione in byte del suono non deve superare i 100MB
+
+```js
+context Suono inv:
+self.dimensione <= 100.000.000
+```
+
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-|start()|premuto deve assumere il valore "True"|il suono è in riproduzione|
-|stop()|premuto deve assumere il valore "False"|il suono non è in riproduzione|
-|scegliSuono()||lla sorgente del suono è quella scelta|
+|start()||il suono è in riproduzione|
+|stop()||il suono non è in riproduzione|
+|scegliSuono(sorgente : URL)||la sorgente del suono è quella scelta|
 
 
 ```js
-context Fischietto::start()
-pre: NOT self.premuto
-post: self.suono.inRiproduzione = true
+context Suono::start()
+pre:
+post: self.inRiproduzione = true
 ```
 ```js
-context Fischietto::stop()
-pre: self.premuto
-post: self.suono.inRiproduzione = false
+context Suono::stop()
+pre:
+post: self.inRiproduzione = false
 ```
 ```js
-context Fischietto::scegliSuono(sorgente : URL)
-post: self.suono.sorgente = sorgente
+context FischiSuono::scegliSuono(sorgente : URL)
+post: self.sorgente = sorgente
 ```
 
 ## **Creazione Squadre**
-#### metodo : Enum
+
 #### **Invarianti**:
-- metodo assume i valori "Round robin", "Random", "Fill first" e "Balanced"
+
 
 ```js
 context Creazione Squadre inv :
-(stato = "Round robin") OR (stato = "Random") OR (stato = "Fill first") OR (stato = "Balanced")
 numeroSquadre <= 99
 numeroComponeti <= 99
 numeroPartecipanti <= 9801
@@ -279,7 +288,7 @@ post: self.ultimoAggiornamento = Data.now()
 // TODO
 
 ---
-## **Lista di Attività**
+## **ListaAttività**
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
@@ -295,6 +304,7 @@ post: self.ultimoAggiornamento = Data.now()
 ## **Attività**
 
 // TODO:  Invarianti
+// titolo non vuoto e univoco
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
@@ -320,12 +330,6 @@ post: self.ultimoAggiornamento = Data.now()
 ---
 
 
-## **Feedback**
-
-| Metodo | Precondizioni | Postcondizioni |
-| --- | --- | --- |
----
-
 ## **GestoreDatiOffline**
 
 | Metodo | Precondizioni | Postcondizioni |
@@ -340,22 +344,88 @@ post: self.ultimoAggiornamento = Data.now()
 
 ## **Info**
 
-| Metodo | Precondizioni | Postcondizioni |
-| --- | --- | --- |
+#### **Invarianti**:
+
+#### titolo : String
+- il titolo deve avere al massimo 20 caratteri
+#### età : Tuple{da : int, a : int}
+- il range di età deve avere estremi compresi tra 0 e 100 esclusi
+#### durata : Tuple{da : int, a : int}
+- il range di durata deve avere estremi compresi tra 0 e 1.00 esclusi
+#### giocatori : Tuple{da : int, a : int}
+- il range di giocatori deve avere estremi compresi tra 0 e 100 esclusi
+#### giocatoriPerSquadra : int
+- il numero di giocatori per squadra dev'essere compreso tra 0 e 100 esclusi
+#### numeroSquadre : int
+- il numero di squadre squadre dev'essere compreso tra 0 e 100 esclusi
+
+
+```js
+context Info inv:
+self.titolo.size() <= 20
+```
+```js
+context Info inv:
+0 < self.età.da AND self.età.da <= self.età.a AND self.età.a < 100
+```
+```js
+context Info inv:
+0 < self.durata.da AND self.durata.da <= self.durata.a AND self.durata.a < 1.000
+```
+```js
+context Info inv:
+0 < self.giocatori.da AND self.giocatori.da <= self.giocatori.a AND self.giocatori.a < 100
+```
+```js
+context Info inv:
+0 < self.giocatoriPerSquadra AND self.giocatoriPerSquadra < 100
+```
+```js
+context Info inv:
+0 < self.numeroSquadre AND self.numeroSquadre < 100
+```
+
 ---
 
 
 ## **Filtro**
 
-| Metodo | Precondizioni | Postcondizioni |
-| --- | --- | --- |
+#### **Invarianti**:
+
+#### giocatori : Tuple{da : int, a : int}
+- il range del numero di giocatori deve essere costituito da un solo valore (l'attuale numero di giocatori presenti)
+#### mediaMinima : int
+- la media minima dev'essere compresa tra 0 e 10 inclusi
+#### numeroSegnalazioniMinimo : int
+- il numero minimo di segnalazioni dev'essere compreso tra 0 e 9.999 inclusi
+
+```js
+context Filtro inv:
+self.giocatori.da = self.giocatori.a
+```
+```js
+context Filtro inv:
+0 <= self.mediaMinima AND self.mediaMinima <= 10
+```
+```js
+context Filtro inv:
+0 <= self.numeroSegnalazioniMinimo AND self.numeroSegnalazioniMinimo < 10.000
+```
+
 ---
 
 
 ## **Faccia**
 
-| Metodo | Precondizioni | Postcondizioni |
-| --- | --- | --- |
+#### **Invarianti**:
+#### parola : String
+- la parola può avere al massimo 20 caratteri e, se il tipo è parole, non deve essere vuota
+
+```js
+context Faccia inv:
+self.parola.size() < 20 AND (self.tipo = "parole" implies self.parola <> "")
+```
+
 ---
 
 
