@@ -260,7 +260,7 @@ context Utente inv :
 |logout()|||
 ---
 
-// TODO: @teopan21
+// TODO
 
 ---
 ## **Catalogo**
@@ -276,7 +276,7 @@ context Utente inv :
 context Catalogo::aggiornaCatalogo()
 post: self.ultimoAggiornamento = Data.now()
 ```
-// TODO: @teopan21
+// TODO
 
 ---
 ## **Lista di Attività**
@@ -289,12 +289,12 @@ post: self.ultimoAggiornamento = Data.now()
 |eliminaAttività(indice : int)||l'attività con l'indice scelto viene rimossa dalla lista|
 ---
 
-// TODO: @teopan21
+// TODO
 
 ---
 ## **Attività**
 
-// TODO: @teopan21 Invarianti
+// TODO:  Invarianti
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
@@ -303,7 +303,7 @@ post: self.ultimoAggiornamento = Data.now()
 
 ## **Segnalazione**
 
-// TODO: @teopan21 invarianti
+// TODO: invarianti
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
@@ -312,7 +312,7 @@ post: self.ultimoAggiornamento = Data.now()
 
 ## **Valutazione**
 
-// TODO: @teopan21 invarianti
+// TODO: invarianti
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
@@ -361,33 +361,133 @@ post: self.ultimoAggiornamento = Data.now()
 
 ## **Colore**
 
-| Metodo | Precondizioni | Postcondizioni |
-| --- | --- | --- |
+#### **Invarianti**:
+#### R : int
+- il valore del colore rosso dev'essere compreso fra 1 e 255 inclusi
+#### G : int
+- il valore del colore verde dev'essere compreso fra 1 e 255 inclusi
+#### B : int
+- il valore del colore blu dev'essere compreso fra 1 e 255 inclusi
+
+```js
+context Colore inv:
+(0 <= R AND R < 256) AND (0 <= G AND G < 256) AND (0 <= B AND B < 256)
+```
+
 ---
 
 
 ## **URL**
 
-| Metodo | Precondizioni | Postcondizioni |
-| --- | --- | --- |
+#### **Invarianti**:
+#### protocollo : String
+- il protocollo dev'essere http o https o file
+```js
+context URL inv:
+self.protocollo = "http" OR self.protocollo = "https" OR self.protocollo = "file"
+```
 ---
 
 ## **Data**
 
-| Metodo | Precondizioni | Postcondizioni |
-| --- | --- | --- |
+#### **Invarianti**:
+#### giorno : int
+- il giorno dev'essere compreso tra 1 e 31 (inclusi), escluso 31 se il mese è aprile, giugno, settembre o novembre, esclusi 30 e 31 se il mese è febbraio, escluso anche 29 se il mese è febbraio e l'anno non è bisestile
+#### mese : int
+- il mese dev'essere compreso tra 1 e 12 (inclusi)
+#### anno : int
+- l'anno dev'essere compreso tra 1 e 9.999 (inclusi)
+#### orario : Time
+- le ore devono essere minori di 24
+
+```js
+context Data inv:
+0 < self.giorno AND self.giorno <= 31 AND (Set{2, 4, 6, 9, 11}->count(self.mese) > 0 implies self.giorno <> 31) AND (self.mese = 2 implies (self.giorno <> 30 AND if ((self.anno % 4 <> 0) OR (self.anno % 100 = 0 AND self.anno % 1000 <> 0)) then self.giorno <> 29 endif))
+```
+```js
+context Data inv:
+0 < self.mese AND self.anno <= 12
+```
+```js
+context Data inv:
+0 < self.anno AND self.anno < 10.000
+```
+```js
+context Data inv:
+self.orario.ore < 24
+```
 ---
 
 ## **Time**
 
-| Metodo | Precondizioni | Postcondizioni |
-| --- | --- | --- |
+#### **Invarianti**:
+#### ore : int
+- le ore devono essere un intero non negativo
+
+#### minuti : int
+- i minuti devono essere compresi fra 0 (incluso) e 60 (escluso)
+
+#### secondi : int
+- i secondi devono essere compresi fra 0 (incluso) e 60 (escluso)
+
+#### centesimi : int
+- i centesimi devono essere compresi fra 0 (incluso) e 100 (escluso)
+
+```js
+context Time inv:
+0 <= self.ore
+```
+```js
+context Time inv:
+0 <= self.minuti AND self.minuti < 60
+```
+```js
+context Time inv:
+0 <= self.secondi AND self.secondi < 60
+```
+```js
+context Time inv:
+0 <= self.centesimi AND self.centesimi < 100
+```
+
 ---
 
 ## **Etichetta**
 
+#### **Invarianti**:
+#### nome : String
+- i nomi delle etichette devono essere univoci, non vuoti e avere massimo 20 caratteri
+
+#### descrizione : String
+- le descrizioni delle etichette devono avere al massimo 2000 caratteri
+
+#### categoria : String
+- i nomi delle categorie devono essere non vuoti e avere massimo 20 caratteri
+
+```js
+context Etichetta inv:
+Etichetta.allInstances()->forAll(e1, e2 |
+e1 <> e2 implies e1.nome.toLowerCase() <> e2.nome.toLowerCase()) AND self.nome <> "" AND self.nome.size() <= 20
+```
+```js
+context Etichetta inv:
+self.descrizione.size() <= 2000
+```
+```js
+context Etichetta inv:
+self.categoria <> "" AND  self.categoria.size() <= 20
+```
+
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
+|creaEtichetta(richiedente : Utente, nome : String, descrizione : String, categoria : String)|il richiedente dev'essere un amministratore||
+
+```js
+context Etichetta::creaEtichetta(richiedente : Utente, nome : String, descrizione : String, categoria : String)
+pre: richiedente.ruolo = "admin"
+post:
+```
+
 ---
 
 <div class="page-break"></div>

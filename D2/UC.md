@@ -173,7 +173,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [exception 6] Dopo aver inserito 20 caratteri nel campo relativo al titolo, se l’utente proverà ad inserire altri caratteri questi non verranno inseriti, il campo di inserimento sarà evidenziato di rosso e riporterà una scritta che informa l’utente che il limite massimo di caratteri è stato raggiunto
 >> - [exception 7] Impossibile stabilire una connessione con MongoDB, il sistema informa l'utente dell'impossibilità temporanea di aggiungere l'attività.
 > #### **Extension points:**
->> - [extension 1] Allo step [8](#descrizione-7), l’utente può scegliere una o più etichette con cui contrassegnare l’attività da un menù a tendina, o crearne una nuova impostando il nome e la categoria di appartenza da un menù a tendina, o creandone una nuova.
+>> - [extension 1] Allo step [8](#descrizione-7), l’utente può scegliere una o più etichette con cui contrassegnare l’attività da un menù a tendina, o crearne una nuova impostando il nome, la descrizione e la categoria di appartenza, quest'ultima scelta da un menù a tendina o creata inserendone il nome. [[exception 6](#exceptions-7)] [[exception 2](#exceptions-7)]
 >> - [extension 2] Allo step [9](#descrizione-7), se il browser dell’utente è compatibile con service workers, un id corrispondente all'attività creata verrà memorizzato anche sul dispositivo dell’utente.
 >> - [extension 3] Allo step [8](#descrizione-7), l'utente può inserire uno o più collegamenti esterni inerenti alla descrizione dell'attività.
 >> - [extension 4] Allo step [8](#descrizione-7), l'utente può inserire un collegamento esterno all'immagine dell'attività.
