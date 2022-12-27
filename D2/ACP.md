@@ -24,7 +24,7 @@ In questa sezione vengono definiti i componenti.
 > #### *Spiegazione*
 > Su richiesta di visualizzazione di un'attività da parte del componente Catalogo o del componente Liste, il componente Attività richiede le informazioni dell'attività corrispondente al sistema esterno MongoDB, oppure delega il recupero delle informazioni al componente Gestione Dati Offline. Dopo aver recuperato i dati necessari, mostra i dettagli dell'attività all'utente.
 > #### *Interfaccia richiesta - crea nuova attività*
-> L'interfaccia crea nuova attività raccoglie il titolo della nuova attività per poi reindirizzare l'utente al modulo di modifica attività.
+> L'interfaccia crea nuova attività raccoglie il titolo della nuova attività per poi reindirizzare l'utente alla schermata in cui vengono inseriti gli altri campi dell'attività.
 > #### *Interfaccia richiesta - campi attività*
 > L'interfaccia campi attività richiede un modulo che l'utente deve riempire con le informazioni riguardanti l'attività.<br>
 > Se l'attività viene creata da zero, tutti i campi saranno inizialmente vuoti, altrimenti conterranno le informazioni precedentemente inserite.<br>
@@ -37,7 +37,7 @@ In questa sezione vengono definiti i componenti.
 > Il componente permette all'utente di creare o eliminare delle liste di attività, aggiungere o togliere un'attività da una lista inviando tali modifiche al sistema esterno MongoDB e richiedendo l'aggiornamento dei Dati Offline.<br>
 > L'utente può, inoltre, richiedere la visualizzazione di una lista salvata localmente e l'esportazione della stessa in formato PDF.
 > #### *Interfaccia richiesta - nuova lista*
-> L'interfaccia nuova lista richiede da parte dell'utente di cliccare sul pulsante + e di inserire il titolo rispettando i vincoli descritti dagli use case.
+> L'interfaccia nuova lista richiede da parte dell'utente che vuole creare una nuova lista, di inserire il titolo della stessa rispettando i vincoli descritti dagli use case.
 
 > ### Gestione Dati Offline
 > #### *Motivazione*
