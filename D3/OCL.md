@@ -227,22 +227,87 @@ post: self.sorgente = sorgente
 
 #### **Invarianti**:
 
+#### numeroSquadre : int
+- tra 0 e 100 esclusi
+#### numeroComponenti : int
+- tra 0 e 100 esclusi
+#### numeroPartecipanti : int
+- tra 0 e 9.802 esclusi
+#### conferma : bool, numeroSquadre : int, numeroComponenti : int, numeroPartecipanti : int
+- dal momento che conferma è true, gli altri tre campi devono essere compatibili (con numeroComponenti arrotondato per difetto)
 
 ```js
-context Creazione Squadre inv :
-numeroSquadre <= 99
-numeroComponeti <= 99
-numeroPartecipanti <= 9801
+context CreazioneSquadre inv :
+(0 < numeroSquadre AND numeroSquadre < 100) AND (0 < numeroComponenti AND numeroComponeti < 100) AND (0 < numeroPartecipanti AND numeroPartecipanti <= 9.801)
 ```
+```js
+context CreazioneSquadre inv :
+conferma implies (numeroPartecipanti div numeroSquadre = numeroComponenti)
+```
+
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-|inserisciNumSquadre(numero : int)|numeroSquadre deve essere minore di 99|informazioni viene incrementato di 1|
-|inserisciNumComponenti(numero : int)|numeroComponenti deve essere minore di 99|informazioni viene incrementato di 1|
-|inserisciNumPartecipanti(numero : int)|numeroPartecipanti deve essere minore di 9801|informazioni viene incrementato di 1|
-|scegliMetodo(metodo : Enum)||l'attributo metodo viene impostato con quello scelto|
-|inserisciNome(nome : String)|la lunghezza dei nomi non deve eccedere i 99 caratteri|l'attributo nomi viene impostato con i nomi scelti|
-|estrai()|<ul><li>informazioni deve essere uguale a 2 o 3</li><li>nel caso i tre valori: numeroSquadre, numeroPartecipanti e numeroComponenti non siano compatibili, verranno solamente considerati numeroPartecipanti e numeroSquadre.</ul>|<ul><li>se metodo assume il valore "Random" l'ordine delle squadre assegnate sarà completamente casuale</li><li>se metodo assume il valore "Round robin" l'assegnamento delle squadre sarà sequenziale</li><li>se il metodo assume il valore "Fill first" l'assegnamento avverrà per completamento delle squadre, ovvero riempiendo i posti di ogni squadra prima di procedere con l'assegnamento per la prossima</li><li>se il metodo assume il valore "Balanced" tutte le squadre dovranno avere lo stesso numero di partecipanti prima di procedere con gli assegnamenti</li><li>qualsiasi sia il metodo scelto, ogni volta che un partecipante viene assegnato ad una squadra il contatore di quella squadra viene incrementato di 1</li></ul>|
+|inserisciNumSquadre(numero : int)|<ul><li>il numero fornito dev'essere valido</li><li>non dev'essere ancora stata data la conferma dei parametri</li></ul>|<ul><li>numeroSquadre viene impostato al valore fornito</li><li>squadreSet viene impostato a true</li></ul>|
+|inserisciNumComponenti(numero : int)|<ul><li>il numero fornito dev'essere valido</li><li>non dev'essere ancora stata data la conferma dei parametri</li></ul>|<ul><li>numeroComponenti viene impostato al valore fornito</li><li>componentiSet viene impostato a true</li></ul>|
+|inserisciNumPartecipanti(numero : int)|<ul><li>il numero fornito dev'essere valido</li><li>non dev'essere ancora stata data la conferma dei parametri</li></ul>|<ul><li>numeroPartecipanti viene impostato al valore fornito</li><li>partecipantiSet viene impostato a true</li></ul>|
+|rendiCampiCompatibili()|<ul><li>non dev'essere ancora stata data la conferma dei parametri</li><li>devono essere stati forniti almeno 2 parametri</li></ul>|i parametri diventano confermati|
+|inserisciNome(nome : String)|<ul><li>dev'essere stata data la conferma dei parametri</li><li>nomi deve avere dimensione minore di numeroSquadre</li><li>il nome fornito non deve essere vuoto e la non deve eccedere i 99 caratteri</li></ul>|il nome fornito viene aggiunto a nomi|
+|scegliMetodo(metodo : MetodoDivisione)|dev'essere stata data la conferma dei parametri|l'attributo metodoDivisione viene impostato a quello fornito|
+|generaOrdine()|devono essere stati forniti tutti i nomi|ordineEstrazione deve contenere in posizione i l'indice della squadra a cui assegnare il partecipante i, in particolare:<ul>
+<li>deve avere dimensione pari al numero di partecipanti</li>
+<li>ogni squadra deve comparire un numero di volte pari a numeroComponenti o numeroComponenti + 1 (a seconda del resto della divisione di numeroPartecipanti per numeroSquadre)</li>
+<li>se metodoDivisione assume il valore "Round robin", l'assegnamento delle squadre sarà sequenziale</li>
+<li>se il metodo assume il valore "Fill first" l'assegnamento avverrà per completamento delle squadre, ovvero riempiendo i posti di ogni squadra prima di procedere con l'assegnamento per la prossima</li>
+<li>se il metodo assume il valore "Balanced", a blocchi consecutivi di numeroComponenti assegnamenti tutte le squadre dovranno avere lo stesso numero di partecipanti prima di procedere con il prossimo blocco</li>
+</ul>|
+|estrai() : String|deve essere rimasto almeno un elemento da estrarre|<ul><li>estratti viene incrementato di 1</li><li>il risultato e' il nome della squadra assegnata al primo partecipante non ancora estratto</li></ul>|
+
+```js
+context CreazioneSquadre::inserisciNumSquadre(numero : int)
+pre: (NOT conferma) AND 0 < numero AND numero < 100
+post: numeroSquadre = numero AND squadreSet
+```
+```js
+context CreazioneSquadre::inserisciNumComponenti(numero : int)
+pre: (NOT conferma) AND 0 < numero AND numero < 100
+post: numeroComponenti = numero AND componentSet
+```
+```js
+context Creazione squadre::inserisciNumPartecipanti(numero : int)
+pre: (NOT conferma) AND 0 < numero AND numero < 100
+post: numeroPartecipanti = numero AND partecipantiSet
+```
+```js
+context CreazioneSquadre::rendiCampiCompatibili()
+pre: (NOT conferma) AND Sequence{squadreSet, partecipantiSet, componentiSet}->select(true)->size() >= 2
+post: conferma
+```
+```js
+context CreazioneSquadre::inserisciNome(nome : String)
+pre: conferma AND nomi->size() < numeroSquadre AND nome <> "" AND nome.size() < 100
+post: nomi = nomi@pre -> append(nome)
+```
+```js
+context CreazioneSquadre::scegliMetodo(metodo : MetodoDivisione)
+pre: conferma
+post: metodoDivisione = metodo
+```
+```js
+context CreazioneSquadre::generaOrdine()
+pre: nomi->size() = numeroSquadre
+post: ordineEstrazioni.size() = numeroPartecipanti AND Sequence(1...numeroSquadre)->forAll(n : int | let c = ordineEstrazioni.count(i), r = numeroPartecipanti mod numeroSquadre in (if(i <= r) then (c = numeroComponenti) else c = (numeroComponenti + 1)))
+    AND metodoDivisione = roundRobin implies let oE = ordineEstrazioni in (oE->first = 1 AND Sequence{1...numeroPartecipanti-1}->forAll(i : int | (oE->at(i)+1) mod numeroSquadre = (oE->at(i+1)) mod numeroSquadre))
+    AND metodoDivisione = fillFrist implies let oE = ordineEstrazioni, r = numeroPartecipanti mod numeroSquadre, c = numeroComponenti  in (Sequence{1...numeroSquadre -> forAll(i : int | if (i <= r) then (Sequence{(i-1)*(c+1)+1 ... i*(c+1)}->forAll(j : int | oE->at(j)=i)) else (Sequence{r*(c+1)+(i-1-r)*c+1 ... r*(c+1)+(i-r)*c}->forAll(j : int | oE->at(j)=i)) endif)})
+    AND metodoDivisione = balanced implies let oE = ordineEstrazioni, c = numeroComponenti, n = numeroSquadre in (Sequence{1...n}->forAll(s : int | Sequence{1...c}->forAll(i : int | oE->subSequence((i-1)*n+1, i*n)->count(s) = 1) AND (s <= r implies oE->subSequence(c*n+1 ... numeroPartecipanti)->count(s) = 1)))
+    // per ogni sottosequenza da 1+i*numeroSquadre a c+i*numeroSquadre ogni squadra dovrà comparire al massimo una volta
+```
+```js
+context CreazioneSquadre::estrai() : String
+pre: estratti < numeroPartecipanti
+post: estratti = estratti@pre + 1 AND result = nomi->at(ordineEstrazione->at(estratti))
+```
+
 ---
 
 ## **Utente**
