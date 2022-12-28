@@ -412,13 +412,13 @@ post: filtroAttuale = filtro
 ```
 ```js
 context Catalogo::creaAttività(richiedente : Utente, info : Info, banner : URL,  collegamenti : Tuple{testo : String, link : URL}[0...N])
-pre: (richiedente,ruolo <> "admin" implies info.Etichette->select(e : Etichetta | e.nome = "proposta")->notEmpty()) AND info.titolo <> "" AND Attività.allInstances->select(a : Attività | a.titolo = info.titolo)->isEmpty()  AND richiedente.online
-post: let aI = Attività.allInstances in (aI->size() = aI@pre->size() + 1 AND aI@pre->forAll(a : Attività | aI->includes(a)) AND aI->select(a : Attività | a.info = info AND a.autore = richiedente AND a.banner = banner AND a.collegamenti = collegamenti AND a.ultimaModifica = Data::now()).size() = 1)
+pre: (richiedente,ruolo <> "admin" implies info.Etichette->select(e : Etichetta | e.nome = "proposta")->notEmpty()) AND info.titolo <> "" AND Attività.allInstances()->select(a : Attività | a.titolo = info.titolo)->isEmpty()  AND richiedente.online
+post: let aI = Attività.allInstances() in (aI->size() = aI@pre->size() + 1 AND aI@pre->forAll(a : Attività | aI->includes(a)) AND aI->select(a : Attività | a.info = info AND a.autore = richiedente AND a.banner = banner AND a.collegamenti = collegamenti AND a.ultimaModifica = Data::now()).size() = 1)
 ```
 ```js
-context Catalogo::mostraCatalogo()
+context Catalogo::mostraCatalogo() : Catalogo
 pre:
-post: let f = filtroAttuale in (let allMatches = Attività.allInstances->select(a : Attività |
+post: let f = filtroAttuale in (let allMatches = Attività.allInstances()->select(a : Attività |
 (f.titolo = "" OR (f.titolo.size() < a.titolo.size() AND Sequence{1...a.titolo.size()-f.titolo.size()+1}->select(i : int | a.titolo.substring(i, i+f.titolo.size()-1) = f.titolo)->notEmpty())
 )
 AND (f.descrizione = "" OR (f.descrizione.size() < a.descrizione.size() AND Sequence{1...a.descrizione.size()-f.descrizione.size()+1}->select(i : int | a.descrizione.substring(i, i+f.descrizione.size()-1) = f.descrizione)->notEmpty())
@@ -436,7 +436,7 @@ in (let pages = allMatches->size() div limite in (if(pagina <= pages) then (list
 ```js
 context Catalogo::mostraAttivitàSegnalate(richiedente : Utente)
 pre: richiedente.ruolo = "admin"
-post: lista = Attività.allInstances->select(a : Attività | 0 < a.numeroSegnalazioni)
+post: lista = Attività.allInstances()->select(a : Attività | 0 < a.numeroSegnalazioni)
 ```
 
 ---
@@ -444,16 +444,70 @@ post: lista = Attività.allInstances->select(a : Attività | 0 < a.numeroSegnala
 
 ## **ListaAttività**
 
+#### **Invarianti**:
+#### id : String
+- l'id dev'essere univoco fra tutte le liste esistenti
+#### nome : String, autore : Utente
+- il nome dev'essere univoco tra le liste di un dato utente
+#### nome : String
+- il nome deve avere un numero di caratteri compreso tra 0 (escluso) e 20 (incluso)
+#### autore : Utente
+- un utente può avere al più 99 liste di attività
+#### lista : Attività[0...N]
+- ogni lista può avere al più 9.999 attività
+
+```js
+context ListaAttività inv:
+ListaAttività.allInstances()->forAll(l1 : ListaAttività, l2 : ListaAttività | l1 <> l2 implies (l1.id <> l2.id AND (l1.nome <> l2.nome OR l1.autore <> l2.autore)))
+```
+```js
+context ListaAttività inv:
+self.nome <> "" AND self.nome.size() <= 20
+```
+```js
+context ListaAttività inv:
+Utente.allInstances()->forAll(u : Utente | ListaAttività.allInstances()->select(l : ListaAttività | l.autore = u)->size() < 100)
+```
+```js
+context ListaAttività inv:
+self.lista->size() < 10.000
+```
+
+
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-|creaLista() : listaAttivita|<ul><li>il nome della lista di attività non può superare i 20 caratteri di lunghezza</li><li>un utente non può creare più di 99 liste di attività</li><li>il nome della lista di attività non può essere uguale al nome di un'altra lista già presente</li><li>il nome della lista di attività non può essere nessuno</li></ul>|viene creata una nuova lista di attività|
-|aggiungiAttività(attività : Attività)|il numero di attività in una lista non può superare 9999|l'attività scelta viene aggiunta alla lista|
-|esporta(formato : String) : File||la lista viene esportata in formato pdf o json|
-|eliminaAttività(indice : int)||l'attività con l'indice scelto viene rimossa dalla lista|
+|creaLista(nome : String, autore : Utente)|<ul><li>l'utente dev'essere autenticato e online</li><li>il nome non può essere vuoto e non può superare i 20 caratteri di lunghezza</li><li>un utente non può creare più di 99 liste di attività</li><li>il nome della lista di attività non può essere uguale al nome di un'altra lista dell'autore</li></ul>|viene creata una nuova lista di attività|
+|aggiungiAttività(attività : Attività, richiedente : Utente)|<ul><li>il richiedente dev'essere l'autore</li><li>il numero di attività in una lista non può superare 9.999</li></ul>|l'attività scelta viene aggiunta alla lista|
+|eliminaAttività(indice : int, richiedente : Utente)|<ul><li>il richiedente dev'essere l'autore e dev'essere online</li><li>l'indice dev'essere valido</li></ul>|l'attività con l'indice scelto viene rimossa dalla lista|
+|rimuoviLista(richiedente : Utente)|il richiedente dev'essere l'autore e dev'essere online||
+|mostraLista(richiedente : Utente) : ListaAttività|il richiedente dev'essere l'autore e dev'essere online||
+|mostraElencoListe(richiedente : Utente) : ListaAttività[0...N]|il richiedente dev'essere online|vengono mostrate solo le liste di cui il richiedente è l'autore|
 
-
-// TODO
-// check utente online x modifiche
+```js
+context ListaAttività::creaLista(nome : String, autore : Utente)
+pre: (autore.ruolo = "autenticato" OR autore.ruolo = "admin") AND autore.online AND nome <> "" AND nome.size() <= 20 AND let lA = ListaAttività.allInstances()->select(l : ListaAttività | l.autore = autore) in (lA->size() < 99 AND lA->forAll(l : ListaAttività | l.nome <> nome))
+post: let lA = ListaAttività.allInstances() in (lA.size() = lA@pre->size()+1 AND let ultimo = lA->last() in (ultimo.nome = nome AND ultimo.autore = autore AND ultimo.lista->isEmpty() AND ultimo.ultimaModifica = Data::now() AND lA = lA@pre->append(lA->last())))
+```
+```js
+context ListaAttività::aggiungiAttività(attività : Attività)
+pre: self.autore = richiedente AND richiedente.online AND self.lista->size() < 9.999
+post: self.lista = self.lista@pre->append(attività)
+```
+```js
+context ListaAttività::eliminaAttività(indice : int)
+pre: self.autore = richiedente AND richiedente.online AND 0 < indice AND indice <= self.lista->size()
+post: let prec = lista@pre, s = lista@pre->size() in (if(s = 1) then lista->isEmpty() else (if (indice = 1) then (lista = prec->subSequence(2...s)) else (if (indice = s) then (lista = pre->subSequence(1, s-1)) else (lista = pre->subSequence(1, indice-1)->union(pre->subSequence(indice+1, s))) endif) endif) endif)
+```
+```js
+context ListaAttività::rimuoviLista(richiedente : Utente)
+pre: self.autore = richiedente AND richiedente.online
+post: ListaAttività->allInstances() = ListaAttività->allInstances()@pre->excluding(self)
+```
+```js
+context ListaAttività::mostraElencoListe(richiedente : Utente) : ListaAttività[0...N]
+pre: richiedente.online
+post: result = ListaAttività->allInstances()->select(l : ListaAttività | l.autore = richiedente)
+```
 
 ---
 
