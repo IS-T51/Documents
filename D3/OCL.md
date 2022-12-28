@@ -310,19 +310,68 @@ post: estratti = estratti@pre + 1 AND result = nomi->at(ordineEstrazione->at(est
 
 ---
 
+
 ## **Utente**
-#### ruolo : Enum
+
 #### **Invarianti**:
-- ruolo assume i valori "Amministratore" e "Base"
+#### id : String
+- l'id identifica univocamente un utente
+#### mail : String
+- la mail identifica univocamente un utente
+
+#### ruolo : Ruolo, id : String, mail : String
+- l'utente anonimo ha id automatico "000000000000000000000" e mail vuota
+
 ```js
 context Utente inv :
-(ruolo = "Amministratore") OR (ruolo = "Base")
+Utente.allInstances()->forAll(u1, u2 |
+u1 <> u2 implies (u1.id <> u2.id AND u1.mail <> u2.mail))
+```
+```js
+context Utente inv :
+ruolo = "anonimo" implies id = "000000000000000000000" AND mail = ""
 ```
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-|cambiaRuolo(utente, promotore, nuovoRuolo)|<ul><li>un amministratore può essere declassato a utente comune unicamente dall’amministratore che lo ha promosso</li><li>se l'attributo ruolo dell'utente ha il valore "Amministratore", il suo ruolo può essere cambiato solo se promotore è diverso dall'attributo promossoDa dell'utente</li><li>il promotore deve avere ruolo "Amministratore"</li></ul>|l'attributo ruolo dell'utente assume il valore di nuovoRuolo|
+|login()|<ul><li>l'utente dev'essere online</li><li>l'utente deve avere ruolo anonimo</li></ul>|l'utente deve avere ruolo autenticato o admin|
+|logout()|l'utente deve avere ruolo autenticato o admin|l'utente deve avere ruolo anonimo|
+|cambiaRuolo(promotore : Utente, nuovoRuolo : Ruolo)|<ul>
+<li>non si può cambiare ruolo in anonimo e non si può cambiare ruolo in quello già posseduto</li>
+<li>il promotore deve essere un amministratore</li>
+<li>un amministratore può essere declassato a utente comune unicamente dall’amministratore che lo ha promosso</li>
+</ul>|l'attributo ruolo dell'utente assume il valore di nuovoRuolo|
+|verificaRuolo(ruoloNecessario : Ruolo, richiedente : Utente) : bool|||
+|listaUtenti(richiedente : Utente) : Utente[0...N]|||
+
+```js
+context Utente::login()
+pre: online AND ruolo = "anonimo"
+post: ruolo = "autenticato" OR ruolo = "admin"
+```
+```js
+context Utente::logout()
+pre: ruolo = "autenticato" OR ruolo = "admin"
+post: ruolo = "anonimo"
+```
+```js
+context Utente::cambiaRuolo(promotore : Utente, nuovoRuolo : Ruolo)
+pre: nuovoRuolo <> anonimo AND nuovoRuolo <> self.ruolo AND self.ruolo <> anonimo AND promotore.Ruolo = "admin" AND (nuovoRuolo = "autenticato" implies promotore = self.promossoDa)
+post: self.ruolo = nuovoRuolo AND (nuovoRuolo = "admin" implies self.promossoDa = promotore)
+```
+```js
+context Utente::verificaRuolo(ruoloNecessario : Ruolo, richiedente : Utente) : bool
+pre: richiedente = self OR richiedente.ruolo = "admin"
+post:
+```
+```js
+context Utente::listaUtenti(richiedente : Utente) : Utente[0...N]
+pre: richiedente.Ruolo = "admin"
+post:
+```
+
 ---
+
 
 ## **Autenticazione**
 
@@ -335,8 +384,11 @@ context Utente inv :
 ---
 
 // TODO
+// check utente online
 
 ---
+
+
 ## **Catalogo**
 
 | Metodo | Precondizioni | Postcondizioni |
@@ -351,8 +403,11 @@ context Catalogo::aggiornaCatalogo()
 post: self.ultimoAggiornamento = Data.now()
 ```
 // TODO
+// check utente online x modifiche
 
 ---
+
+
 ## **ListaAttività**
 
 | Metodo | Precondizioni | Postcondizioni |
@@ -361,11 +416,14 @@ post: self.ultimoAggiornamento = Data.now()
 |aggiungiAttività(attività : Attività)|il numero di attività in una lista non può superare 9999|l'attività scelta viene aggiunta alla lista|
 |esporta(formato : String) : File||la lista viene esportata in formato pdf o json|
 |eliminaAttività(indice : int)||l'attività con l'indice scelto viene rimossa dalla lista|
----
+
 
 // TODO
+// check utente online x modifiche
 
 ---
+
+
 ## **Attività**
 
 // TODO:  Invarianti
@@ -374,7 +432,12 @@ post: self.ultimoAggiornamento = Data.now()
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
 |modifica(attivitàModificata : Attività)|<ul><li>la descrizione non può superare i 2000 caratteri</li><li>i due valori della durata media sono compresi tra 0 e 999, sono interi e il primo è minore del secondo</li><li>il numero di partecipanti non può superare 99</li><li>il titolo non può superare i 20 caratteri di lunghezza</li></ul>|<ul><li>tutti gli attributi assumono il valore dell'attività modificata</li><li>l'attributo ultimaModifica assume il valore della data corrente</li></ul>|
+
+
+// check utente online x modifiche
+
 ---
+
 
 ## **Segnalazione**
 
@@ -383,7 +446,11 @@ post: self.ultimoAggiornamento = Data.now()
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
 |inviaSegnala(autore : Utente, attività : Attività, voto : String)|l'attributo messaggio non può superare i 500 caratteri di lunghezza|viene aggiunta una segnalazione per l'attività scelta|
+
+// check utente online
+
 ---
+
 
 ## **Valutazione**
 
@@ -392,6 +459,9 @@ post: self.ultimoAggiornamento = Data.now()
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
 |inviaValutazione(autore : Utente, attività : Attività, voto : String)|il voto inserito deve essere un numero decimale compreso tra 0 e 5, con scarto di 0.5|<ul><li>viene aggiunta la valutazione all'attività scelta</li><li>cambia la media di voti dell'attività scelta</li>|
+
+// check utente online
+
 ---
 
 
@@ -399,13 +469,17 @@ post: self.ultimoAggiornamento = Data.now()
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
+
+// check utente online
 ---
+
 
 ## **MongoDB**
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
 ---
+
 
 ## **Info**
 
