@@ -498,12 +498,15 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 > #### **Descrizione:**
 >> 1. L'utente clicca sul pulsante "Strumenti" presente nel menù e viene reindirizzato alla schermata contenente la lista di tool.
 >> 2. L'utente clicca sul pulsante "CREAZIONE SQUADRE".
->> 3. [[extension 1](#extension-points-24)] [[extension 2](#extension-points-24)] [[extension 3](#extension-points-24)] [[exception 1](#exceptions-24)] [[exception 2](#exceptions-24)] [[exception 3](#exceptions-24)] [[exception 4](#exceptions-24)] [[exception 5](#exceptions-24)]
->> 4. L'utente inserisce nelle caselle di testo apposite, i nomi del numero di squadre prestabilito. [[exception 6](#exceptions-24)]
->> 5. [[extension 4](#extension-points-24)] [[extension 5](#extension-points-24)]
+>> 3. [[extension 1](#extension-points-24)] [[extension 2](#extension-points-24)] [[extension 3](#extension-points-24)] [[exception 3](#exceptions-24)] [[exception 4](#exceptions-24)] [[exception 5](#exceptions-24)]
+>> 4. L'utente clicca sul pulsante "Conferma". [[exception 1](#exceptions-24)] [[exception 2](#exceptions-24)]
+>> 5. L'utente inserisce nelle caselle di testo apposite i nomi del numero di squadre prestabilito. [[exception 6](#exceptions-24)]
+>> 6. [[extension 4](#extension-points-24)]
+>> 7. L'utente clicca su "Inizia estrazione"
+>> 8. Il sistema inizialmente mostra uno schermo interamente colorato con nessuna scritta, e ogni qualvolta esso viene premuto dall'utente appare il nome della squadra a cui l'utente viene assegnato. Questa operazione si ripete un numero di volte corrispondente al numero di partecipanti.
 > #### **Exceptions:**
 >> - [exception 1] Nel caso l'utente non abbia inserito almeno 2 tra le informazioni sul numero di partecipanti, numero di squadre e numero di componenti per squadra, il sistema mostrerà una schermata di errore dove chiede all'utente di inserire i valori richiesti.
->> - [exception 2] Nel caso i tre valori: numero di squadre, numero di partecipanti e numero di componenti per squadra non siano compatibili, verranno solamente considerati il numero di partecipanti e il numero di squadre.
+>> - [exception 2] Nel caso i tre valori: numero di squadre, numero di partecipanti e numero di componenti per squadra non siano compatibili, il sistema ostrerà un messaggio di avviso all'utente e terrà in considerazione solamente il numero di partecipanti e il numero di squadre.
 >> - [exception 3] L'utente può creare al più 99 squadre.
 >> - [exception 4] Ogni squadre può avere al più 99 partecipanti.
 >> - [exception 5] Il numero totale di partecipanti è al più 9801.
@@ -512,8 +515,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [extension 1] Allo step [3](#descrizione-24), l'utente può inserire nella casella di testo apposita, il numero di squadre che desidera creare.
 >> - [extension 2] Allo step [3](#descrizione-24), l'utente può inserire nella casella di testo apposita, il numero di componenti per squadra.
 >> - [extension 3] Allo step [3](#descrizione-24), l'utente può inserire nella casella di testo apposita, il numero di partecipanti dell'attività.
->> - [extension 4] Allo step [5](#descrizione-24), cliccando sul pulsante "Metodo divisione", l'utente può selezionare la metodologia di divisione in squadre desiderata.
->> - [extension 5] Allo step [5](#descrizione-24), il sistema inizialmente mostra uno schermo interamente colorato con nessuna scritta, e ogni qualvolta esso viene premuto dall'utente appare il nome della squadra a cui l'utente viene assegnato. Questa operazione si ripete un numero di volte corrispondente al numero di partecipanti.
+>> - [extension 4] Allo step [6](#descrizione-24), cliccando sul pulsante "Metodo divisione", l'utente può selezionare la metodologia di divisione in squadre desiderata, l'opzione di default è "Balanced".
 
 ----
 ![Filtrare catalogo](D2/img/UCD/25.png)
