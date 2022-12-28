@@ -377,14 +377,19 @@ post:
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-|verificaOAuth()|||
-|generaToken()|||
-|ottieniUtente() : Utente|||
-|logout()|||
----
+|richiestaToken()|il codice autorizzativo dev'essere valido||
+|dettagliAccount() : Tuple{id : String, mail : String, foto : URL}|il token non dev'essere vuoto||
 
-// TODO
-// check utente online
+```js
+context Autenticazione::richiestaToken()
+pre: codiceValido
+post:
+```
+```js
+context Autenticazione::dettagliAccount() : Tuple{id : String, mail : String, foto : URL}
+pre: token <> ""
+post:
+```
 
 ---
 
@@ -393,17 +398,46 @@ post:
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-|aggiornaCatalogo() : Attività[0...N]||l'attributo ultimoAggiornamento assume il valore della data corrente|
-|filtra(cerca : String, etichette : Etichette[0...N]) : Attività[0...N]|<ul><li>nella barra di ricerca del titolo non si possono inserire più di 20 caratteri</li><li>i due valori della durata media sono compresi tra 0 e 999, sono interi e il primo è minore del secondo</li><li>il numero di partecipanti non può superare 99</li></ul>|il catalogo viene filtrato secondo le etichette previste|
-|creaAttività(attività : Attività)|<ul><li>la descrizione non può superare i 2000 caratteri</li><li>i due valori della durata media sono compresi tra 0 e 999, sono interi e il primo è minore del secondo</li><li>il numero di partecipanti non può superare 99</li><li>il titolo non può superare i 20 caratteri di lunghezza</li></ul>|viene aggiunta una nuova attività al catalogo|
----
+
+|filtra(filtro : Filtro, richiedente : Utente)|<ul><li>se il richiedente non è un amministratore, il numero di segnalazioni minimo dev'essere 0</li><li>il numero massimo di items per pagina e il numero di pagina devono essere positivi</li></ul>|il filtroAttuale viene impostato al valore fornito|
+|creaAttività(richiedente : Utente, info : Info, banner : URL,  collegamenti : Tuple{testo : String, link : URL}[0...N])
+|<ul><li>se il richiedente non è un amministratore, le informazioni devono avere l'etichetta "proposta"</li><li>il titolo fornito in informazioni non deve coincidere con quello di un'attività esistente e non deve essere vuoto</li><li>il richiedente dev'essere online</li></ul>||viene aggiunta una nuova attività a quelle esistenti|
+|mostraCatalogo()||gli elementi di lista sono tutte e sole le attività che rispettano il filtro|
+|mostraAttivitàSegnalate(richiedente : Utente)|il richiedente deve essere amministratore|lista contiene tutte e sole le attività con almeno una segnalazione|
 
 ```js
-context Catalogo::aggiornaCatalogo()
-post: self.ultimoAggiornamento = Data.now()
+context Catalogo::filtra(filtro : Filtro, richiedente : Utente)
+pre: filtro.limite > 0 AND filtro.pagina > 0 (richiedente.ruolo <> admin implies filtro.numeroSegnalazioniMinimo = 0)
+post: filtroAttuale = filtro
 ```
-// TODO
-// check utente online x modifiche
+```js
+context Catalogo::creaAttività(richiedente : Utente, info : Info, banner : URL,  collegamenti : Tuple{testo : String, link : URL}[0...N])
+pre: (richiedente,ruolo <> "admin" implies info.Etichette->select(e : Etichetta | e.nome = "proposta")->notEmpty()) AND info.titolo <> "" AND Attività.allInstances->select(a : Attività | a.titolo = info.titolo)->isEmpty()  AND richiedente.online
+post: let aI = Attività.allInstances in (aI->size() = aI@pre->size() + 1 AND aI@pre->forAll(a : Attività | aI->includes(a)) AND aI->select(a : Attività | a.info = info AND a.autore = richiedente AND a.banner = banner AND a.collegamenti = collegamenti AND a.ultimaModifica = Data::now()).size() = 1)
+```
+```js
+context Catalogo::mostraCatalogo()
+pre:
+post: let f = filtroAttuale in (let allMatches = Attività.allInstances->select(a : Attività |
+(f.titolo = "" OR (f.titolo.size() < a.titolo.size() AND Sequence{1...a.titolo.size()-f.titolo.size()+1}->select(i : int | a.titolo.substring(i, i+f.titolo.size()-1) = f.titolo)->notEmpty())
+)
+AND (f.descrizione = "" OR (f.descrizione.size() < a.descrizione.size() AND Sequence{1...a.descrizione.size()-f.descrizione.size()+1}->select(i : int | a.descrizione.substring(i, i+f.descrizione.size()-1) = f.descrizione)->notEmpty())
+)
+AND a.età.da <= f.età.da AND f.età.a <= a.età.a
+AND f.durata.da <= a.durata.da AND a.durata.a <= f.durata.a
+AND a.giocatori.da <= f.giocatori.da AND f.giocatori.a <= a.giocatori.a
+AND f.Etichette->forAll(e : Etichetta | a.Etichette.includes(e))
+AND f.ultimaModifica(lessThan(a.ultimaModifica))
+AND f.autore.id = "000000000000000000000" OR f.autore = a.autore
+AND f.numeroSegnalazioniMinimo <= a.numeroSegnalazioni
+)
+in (let pages = allMatches->size() div limite in (if(pagina <= pages) then (lista = allMAtches->subSequence((pagina-1)*limite+1, pagina*limite)) else (lista = allMatches->subSequence(pagina-1)*limite+1, allMatches->size())) endif))
+```
+```js
+context Catalogo::mostraAttivitàSegnalate(richiedente : Utente)
+pre: richiedente.ruolo = "admin"
+post: lista = Attività.allInstances->select(a : Attività | 0 < a.numeroSegnalazioni)
+```
 
 ---
 
@@ -469,8 +503,15 @@ post: self.ultimoAggiornamento = Data.now()
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
+|aggiornaCatalogo() : Attività[0...N]||l'attributo ultimoAggiornamento assume il valore della data corrente|
 
 // check utente online
+
+```js
+context Catalogo::aggiornaCatalogo()
+post: self.ultimoAggiornamento = Data.now()
+```
+
 ---
 
 
@@ -487,10 +528,12 @@ post: self.ultimoAggiornamento = Data.now()
 
 #### titolo : String
 - il titolo deve avere al massimo 20 caratteri
+#### descrizione : String
+- la descrizione deve avere al massimo 2.000 caratteri
 #### età : Tuple{da : int, a : int}
 - il range di età deve avere estremi compresi tra 0 e 100 esclusi
 #### durata : Tuple{da : int, a : int}
-- il range di durata deve avere estremi compresi tra 0 e 1.00 esclusi
+- il range di durata deve avere estremi compresi tra 0 e 10.00 esclusi
 #### giocatori : Tuple{da : int, a : int}
 - il range di giocatori deve avere estremi compresi tra 0 e 100 esclusi
 #### giocatoriPerSquadra : int
@@ -501,7 +544,7 @@ post: self.ultimoAggiornamento = Data.now()
 
 ```js
 context Info inv:
-self.titolo.size() <= 20
+self.titolo.size() <= 20 AND self.descrizione.size() <= 2.000
 ```
 ```js
 context Info inv:
@@ -509,7 +552,7 @@ context Info inv:
 ```
 ```js
 context Info inv:
-0 < self.durata.da AND self.durata.da <= self.durata.a AND self.durata.a < 1.000
+0 < self.durata.da AND self.durata.da <= self.durata.a AND self.durata.a < 10.000
 ```
 ```js
 context Info inv:
@@ -605,7 +648,7 @@ self.protocollo = "http" OR self.protocollo = "https" OR self.protocollo = "file
 #### mese : int
 - il mese dev'essere compreso tra 1 e 12 (inclusi)
 #### anno : int
-- l'anno dev'essere compreso tra 1 e 9.999 (inclusi)
+- l'anno dev'essere compreso tra 0 e 9.999 (inclusi)
 #### orario : Time
 - le ore devono essere minori di 24
 
@@ -619,7 +662,7 @@ context Data inv:
 ```
 ```js
 context Data inv:
-0 < self.anno AND self.anno < 10.000
+0 <= self.anno AND self.anno < 10.000
 ```
 ```js
 context Data inv:
