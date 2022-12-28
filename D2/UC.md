@@ -158,17 +158,16 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 2. L’utente inserisce il titolo dell’attività. [[exception 6](#exceptions-7)]
 >> 3. L’utente inserisce la descrizione dell’attività. [[exception 2](#exceptions-7)]
 >> 4. L’utente inserisce il range di età per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale. [[exception 3](#exceptions-7)]
->> 5. L’utente sceglie un’unità di misura per la durata media dell’attività da un menù a tendina.
->> 6. L’utente inserisce il range di durata dell’attività nell’unità di misura scelta. [[exception 4](#exceptions-7)]
->> 7. L’utente inserisce il range del numero di giocatori per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale. [[exception 3](#exceptions-7)]
->> 8. [[extension 1](#extension points-7)], [[extension 3](#extension points-7)], [[extension 4](#extension points-7)], [[extension 5](#extension points-7)]
->> 9. L’utente clicca sul pulsante per confermare [[exception 5](#exceptions-7)] [[exception 1](#descrizione-7)]
->> 10. Il sistema invia l'attività creata a MongoDB [[extension 2](#exceptions-7)] [[exception 7](#descrizione-7)]
+>> 5. L’utente inserisce il range di durata dell’attività in minuti. [[exception 4](#exceptions-7)]
+>> 6. L’utente inserisce il range del numero di giocatori per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale. [[exception 3](#exceptions-7)]
+>> 7. [[extension 1](#extension points-7)], [[extension 3](#extension points-7)], [[extension 4](#extension points-7)], [[extension 5](#extension points-7)]
+>> 8. L’utente clicca sul pulsante per confermare [[exception 5](#exceptions-7)] [[exception 1](#descrizione-7)]
+>> 9. Il sistema invia l'attività creata a MongoDB [[extension 2](#exceptions-7)] [[exception 7](#descrizione-7)]
 > #### **Exceptions:**
 >> - [exception 1] In assenza di connessione ad Internet il sistema mostrerà all’utente un messaggio di errore che indicherà l’assenza di connessione
 >> - [exception 2] Dopo aver inserito 2000 caratteri nel campo relativo alla descrizione, se l’utente proverà ad inserire altri caratteri questi non verranno inseriti, il campo di inserimento sarà evidenziato di rosso e riporterà una scritta che informa l’utente che il limite massimo di caratteri è stato raggiunto
 >> - [exception 3] Se il valore finale è strettamente minore del valore iniziale o se uno dei due valori non è intero o se uno dei due valori è negativo o se uno dei due valori è maggiore di 99, il campo di inserimento del range sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati
->> - [exception 4] Se il valore finale è strettamente minore del valore iniziale o se uno dei due valori non è intero o se uno dei due valori è negativo o se uno dei due valori è maggiore di 999, il campo di inserimento del range sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati
+>> - [exception 4] Se il valore finale è strettamente minore del valore iniziale o se uno dei due valori non è intero o se uno dei due valori è negativo o se uno dei due valori è maggiore di 9.999, il campo di inserimento del range sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati
 >> - [exception 5] Se l’utente ha inserito un titolo corrispondente a quello di un’attività già presente nel catalogo o proposta da un’altro utente, o se l'utente ha lasciato il campo del titolo vuoto, il sistema mostrerà un messaggio di errore ed evidenzierà in rosso il campo di inserimento del titolo
 >> - [exception 6] Dopo aver inserito 20 caratteri nel campo relativo al titolo, se l’utente proverà ad inserire altri caratteri questi non verranno inseriti, il campo di inserimento sarà evidenziato di rosso e riporterà una scritta che informa l’utente che il limite massimo di caratteri è stato raggiunto
 >> - [exception 7] Impossibile stabilire una connessione con MongoDB, il sistema informa l'utente dell'impossibilità temporanea di aggiungere l'attività.
@@ -256,17 +255,16 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 2. L’utente inserisce il titolo dell’attività. [[exception 6](#exceptions-12)]
 >> 3. L’utente inserisce la descrizione dell’attività. [[exception 2](#exceptions-12)]
 >> 4. L’utente inserisce il range di età per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale. [[exception 3](#exceptions-12)]
->> 5. L’utente sceglie un’unità di misura per la durata media dell’attività da un menù a tendina.
->> 6. L’utente inserisce il range di durata dell’attività nell’unità di misura scelta. [[exception 4](#exceptions-12)]
->> 7. L’utente inserisce il range del numero di partecipanti per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale. [[exception 3](#exceptions-12)]
->> 8. [[extension 1](#extension-points-12)], [[extension 3](#extension-points-12)], [[extension 4](#extension-points-12)], [[extension 5](#extension-points-12)]
->> 9. L’utente clicca sul pulsante per confermare [[extension 2](#extension-points-12)] [[exception 5](#exceptions-12)] [[exception 1](#descrizione-12)]
->> 10. Il sistema invia la proposta di attività a MongoDB [[extension 2](#exceptions-12)] [[exception 7](#exceptions-12)]
+>> 5. L’utente inserisce il range di durata dell’attività in minuti. [[exception 4](#exceptions-12)]
+>> 6. L’utente inserisce il range del numero di partecipanti per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale. [[exception 3](#exceptions-12)]
+>> 7. [[extension 1](#extension-points-12)], [[extension 3](#extension-points-12)], [[extension 4](#extension-points-12)], [[extension 5](#extension-points-12)]
+>> 8. L’utente clicca sul pulsante per confermare [[extension 2](#extension-points-12)] [[exception 5](#exceptions-12)] [[exception 1](#descrizione-12)]
+>> 9. Il sistema invia la proposta di attività a MongoDB [[extension 2](#exceptions-12)] [[exception 7](#exceptions-12)]
 > #### **Exceptions:**
 >> - [exception 1] In assenza di connessione ad Internet il sistema mostrerà all’utente un messaggio di errore che indicherà l’assenza di connessione
 >> - [exception 2] Dopo aver inserito 2000 caratteri nel campo relativo alla descrizione, se l’utente proverà ad inserire altri caratteri questi non verranno inseriti, il campo di inserimento sarà evidenziato di rosso e riporterà una scritta che informa l’utente che il limite massimo di caratteri è stato raggiunto
 >> - [exception 3] Se il valore finale è strettamente minore del valore iniziale o se uno dei due valori non è intero o se uno dei due valori è negativo o se uno dei due valori è maggiore di 99, il campo di inserimento del range sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati
->> - [exception 4] Se il valore finale è strettamente minore del valore iniziale o se uno dei due valori non è intero o se uno dei due valori è negativo o se uno dei due valori è maggiore di 999, il campo di inserimento del range sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati
+>> - [exception 4] Se il valore finale è strettamente minore del valore iniziale o se uno dei due valori non è intero o se uno dei due valori è negativo o se uno dei due valori è maggiore di 9.999, il campo di inserimento del range sarà evidenziato in rosso e riporterà una scritta che informa l’utente dei vincoli non rispettati
 >> - [exception 5] Se l’utente ha inserito un titolo corrispondente a quello di un’attività già presente nel catalogo o proposta da un’altro utente, o se l'utente ha lasciato il campo del titolo vuoto, il sistema mostrerà un messaggio di errore ed evidenzierà in rosso il campo di inserimento del titolo
 >> - [exception 6] Dopo aver inserito 20 caratteri nel campo relativo al titolo, se l’utente proverà ad inserire altri caratteri questi non verranno inseriti, il campo di inserimento sarà evidenziato di rosso e riporterà una scritta che informa l’utente che il limite massimo di caratteri è stato raggiunto
 >> - [exception 7] Impossibile stabilire una connessione con MongoDB, il sistema informa l'utente dell'impossibilità temporanea di proporre un'attività.
@@ -541,7 +539,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> - [extension 2] L'utente può inserire un'espressione che deve essere presente per intero (e non frammentata) all'interno del titolo di un'attività; di default il campo è vuoto. [[exception 2](#exceptions-25)]
 >> - [extension 3] L'utente può inserire un'espressione che deve essere presente per intero (e non frammentata) all'interno della descrizione di un'attività; di default il campo è vuoto. [[exception 3](#exceptions-25)]
 >> - [extension 4] L’utente può inserire un range di età dei partecipanti all'attività che deve essere compreso (estremi inclusi) nel range di età per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale; di default il primo valore è 0, il secondo è 99. [[exception 4](#exceptions-25)]
->> - [extension 5] L’utente può scegliere un’unità di misura per il range di durata dell’attività da un menù a tendina e un intervallo di tempo all'interno del quale deve essere compreso il range di durata dell'attività, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale; di default l'unità di misura è in ore, il primo valore è 0, il secondo è 999. [[exception 5](#exceptions-25)]
+>> - [extension 5] L’utente può scegliere un intervallo di tempo all'interno del quale deve essere compreso il range di durata dell'attività, fornendo un valore intero non negativo iniziale e un valore intero non negativo finale; di default il primo valore è 0, il secondo è 9.999. [[exception 5](#exceptions-25)]
 >> - [extension 6] L'utente può inserire un numero partecipanti che deve essere compreso nel range del numero di partecipanti per cui l’attività è adeguata o raccomandata, fornendo un valore intero non negativo; di default il campo è vuoto. [[exception 6](#exceptions-25)]
 >> - [extension 7] L'utente può aprire la lista dei tag e selezionare un insieme di tag che l'attività deve avere; di default il campo è vuoto.
 
