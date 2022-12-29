@@ -476,7 +476,7 @@ self.autore.ruolo <> "anonimo" AND self.lista->size() < 10.000
 |creaLista(nome : String, autore : Utente)|<ul><li>l'utente dev'essere autenticato e online</li><li>il nome non può essere vuoto e non può superare i 20 caratteri di lunghezza</li><li>un utente non può creare più di 99 liste di attività</li><li>il nome della lista di attività non può essere uguale al nome di un'altra lista dell'autore</li></ul>|viene creata una nuova lista di attività|
 |aggiungiAttività(attività : Attività, richiedente : Utente)|<ul><li>il richiedente dev'essere l'autore</li><li>il numero di attività in una lista non può superare 9.999</li></ul>|l'attività scelta viene aggiunta alla lista|
 |eliminaAttività(indice : int, richiedente : Utente)|<ul><li>il richiedente dev'essere l'autore e dev'essere online</li><li>l'indice dev'essere valido</li></ul>|l'attività con l'indice scelto viene rimossa dalla lista|
-|rimuoviLista(richiedente : Utente)|il richiedente dev'essere l'autore e dev'essere online||
+|rimuoviLista(richiedente : Utente)|<ul><li>il richiedente dev'essere l'autore e dev'essere online</li><li>non si può rimuovere la lista dei preferiti</li></ul>||
 |mostraLista(richiedente : Utente) : ListaAttività|il richiedente dev'essere l'autore e dev'essere online o avere il gestore dati offline attivo||
 |mostraElencoListe(richiedente : Utente) : ListaAttività[0...N]|il richiedente dev'essere online o avere il gestore dati offline attivo|vengono mostrate solo le liste di cui il richiedente è l'autore|
 
@@ -497,7 +497,7 @@ post: let prec = lista@pre, s = lista@pre->size() in (if(s = 1) then lista->isEm
 ```
 ```js
 context ListaAttività::rimuoviLista(richiedente : Utente)
-pre: self.autore = richiedente AND (richiedente.online OR richiedente.gestoreOffline.attivo)
+pre: self.autore = richiedente AND (richiedente.online OR richiedente.gestoreOffline.attivo) AND self.nome <> "Preferiti"
 post: ListaAttività->allInstances() = ListaAttività->allInstances()@pre->excluding(self)
 ```
 ```js
