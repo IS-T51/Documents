@@ -58,7 +58,7 @@ In questa sezione vengono definiti i componenti.
 > Su richiesta dell'utente, esso si occupa in primo luogo di inviare una richiesta di autenticazione a Google e riceve da esso codice autorizzativo. Il componente effettua in seguito dei controlli interni su tale codice, e, qualora questo risulti valido, il componente scambia il codice con Google per ottenere le informazioni desiderate sull'account Google dell'utente.<br>
 > Sempre su richiesta dell'utente, il componente permetterà il logout, rimuovendo i file personali salvati localmente se presenti.
 > #### *Interfaccia richiesta - dettagli account*
-> L'interfaccia dettagli account richiede la mail dell'account google dell'utente, l'id del profilo e il collegamento all'immagine di profilo<br/>
+> L'interfaccia dettagli account scambia presso google il codice autorizzativo con un access token e un id token, decodifica l'id token da base 64 per ottenere email e id di google, e rende possibile usare l'access token per ottenere la foto profilo<br/>
 > #### *Interfaccia richiesta - codice autorizzativo*
 > L'interfaccia chiederà una stringa contenente il codice autorizzativo necessario ad ottenere un token associato all'account Google.
 
