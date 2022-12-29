@@ -157,19 +157,37 @@ Pulsante di collegamento alle schermata di gestione utenti
 > Pulsante di collegamento alla schermata precedente, ovvero la schermata strumenti
 
 > #### RFE34.
-> Spazio di inserimento per il numero di facce del dado
+> Pulsante che apre un menu a tendina contenente il tipo di elementi che si possono estrarre con i dadi
 
 > #### RFE35.
-> Pulsante avvia, che sceglie un numero casuale da 1 al numero di facce del dado e lo scrive su schermo
+> Campo testuale dove è possibile indicare il numero di elementi da estrarre
+
+> #### RFE36. 
+> Se il tipo degli elementi scelto è "Numeri" vi saranno da immettere in due campi testuali l'estremo inferiore del range da cui si vuole estrarre e il passo tra due elementi consecutivi
+
+> #### RFE37.
+> Se il tipo degli elementi scelto è "Parole" vi saranno un campo testuale ed un pulsante di conferma per ogni parola da inserire
+
+> #### RFE38.
+> Se il tipo degli elementi scelto è "Colori" verrà mostrata all'utente una griglia di colori e un pulsante di conferma per ogni colore da inserire
+
+> #### RFE39.
+> Se il tipo degli elementi scelto è "Immagini" ci sarà un pulsante "Inserisci" che l'utente cliccherà per inserire un'immagine e un pulsante conferma per ogni immagine da inserire
+
+> #### RFE40.
+> Campo selezionabile per l'estrazione con reimmissione.
+
+> #### RFE41.
+> Pulsante "Estrai", che sceglie un elemento casuale tra il campione di elementi scelto e lo mostra all'utente.
 
 ### FISCHIETTO
 > [RFE33.](#rfe33)
 
 > #### RFE36.
-> Immagine di fischietto, che una volta premuta fa riprodurre il suono selezionato
+> Immagine di un fischietto, che una volta premuta fa riprodurre il suono selezionato
 
 > #### RFE37.
-> Pulsante che apre un menu a tendina contenente altri suoni che è possibile selezionare
+> Pulsante che apre un menu a tendina contenente altri suoni che è possibile selezionare e un pulsante "+" che permette all'utente di caricare un nuovo suono da utilizzare
 
 <center><img alt="Strumento FISCHIETTO" src="D1/img/RFE/fischietto.png" width="30%"/></center>
 
@@ -177,90 +195,112 @@ Pulsante di collegamento alle schermata di gestione utenti
 > [RFE33.](#rfe33)
 
 > #### RFE38.
-> Cronometro inizialmente azzerato, con segnati ore, minuti e secondi nella forma 00:00:00
+> Cronometro inizialmente azzerato, con segnati minuti, secondi e centesimi di secondo nella forma 00:00.00
 
 > #### RFE39.
-> Pulsante di avvio del cronometro. Una volta avviato quest’ultimo, il pulsante diventa pausa/avvio
+> Pulsante "Avvia" che serve ad avviare il cronometro. Una volta avviato il cronometro il pulsante "Avvia" sparisce sostituito da "Ferma"
 
 > #### RFE40.
-> Pulsante di stop e riavvio. Quando il cronometro è avviato l’utente lo usa per fermarlo. Quando il cronometro è stato fermato l’utente lo usa per riavviare il cronometro, per riportarlo a zero
+> Pulsante "Parziale" che serve a salvare i tempi parziali del cronometro senza fermarlo. Quando il cronometro non è ancora stato avviato il pulsante appare di colore grigio e non è ancora selezionabile, ma una volta che è stato premuto sul pulsante "Avvia" esso diventa disponibile
+
+> #### RFE41.
+> Pulsante "Ferma" che serve a mettere in pausa il cronometro. Una volta messo in pausa il cronometro i pulsanti "Ferma" e "Parziale" verrano sostituiti rispettivamente dai pulsanti "Riprendi" e "Ripristina"
+
+> #### RFE42.
+> Pulsante "Ripristina" che serve a riportare il valore del cronometro a 00:00.00. Una volta fatto il reset del valore compariranno nuovamente i pulsanti "Avvia" e "Parziale" al posto di "Riprendi" e "Ripristina"
+
+> #### RFE43.
+> Sotto al tempo del timer, ogni volta che il pulsante "Parziale" viene premuto, vengono riportati i tempi parziali salvati, scritti con un carattere più piccolo, mantenendo più in basso quello col valore minore
 
 ### TIMER
 > [RFE33.](#rfe33)
 > [RFE37.](#rfe37)
 
-> #### RFE41.
-> imer inizialmente azzerato, con segnati ore, minuti e secondi nella forma 00:00:00. L’utente può impostare il tempo desiderato scorrendo sulle cifre.
-
-> #### RFE42.
-> Pulsante di avvio del timer. Una volta avviato quest’ultimo, il pulsante diventa pausa/avvio
-
-> #### RFE43.
-> Pulsante di stop. Quando il timer è avviato l’utente lo usa per fermarlo e il timer torna al tempo impostato precedentemente, in attesa di un nuovo avvio o di una modifica
-
 > #### RFE44.
+> Timer inizialmente azzerato, con segnati ore, minuti e secondi nella forma 00:00:00. L’utente può impostare il tempo desiderato scorrendo sulle cifre.
+
+> #### RFE45.
+> Pulsante "Avvia" che serve ad avviare il timer. Una volta avviato il timer il pulsante "Avvia" sparisce e compaiono "Pausa" e "Annulla"
+
+> #### RFE46.
+> Pulsante "Pausa" che serve a fermare momentaneamente il conto alla rovescia del timer. Una volta messo in pausa il timer al posto del pulsante "Pausa" comparirà il pulsante "Riprendi"
+
+> #### RFE47.
+> Pulsante "Annulla" che serve a fermare il timer e riportarlo al valore impostato precedentemente. I pulsanti "Pausa"/"Riprendi" e "Annulla" spariranno, sostituiti dal pulsante "Avvia"
+
+> #### RFE48.
 > Una volta finito il tempo del timer, viene riprodotto il suono selezionato
 
 ### Impostazioni SEGNA-PUNTI
 > [RFE33.](#rfe33)
 
-> #### RFE45.
+> #### RFE49.
 > Tasto per aggiungere una nuova squadra, specificandone il nome in un campo testuale
 
-> #### RFE46.
-> Lista delle squadre già presenti, nella quale è possibile eliminare una squadra o modificarne il nome
+> #### RFE50.
+> Lista delle squadre già presenti.
 
-> #### RFE47.
-> Pulsante di avvio, che porta alla schermata [SEGNA-PUNTI](#segna-punti)
+> #### RFE51.
+> Pulsante di conferma, che porta alla schermata [SEGNA-PUNTI](#segna-punti)
 
 ### SEGNA-PUNTI
-> #### RFE48.
+> #### RFE52.
 > Pulsante di collegamento alla schermata precedente, ovvero la schermata [Impostazioni SEGNA-PUNTI](#impostazioni-segna-punti)
 
-> #### RFE49.
+> #### RFE53.
 > Lista scorribile delle squadre, indicante nome e numero di punti correnti
 
-> #### RFE50.
-> Pulsante di incremento e di decremento punto accanto per ogni squadra
+> #### RFE54.
+> Pulsante di incremento e di decremento punto accanto ad ogni squadra
 
 ### Impostazioni CREAZIONE SQUADRE
 > [RFE33.](#rfe33)
 
-> #### RFE51.
+> #### RFE55.
 > Campo di inserimento del numero di giocatori
 
-> #### RFE52.
+> #### RFE56.
 > Campo di inserimento del numero di persone per squadra
 
-> #### RFE53.
+> #### RFE57.
 > Campo di inserimento del numero di squadre
 
-> #### RFE54.
-> Campo di inserimento dei nomi delle squadre
-
-> #### RFE55.
-> Pulsante che apre menu a tendina per scegliere metodo di divisione in squadre
-
-> #### RFE56.
-> Pulsante che reindirizza alla schermata [CREAZIONE SQUADRE](#creazione-squadre)
+> #### RFE58.
+> Pulsante di conferma che reindirizza alla schermata [CREAZIONE SQUADRE](#creazione-squadre)
 
 ### CREAZIONE SQUADRE
-> #### RFE57.
-> Pulsante di collegamento alla schermata precedente, ovvero la schermata [Impostazioni CREAZIONE SQADRE](#impostazioni-creazione-squadre)
+> #### RFE59.
+> Pulsante di collegamento alla schermata precedente, ovvero la schermata [Impostazioni CREAZIONE SQUADRE](#impostazioni-creazione-squadre)
 
-> #### RFE58.
-> Pulsante per passare alla prossima estrazione. A ogni estrazione viene visualizzato sullo schermo il nome della squadra di appartenenza
+> #### RFE60.
+> Campo di inserimento dei nomi delle squadre
+
+> #### RFE61.
+> Pulsante che apre menu a tendina per scegliere metodo di divisione in squadre. Il metodo impostato di default è "Balanced"
+
+> #### RFE62.
+> Pulsante "Inizia estrazione" che reindirizza l'utente alla schermata [Estrazione Squadre](#estrazione-squadre)
+
+## Estrazione Squadre
+> #### RFE63.
+> Schermata colorata senza alcuna scritta che precede l'inizio delle estrazioni
+
+> #### RFE62.
+> Cliccare sullo schermo per passare alla prossima estrazione. A ogni estrazione viene visualizzato sullo schermo il nome della squadra di appartenenza
 
 ## Liste
 ### Visualizzato da [Autenticato](#autenticato) e [Amministratore](#amministratore)
-> #### RFE59.
+> #### RFE63.
 > Lista di liste create dall’utente
 
-> #### RFE60.
+> #### RFE64.
 > Cliccando sul nome di una lista, l’utente viene reindirizzato alla schermata "[Lista](#lista)" della relativa lista
 
-> #### RFE61.
-> Pulsante che aggiunge una lista, aprendo una finestra dove è presente un campo nel quale l’utente deve inserire il nome della nuova lista
+> #### RFE65.
+> Pulsante che aggiunge una lista, aprendo una finestra dove è presente un campo nel quale l’utente deve inserire il nome della nuova lista e un pulsante di conferma
+
+> #### RFE66.
+> Quando l'utente tiene premuto su una lista appare un pulsante con l'immagine di un cestino, che ha la funzione di eliminare tale lista
 
 ## Lista
 ### Visualizzato da [Autenticato](#autenticato) e [Amministratore](#amministratore)
@@ -272,30 +312,30 @@ Pulsante di collegamento alle schermata di gestione utenti
 > [RFE8.](#rfe8)
 > [RFE9.](#rfe9)
 
-> #### RFE62.
+> #### RFE66.
 > Pulsante di collegamento alla schermata precedente, ovvero la schermata [Liste](lista)
 
-> #### RFE63.
+> #### RFE67.
 > Nome della lista indicato
 
-> #### RFE64.
-> Lista di attività appartenenti alla lista sopraindicata
+> #### RFE68.
+> Lista di attività appartenenti alla lista sopraindicata, dove cliccando sul nome o sull’immagine l’utente viene reindirizzato alla schermata della relativa attività
 
-> #### RFE65.
-> Pulsante che permette di esportare la lista con tutte le informazioni sulle attività, in formato PDF
+> #### RFE69.
+> Pulsante che permette di esportare la lista con tutte le informazioni sulle attività, in formato PDF o JSON
 
 ## Attività
 ### Visualizzato da [Anonimo](#anonimo)
-> #### RFE66.
+> #### RFE70.
 > Pulsante di collegamento alla schermata precedente, ovvero il [Catalogo](#catalogo) o una [Lista](#lista)
 
-> #### RFE67.
+> #### RFE71.
 > Nome e immagine dell’attività
 
-> #### RFE68.
+> #### RFE72.
 > Descrizione dell’attività, valutazione media, fascia d'età consigliata, numero di giocatori e durata
 
-> #### RFE69.
+> #### RFE73.
 > Etichette caratterizzanti l'attività
 
 ### Visualizzato da [Autenticato](#autenticato)
@@ -305,13 +345,13 @@ Pulsante di collegamento alle schermata di gestione utenti
 > [RFE68.](#rfe68)
 > [RFE69.](#rfe69)
 
-> #### RFE70.
+> #### RFE74.
 > Pulsante che aggiunge l’attività alla lista predefinita "preferiti"
 
-> #### RFE71.
+> #### RFE75.
 > Pulsante che aggiunge l’attività a una lista. Si apre un menu a tendina con tutte le liste e l’utente può selezionare le liste a cui aggiungere l’attività stessa
 
-> #### RFE72.
+> #### RFE76.
 > Per le attività create dall’utente compare un pulsante che apre la schermata [Modifica attività](#modifica-attività)
 
 <center><img alt="Attività" src="D1/img/RFE/attività.png" width="30%"/></center>
@@ -324,30 +364,30 @@ Pulsante di collegamento alle schermata di gestione utenti
 > [RFE66.](#rfe66)
 > [RFE67.](#rfe67)
 
-> #### RFE73.
+> #### RFE77.
 > Pulsante che apre la schermata [Modifica attività](#modifica-attività)
 
 ## Modifica attività
 ### Visualizzato da [Amministratore](#amministratore)
-> #### RFE74.
+> #### RFE78.
 > Pulsante di collegamento alla schermata precedente, ovvero all’[Attività](#attività)
 
-> #### RFE75.
+> #### RFE79.
 > Campo di inserimento del titolo
 
-> #### RFE76.
+> #### RFE80.
 > Campo di inserimento della descrizione
 
-> #### RFE77.
+> #### RFE81.
 > Campo di inserimento della fascia di età
 
-> #### RFE78.
+> #### RFE82.
 > Campo di inserimento della durata
 
-> #### RFE79.
+> #### RFE83.
 > Campo di inserimento del numero di giocatori
 
-> #### RFE80.
+> #### RFE84.
 > Lista di etichette da selezionare
 
 ## Proponi attività
@@ -361,25 +401,25 @@ Pulsante di collegamento alle schermata di gestione utenti
 > [RFE79.](#rfe79)
 > [RFE80.](#rfe80)
 
-> #### RFE81.
+> #### RFE85.
 > Campo di inserimento dell’autore dell’attività
 
 ## Tutorial
 ### Visualizzato da [Anonimi](#anonimi)
-> #### RFE82.
+> #### RFE86.
 > Per ogni schermata compare inizialmente una finestra contenente una breve spiegazione di utilizzo
 
-> #### RFE83.
+> #### RFE87.
 > Per ogni finestra c’è un campo contrassegnabile che impedisce alla finestra stessa di essere nuovamente visualizzata
 
 ## Gestione utenti
 ### Visualizzato da [Amministratore](#amministratore)
 > [RFE2.](#rfe2)
 
-> #### RFE84.
+> #### RFE88.
 > Lista degli utenti che hanno effettuato l’accesso all’applicazione
 
-> #### RFE85.
+> #### RFE89.
 > Per ogni utente è presente un pulsante che, selezionato assume il colore verde e indica la promozione dell’utente stesso ad amministratore, mentre deselezionato assume il colore grigio e indica che l’utente stesso non è un amministratore
 
 <div class="page-break"></div>
