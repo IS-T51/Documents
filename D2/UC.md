@@ -504,7 +504,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 8. Il sistema inizialmente mostra uno schermo interamente colorato con nessuna scritta, e ogni qualvolta esso viene premuto dall'utente appare il nome della squadra a cui l'utente viene assegnato. Questa operazione si ripete un numero di volte corrispondente al numero di partecipanti.
 > #### **Exceptions:**
 >> - [exception 1] Nel caso l'utente non abbia inserito almeno 2 tra le informazioni sul numero di partecipanti, numero di squadre e numero di componenti per squadra, il sistema mostrerà una schermata di errore dove chiede all'utente di inserire i valori richiesti.
->> - [exception 2] Nel caso i tre valori: numero di squadre, numero di partecipanti e numero di componenti per squadra non siano compatibili, il sistema ostrerà un messaggio di avviso all'utente e terrà in considerazione solamente il numero di partecipanti e il numero di squadre.
+>> - [exception 2] Nel caso i tre valori: numero di squadre, numero di partecipanti e numero di componenti per squadra non siano compatibili, il sistema mostrerà un messaggio di avviso all'utente e terrà in considerazione solamente il numero di partecipanti e il numero di squadre.
 >> - [exception 3] L'utente può creare al più 99 squadre.
 >> - [exception 4] Ogni squadre può avere al più 99 partecipanti.
 >> - [exception 5] Il numero totale di partecipanti è al più 9801.
@@ -571,7 +571,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 > #### **Descrizione:**
 >> 1. L'utente clicca su "Liste".
 >> 2. Il sistema chiede l'elenco delle liste di attività a un database (MongoDB o IndexedDB). [[extension 1](#extension-points-27)] [[extension 2](#extension-points-27)] [[exception 2](#exceptions-27)]
->> 2. Il sistema fornisce l'elenco di lista di attività con titolo della lista, sulle quali è possibile cliccare.
+>> 2. Il sistema fornisce l'elenco di liste di attività con titolo della lista, sulle quali è possibile cliccare.
 >> 3. L'utente clicca su una lista e il sistema mostrà all'utente l'elenco di attività presenti in quella lista. [[extension 3](#extension-points-27)]
 >> 4. Cliccando su un’attività, l’utente viene reindirizzato alla schermata con le informazioni sull’attività stessa. [[exception 1](#exceptions-27)]
 > #### **Exceptions:**
