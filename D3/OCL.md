@@ -634,7 +634,7 @@ post:
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-||||
+|qualsiasi metodo|isConnected dev'essere true|il risultato è descritto nel nome del metodo|
 ---
 
 
