@@ -300,7 +300,6 @@ post: ordineEstrazioni.size() = numeroPartecipanti AND Sequence(1...numeroSquadr
     AND metodoDivisione = roundRobin implies let oE = ordineEstrazioni in (oE->first = 1 AND Sequence{1...numeroPartecipanti-1}->forAll(i : int | (oE->at(i)+1) mod numeroSquadre = (oE->at(i+1)) mod numeroSquadre))
     AND metodoDivisione = fillFrist implies let oE = ordineEstrazioni, r = numeroPartecipanti mod numeroSquadre, c = numeroComponenti  in (Sequence{1...numeroSquadre -> forAll(i : int | if (i <= r) then (Sequence{(i-1)*(c+1)+1 ... i*(c+1)}->forAll(j : int | oE->at(j)=i)) else (Sequence{r*(c+1)+(i-1-r)*c+1 ... r*(c+1)+(i-r)*c}->forAll(j : int | oE->at(j)=i)) endif)})
     AND metodoDivisione = balanced implies let oE = ordineEstrazioni, c = numeroComponenti, n = numeroSquadre in (Sequence{1...n}->forAll(s : int | Sequence{1...c}->forAll(i : int | oE->subSequence((i-1)*n+1, i*n)->count(s) = 1) AND (s <= r implies oE->subSequence(c*n+1 ... numeroPartecipanti)->count(s) = 1)))
-    // per ogni sottosequenza da 1+i*numeroSquadre a c+i*numeroSquadre ogni squadra dovrà comparire al massimo una volta
 ```
 ```js
 context CreazioneSquadre::estrai() : String
@@ -398,12 +397,11 @@ post:
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-
 |filtra(filtro : Filtro, richiedente : Utente)|<ul><li>se il richiedente non è un amministratore, il numero di segnalazioni minimo dev'essere 0</li><li>il numero massimo di items per pagina e il numero di pagina devono essere positivi</li></ul>|il filtroAttuale viene impostato al valore fornito|
 |creaAttività(richiedente : Utente, info : Info, banner : URL,  collegamenti : Tuple{testo : String, link : URL}[0...N])
 |<ul><li>se il richiedente non è un amministratore, le informazioni devono avere l'etichetta "proposta"</li><li>il titolo fornito in informazioni non deve coincidere con quello di un'attività esistente e non deve essere vuoto</li><li>il richiedente dev'essere online</li></ul>||viene aggiunta una nuova attività a quelle esistenti|
-|mostraCatalogo()||gli elementi di lista sono tutte e sole le attività che rispettano il filtro|
-|mostraAttivitàSegnalate(richiedente : Utente)|il richiedente deve essere amministratore|lista contiene tutte e sole le attività con almeno una segnalazione|
+|mostraCatalogo(richiedente : Utente)|il richiedente dev'essere online o avere il gestore dati offline attivo|gli elementi di lista sono tutte e sole le attività che rispettano il filtro|
+|mostraAttivitàSegnalate(richiedente : Utente)|<ul><li>il richiedente deve essere amministratore</li><li>il richiedente dev'essere online</li></ul>|lista contiene tutte e sole le attività con almeno una segnalazione|
 
 ```js
 context Catalogo::filtra(filtro : Filtro, richiedente : Utente)
@@ -412,13 +410,13 @@ post: filtroAttuale = filtro
 ```
 ```js
 context Catalogo::creaAttività(richiedente : Utente, info : Info, banner : URL,  collegamenti : Tuple{testo : String, link : URL}[0...N])
-pre: (richiedente,ruolo <> "admin" implies info.Etichette->select(e : Etichetta | e.nome = "proposta")->notEmpty()) AND info.titolo <> "" AND Attività.allInstances()->select(a : Attività | a.titolo = info.titolo)->isEmpty()  AND richiedente.online
+pre: (richiedente, ruolo <> "admin" implies info.Etichette->select(e : Etichetta | e.nome = "proposta")->notEmpty()) AND info.titolo <> "" AND Attività.allInstances()->select(a : Attività | a.titolo = info.titolo)->isEmpty()  AND richiedente.online
 post: let aI = Attività.allInstances() in (aI->size() = aI@pre->size() + 1 AND aI@pre->forAll(a : Attività | aI->includes(a)) AND aI->select(a : Attività | a.info = info AND a.autore = richiedente AND a.banner = banner AND a.collegamenti = collegamenti AND a.ultimaModifica = Data::now()).size() = 1)
 ```
 ```js
-context Catalogo::mostraCatalogo() : Catalogo
-pre:
-post: let f = filtroAttuale in (let allMatches = Attività.allInstances()->select(a : Attività |
+context Catalogo::mostraCatalogo(richiedente : Utente) : Catalogo
+pre: richiedente.online OR richiedente.gestoreOffline.attivo
+post: let f = filtroAttuale in lista = Attività.allInstances()->select(a : Attività |
 (f.titolo = "" OR (f.titolo.size() < a.titolo.size() AND Sequence{1...a.titolo.size()-f.titolo.size()+1}->select(i : int | a.titolo.substring(i, i+f.titolo.size()-1) = f.titolo)->notEmpty())
 )
 AND (f.descrizione = "" OR (f.descrizione.size() < a.descrizione.size() AND Sequence{1...a.descrizione.size()-f.descrizione.size()+1}->select(i : int | a.descrizione.substring(i, i+f.descrizione.size()-1) = f.descrizione)->notEmpty())
@@ -431,11 +429,10 @@ AND f.ultimaModifica(lessThan(a.ultimaModifica))
 AND f.autore.id = "000000000000000000000" OR f.autore = a.autore
 AND f.numeroSegnalazioniMinimo <= a.numeroSegnalazioni
 )
-in (let pages = allMatches->size() div limite in (if(pagina <= pages) then (lista = allMAtches->subSequence((pagina-1)*limite+1, pagina*limite)) else (lista = allMatches->subSequence(pagina-1)*limite+1, allMatches->size())) endif))
 ```
 ```js
 context Catalogo::mostraAttivitàSegnalate(richiedente : Utente)
-pre: richiedente.ruolo = "admin"
+pre: richiedente.ruolo = "admin" AND richiedente.online
 post: lista = Attività.allInstances()->select(a : Attività | 0 < a.numeroSegnalazioni)
 ```
 
@@ -452,7 +449,7 @@ post: lista = Attività.allInstances()->select(a : Attività | 0 < a.numeroSegna
 #### nome : String
 - il nome deve avere un numero di caratteri compreso tra 0 (escluso) e 20 (incluso)
 #### autore : Utente
-- un utente può avere al più 99 liste di attività
+- un utente può avere al più 99 liste di attività e nessuna lista può avere autore anonimo
 #### lista : Attività[0...N]
 - ogni lista può avere al più 9.999 attività
 
@@ -470,7 +467,7 @@ Utente.allInstances()->forAll(u : Utente | ListaAttività.allInstances()->select
 ```
 ```js
 context ListaAttività inv:
-self.lista->size() < 10.000
+self.autore.ruolo <> "anonimo" AND self.lista->size() < 10.000
 ```
 
 
@@ -480,12 +477,12 @@ self.lista->size() < 10.000
 |aggiungiAttività(attività : Attività, richiedente : Utente)|<ul><li>il richiedente dev'essere l'autore</li><li>il numero di attività in una lista non può superare 9.999</li></ul>|l'attività scelta viene aggiunta alla lista|
 |eliminaAttività(indice : int, richiedente : Utente)|<ul><li>il richiedente dev'essere l'autore e dev'essere online</li><li>l'indice dev'essere valido</li></ul>|l'attività con l'indice scelto viene rimossa dalla lista|
 |rimuoviLista(richiedente : Utente)|il richiedente dev'essere l'autore e dev'essere online||
-|mostraLista(richiedente : Utente) : ListaAttività|il richiedente dev'essere l'autore e dev'essere online||
-|mostraElencoListe(richiedente : Utente) : ListaAttività[0...N]|il richiedente dev'essere online|vengono mostrate solo le liste di cui il richiedente è l'autore|
+|mostraLista(richiedente : Utente) : ListaAttività|il richiedente dev'essere l'autore e dev'essere online o avere il gestore dati offline attivo||
+|mostraElencoListe(richiedente : Utente) : ListaAttività[0...N]|il richiedente dev'essere online o avere il gestore dati offline attivo|vengono mostrate solo le liste di cui il richiedente è l'autore|
 
 ```js
 context ListaAttività::creaLista(nome : String, autore : Utente)
-pre: (autore.ruolo = "autenticato" OR autore.ruolo = "admin") AND autore.online AND nome <> "" AND nome.size() <= 20 AND let lA = ListaAttività.allInstances()->select(l : ListaAttività | l.autore = autore) in (lA->size() < 99 AND lA->forAll(l : ListaAttività | l.nome <> nome))
+pre: autore.ruolo <> "anonimo" AND autore.online AND nome <> "" AND nome.size() <= 20 AND let lA = ListaAttività.allInstances()->select(l : ListaAttività | l.autore = autore) in (lA->size() < 99 AND lA->forAll(l : ListaAttività | l.nome <> nome))
 post: let lA = ListaAttività.allInstances() in (lA.size() = lA@pre->size()+1 AND let ultimo = lA->last() in (ultimo.nome = nome AND ultimo.autore = autore AND ultimo.lista->isEmpty() AND ultimo.ultimaModifica = Data::now() AND lA = lA@pre->append(lA->last())))
 ```
 ```js
@@ -500,12 +497,12 @@ post: let prec = lista@pre, s = lista@pre->size() in (if(s = 1) then lista->isEm
 ```
 ```js
 context ListaAttività::rimuoviLista(richiedente : Utente)
-pre: self.autore = richiedente AND richiedente.online
+pre: self.autore = richiedente AND (richiedente.online OR richiedente.gestoreOffline.attivo)
 post: ListaAttività->allInstances() = ListaAttività->allInstances()@pre->excluding(self)
 ```
 ```js
 context ListaAttività::mostraElencoListe(richiedente : Utente) : ListaAttività[0...N]
-pre: richiedente.online
+pre: richiedente.online OR richiedente.gestoreOffline.attivo
 post: result = ListaAttività->allInstances()->select(l : ListaAttività | l.autore = richiedente)
 ```
 
@@ -514,41 +511,88 @@ post: result = ListaAttività->allInstances()->select(l : ListaAttività | l.aut
 
 ## **Attività**
 
-// TODO:  Invarianti
-// titolo non vuoto e univoco
+#### **Invarianti**:
+#### id : String
+- l'id dev'essere univoco fra tutte le attività esistenti
+#### titolo : String
+- il titolo dev'essere non vuoto e dev'essere univoco tra le attività esistenti
+#### mediaValutazioni : real
+- la media dev'essere compresa tra 0 e 5 inclusi
+
+```js
+context Attività inv:
+Attività.allInstances()->forAll(a1 : Attività, a2 : Attività | a1 <> a2 implies (a1.id <> a2.id AND a1.info.titolo <> a2.info.titolo))
+```
+```js
+context Attività inv:
+self.info.titolo <> ""
+```
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-|modifica(attivitàModificata : Attività)|<ul><li>la descrizione non può superare i 2000 caratteri</li><li>i due valori della durata media sono compresi tra 0 e 999, sono interi e il primo è minore del secondo</li><li>il numero di partecipanti non può superare 99</li><li>il titolo non può superare i 20 caratteri di lunghezza</li></ul>|<ul><li>tutti gli attributi assumono il valore dell'attività modificata</li><li>l'attributo ultimaModifica assume il valore della data corrente</li></ul>|
+|modifica(richiedente : Utente, info : Info, banner : URL,  collegamenti : Tuple{testo : String, link : URL}[0...N])|<ul><li>il richiedente dev'essere un admin o l'autore dell'attività se l'attività è ancora una proposta e a condizione che resti una proposta</li><li>il richiedente dev'essere online</li></ul>|<ul><li>tutti gli attributi assumono il valore dell'attività modificata</li><li>l'attributo ultimaModifica assume il valore della data corrente</li></ul>|
+|mostraSegnalazioni(richiedente : Utente)|Il richiedente dev'essere un amministratore e dev'essere online|il valore di ritorno sono le segnalazione relative all'attività in questione|
 
-
-// check utente online x modifiche
+```js
+context Attività::modifica(richiedente : Utente, info : Info, banner : URL,  collegamenti : Tuple{testo : String, link : URL}[0...N])
+pre: richiedente.online AND richiedente.ruolo = "admin" OR (richiedente = self.autore AND self.info.Etichette->select(e : Etichetta | e.nome = "proposta")->notEmpty() AND info.Etichette->select(e : Etichetta | e.nome = "proposta")->notEmpty())
+post: self.info = info AND self.ultimaModifica = Data::now()
+```
+```js
+context Attività::mostraSegnalazioni(richiedente : Utente)
+pre: richiedente.online AND richiedente.ruolo = "admin"
+post: result = Segnalazione.allInstances()->select(s : Segnalazione | s.attività = self)
+```
 
 ---
 
 
 ## **Segnalazione**
 
-// TODO: invarianti
+#### **Invarianti**:
+#### titolo : String
+- deve avere tra 0 (escluso) e 50 (incluso) caratteri
+#### messaggio : String
+- deve avere tra 0 (escluso) e 500 (incluso) caratteri
+
+```js
+context Segnalazione inv:
+titolo <> "" AND titolo.size() <= 50 AND messaggio <> "" AND messaggio.size() <= 500
+```
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-|inviaSegnala(autore : Utente, attività : Attività, voto : String)|l'attributo messaggio non può superare i 500 caratteri di lunghezza|viene aggiunta una segnalazione per l'attività scelta|
+|inviaSegnalazione(autore : Utente, attività : Attività, titolo : String, messaggio : String)|<ul><li>l'attributo messaggio non può essere vuoto e non può superare i 500 caratteri di lunghezza</li><li>l'attributo titolo non può essere vuoto e non può superare i 50 caratteri di lunghezza</li><li>l'autore dev'essere online e non anonimo</li></ul>|viene aggiunta una segnalazione per l'attività scelta|
 
-// check utente online
+```js
+context Segnalazione
+pre: titolo <> "" AND titolo.size() <= 50 AND messaggio <> "" AND messaggio.size() <= 500 AND autore.online AND autore.ruolo <> "anonimo"
+post: let aI = Segnalazione.allInstances() in (aI->size() = aI@pre->size()+1 AND let ultimo = aI->last() in (ultimo.titolo = titolo AND ultimo.messaggio = messaggio AND ultimo.autore = autore AND ultimo.attività = attività) AND aI = aI@pre->append(aI->last()))
+```
 
 ---
 
 
 ## **Valutazione**
 
-// TODO: invarianti
+#### **Invarianti**:
+#### voto : int
+- dev'essere compreso tra 0 e 10 inclusi
+
+```js
+context Valutazione inv:
+0 <= voto AND voto <= 10
+```
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-|inviaValutazione(autore : Utente, attività : Attività, voto : String)|il voto inserito deve essere un numero decimale compreso tra 0 e 5, con scarto di 0.5|<ul><li>viene aggiunta la valutazione all'attività scelta</li><li>cambia la media di voti dell'attività scelta</li>|
+|inviaValutazione(autore : Utente, attività : Attività, voto : int)|<ul><li>il voto inserito dev'essere compreso tra 0 e 10 inclusi</li><li>l'autore dev'essere online e non anonimo</li></ul>|viene aggiunta la valutazione all'attività scelta|
 
-// check utente online
+```js
+context Valutazione::inviaValutazione(autore : Utente, attività : Attività, voto : int)
+pre: 0 <= voto AND voto <= 10 AND autore.online AND autore.ruolo <> anonimo
+post: let aI = Valutazione.allInstances() in (aI->size() = aI@pre->size()+1 AND let ultimo = aI->last() in (ultimo.voto = voto AND ultimo.autore = autore AND ultimo.attività = attività) AND aI = aI@pre->append(aI->last()))
+```
 
 ---
 
@@ -557,13 +601,30 @@ post: result = ListaAttività->allInstances()->select(l : ListaAttività | l.aut
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
-|aggiornaCatalogo() : Attività[0...N]||l'attributo ultimoAggiornamento assume il valore della data corrente|
-
-// check utente online
+|aggiornaDatiLocali()|<ul><li>il gestore dev'essere attivo</li><li>l'utente dev'essere online</li></ul>|l'attributo ultimoAggiornamento assume il valore della data corrente|
+|richiediCatalogo(filtro : Filtro) : Catalogo|il gestore dev'essere attivo||
+|richiediListe() : ListaAttività[0...N]|<ul><li>il gestore dev'essere attivo</li><li>l'utente non può essere anonimo</li></ul>||
+|richiediAttività(idAttività : String) : Attività|il gestore dev'essere attivo||
 
 ```js
-context Catalogo::aggiornaCatalogo()
+context Catalogo::aggiornaDatiLocali()
+pre: self.attivo AND self.utente.online
 post: self.ultimoAggiornamento = Data.now()
+```
+```js
+context Catalogo::richiediCatalogo(filtro : Filtro) : Catalogo
+pre: self.attivo
+post:
+```
+```js
+context Catalogo::richiediListe() : ListaAttività[0...N]
+pre: self.attivo AND self.utente.ruolo <> "anonimo"
+post:
+```
+```js
+context Catalogo::richiediAttività(idAttività : String) : Attività
+pre: self.attivo
+post:
 ```
 
 ---
@@ -573,6 +634,7 @@ post: self.ultimoAggiornamento = Data.now()
 
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
+||||
 ---
 
 

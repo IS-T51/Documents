@@ -224,7 +224,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 4. L’utente clicca sul pulsante d’invio. [[exception 1](#exceptions-10)]
 > #### **Exceptions:**
 >> - [exception 1] In assenza di connessione ad Internet il sistema mostrerà all’utente un messaggio di errore che indicherà l’assenza di connessione.
->> - [exception 2] Il messaggio può avere lunghezza massima di 500 caratteri, mentre il titolo può avere lunghezza massima di 50 caratteri
+>> - [exception 2] Il messaggio può avere lunghezza massima di 500 caratteri, mentre il titolo può avere lunghezza massima di 50 caratteri, e nessuno dei due può essere vuoto.
 > #### **Extension points:**
 >> --
 
