@@ -16,7 +16,7 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 ### Stato
 > La classe **Stato** è una classe di supporto utilizzata nelle classi Cronometro e Timer, che serve per descrivere lo stato in cui si trovano gli stessi.
 
-![Classi enumerative di supporto](D3/img/img1.png)
+<p align="center"><img src="D3/img/img1.png" width=400px/></p>
 
 ## Classi di supporto
 ### Data
@@ -29,27 +29,27 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 ### Colore
 > La classe **Colore** è una classe di supporto che con i suoi attributi, va a rappresentare un colore espresso tramite codice RGB, uno spazio di colore che riproduce i colori visibili all’uomo tramite la mescolanza additiva dei tre colori di base: rosso, verde e blu.
 
-![Classi di supporto](D3/img/img2.png)
+<p align="center"><img src="D3/img/img2.png" width=400px/></p>
 
 ### Info, Filtro ed Etichetta
 > La classe **Etichetta** è una classe di supporto che con i suoi attributi, va a rappresentare nome, descrizione e categoria di un'etichettà che può essere assegnata ad un'attività. Viene usata nella classe Info.<br>
 > La classe **Info** è una classe di supporto che con i suoi attributi va a definire tutte le informazioni riguardanti un'attività.<br>
 > La classe **Filtro** è una classe di supporto ed è collegata tramite una generalizzazione alla classe Info. Viene utilizzata per contenere le informazioni secondo le quali le attività devono essere filtrate.
 
-![Classi di supporto](D3/img/img3.png)
+<p align="center"><img src="D3/img/img3.png" width=400px/></p>
 
 ## Dado e Faccia
 > La classe **Faccia** è una classe di supporto alla classe Dado, e presenta tutti gli attributi necessari a definire qual è il tipo di una faccia del dado e cosa vi è rappresentato.
 > La classe **Dado** è una classe il quale compito è quello di fornire gli attributi e i metodi necessari all'utilizzo dello strumento dado. <br>
 > Una volta determinati i parametri definiti dagli attributi, grazie ai metodi presenti, il metodo estrai() è quello che fa funzionare lo strumento.
 
-![Dado e Faccia](D3/img/img4.png)
+<p align="center"><img src="D3/img/img4.png" width=400px/></p>
 
 ## Cronometro
 > La classe **Cronometro** è una classe il quale compito è quello di fornire gli attributi e i metodi necessari all'utilizzo dello strumento cronometro.<br>
 > Il tempo viene rappresentato grazie alla classe di supporto Time.
 
-![Cronometro](D3/img/img5.png)
+<p align="center"><img src="D3/img/img5.png" width=400px/></p>
 
 ## Timer e Suono
 > La classe **Suono** è una classe il quale compito è quello di fornire gli attributi e i metodi necessari all'utilizzo dello strumento fischietto, nonché di essere una classe di supporto alla classe Timer.<br>
@@ -57,20 +57,20 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 > La classe **Timer** è una classe il quale compito è quello di fornire gli attributi e i metodi necessari all'utilizzo dello strumento timer.<br>
 > I metodi stop() e start() di Timer hanno una funzione diversa rispetto a quelli di Suono, in quanto si occupano di fermare e avviare il timer e non di riprodurre o meno il suono.
 
-![Timer e Suono](D3/img/img6.png)
+<p align="center"><img src="D3/img/img6.png" width=400px/></p>
 
 ## CreazioneSquadre
 > La classe **CreazioneSquadre** è una classe il quale compito è quello di fornire gli attributi e i metodi necessari all'utilizzo dello strumento creazione squadre.<br>
 > Gli attributi presenti indicano i valori dei parametri come anche se quei parametri sono stati impostati, nel caso degli attributi booleani Set.<br>
 > Grazie ai metodi presenti viene poi fatta l'estrazione delle squadre, secondo la metodologia scelta dall'utente.
 
-![Creazione Squadreo](D3/img/img7.png)
+<p align="center"><img src="D3/img/img7.png" width=400px/></p>
 
 ## SegnaPunti
 > La classe **SegnaPunti** è una classe il quale compito è quello di fornire gli attributi e i metodi necessari all'utilizzo dello strumento segna punti.<br>
 > L'attributo contatori rappresenta i contatori delle varie squadre, che vengono incrementati e/o decrementati grazie ai metodi presenti.
 
-![Segna Punti](D3/img/img8.png)
+<p align="center"><img src="D3/img/img8.png" width=400px/></p>
 
 ## Utente
 > La classe **Utente** è una classe che rappresenta colui che utilizza l'applicazione. Ci sono quindi attributi che rappresentano i dati identificativi di quell'utente, come anche il ruolo e lo stato, che può essere offline o online.<br>
@@ -81,7 +81,7 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 > Un utente può creare una o più attività e/o liste di attività, rappresentate rispettivamente dalle classi Attività e ListaAttività.<br>
 > Un utente può effettuare una o più segnalazioni e/o valutazioni, rappresentate rispettivamente dalle classi Segnalazione e Valutazione.
 
-![Utente](D3/img/img9.png)
+<p align="center"><img src="D3/img/img9.png" width=400px/></p>
 
 ## Autenticazione
 > La classe **Autenticazione** è una classe che rappresenta il processo di login di un utente. <br>
@@ -90,7 +90,7 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 > Viene chiesto a MongoDB il ruolo dell'utente e la sua foto profilo che vengono a loro volta assegnati agli attributi ruolo e immagine dell'utente.<br>
 > Infine avviene un aggiornamento dei dati locali.
 
-![Autenticazione](D3/img/img10.png)
+<p align="center"><img src="D3/img/img10.png" width=400px/></p>
 
 ## Segnalazione
 > La classe **Segnalazione** è una classe che rappresenta la segnalazione fatta da un utente ad un'attività. Più segnalazioni possono riferirsi ad una stessa attività. Ogni segnalazione è stata effettuata da un solo utente. <br>
@@ -103,13 +103,13 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 > Un utente può effettuare una valutazione grazie al metodo presente. <br>
 > Se un utente non esiste più le valutazioni effettuate dallo stesso rimangono.
 
-![Segnalazione e Valutazione](D3/img/img11.png)
+<p align="center"><img src="D3/img/img11.png" width=400px/></p>
 
 ## GestoreDatiOffline
 > La classe **GestoreDatiOffline** è una classe che rappresenta tutte le operazioni che vengono fatte sui dati presenti localmente, ovvero che non necessitano che l'utente sia online.<br>
 > Oltre a ciò si occupa anche di aggiornare i dati locali grazie al metodo omonimo.
 
-![Gestore Dati Offline](D3/img/img12.png)
+<p align="center"><img src="D3/img/img12.png" width=400px/></p>
 
 ## Attività
 > La classe **Attività** è una classe che rappresenta tutto ciò riguardante un'attività.<br>
@@ -120,7 +120,7 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 > Un'attività è contenuta nel catalogo e può essere contenuta in una lista. Più liste possono contenere la stessa attività, e un'attività può essere contenuta più volte nella stessa lista.<br>
 > Un'attività viene creata da un solo utente.
 
-![Attività](D3/img/img13.png)
+<p align="center"><img src="D3/img/img13.png" width=400px/></p>
 
 ## Catalogo
 > La classe **Catalogo** è una classe che rappresenta il catalogo di attività.<br>
@@ -129,20 +129,20 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 > Il catalogo può contenere delle attività.<br>
 > Il metodo mostraAttivitàSegnalate(richiedente : Utente) mostra la lista di attività segnalate e per ogni attività quante sono le segnalazioni.
 
-![Catalogo](D3/img/img14.png)
+<p align="center"><img src="D3/img/img14.png" width=400px/></p>
 
 ## ListaAttività
 > La classe **ListaAttività** è una classe che rappresenta le liste di attività create dagli utenti.<br>
 > Un utente può creare più liste di attività. Ne ha almeno una in quanto ogni utente ha la lista "Preferiti". Ogni lista ha un solo utente, non esistono liste condivise.<br>
 > Tra gli attributi della lista sono presenti le informazioni che la identificano e con i metodi forniti si può crearla, rimuoverla, mostrarla ed esportarla, oltre ad aggiungervi o rimuovere attività.
 
-![Lista Attività](D3/img/img15.png)
+<p align="center"><img src="D3/img/img15.png" width=400px/></p>
 
 ## MongoDB
 > La classe **MongoDB** è una classe che rappresenta in che modo il sistema si interfaccia con MongoDB.<br>
 > Il metodo controllaConnessione() verifica se si è connessi o meno al DBMS.<br>
 > I metodi presenti rappresentano tutti i modi in cui il sistema interagisce con MongoDB.
 
-<img src="D3/img/img16.png" width=200px/>
+<p align="center"><img src="D3/img/img16.png" width=400px/></p>
 
 <div class="page-break"></div>
