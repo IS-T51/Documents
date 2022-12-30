@@ -16,7 +16,7 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 ### Stato
 > La classe **Stato** è una classe di supporto utilizzata nelle classi Cronometro e Timer, che serve per descrivere lo stato in cui si trovano gli stessi.
 
-<p align="center"><img src="D3/img/img1.png" width=600px/></p>
+<p align="center"><img src="D3/img/img1.png" width=650px/></p>
 
 ## Classi di supporto
 ### Data
@@ -103,7 +103,7 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 > Un utente può effettuare una valutazione grazie al metodo presente. <br>
 > Se un utente non esiste più le valutazioni effettuate dallo stesso rimangono.
 
-<p align="center"><img src="D3/img/img11.png" width=600px/></p>
+<p align="center"><img src="D3/img/img11.png" width=650px/></p>
 
 ## GestoreDatiOffline
 > La classe **GestoreDatiOffline** è una classe che rappresenta tutte le operazioni che vengono fatte sui dati presenti localmente, ovvero che non necessitano che l'utente sia online.<br>
@@ -120,7 +120,7 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 > Un'attività è contenuta nel catalogo e può essere contenuta in una lista. Più liste possono contenere la stessa attività, e un'attività può essere contenuta più volte nella stessa lista.<br>
 > Un'attività viene creata da un solo utente.
 
-<p align="center"><img src="D3/img/img13.png" width=600px/></p>
+<p align="center"><img src="D3/img/img13.png" width=650px/></p>
 
 ## Catalogo
 > La classe **Catalogo** è una classe che rappresenta il catalogo di attività.<br>
@@ -136,7 +136,7 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 > Un utente può creare più liste di attività. Ne ha almeno una in quanto ogni utente ha la lista "Preferiti". Ogni lista ha un solo utente, non esistono liste condivise.<br>
 > Tra gli attributi della lista sono presenti le informazioni che la identificano e con i metodi forniti si può crearla, rimuoverla, mostrarla ed esportarla, oltre ad aggiungervi o rimuovere attività.
 
-<p align="center"><img src="D3/img/img15.png" width=600px/></p>
+<p align="center"><img src="D3/img/img15.png" width=650px/></p>
 
 ## MongoDB
 > La classe **MongoDB** è una classe che rappresenta in che modo il sistema si interfaccia con MongoDB.<br>
