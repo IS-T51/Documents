@@ -106,7 +106,7 @@ In questa sezione vengono definiti i componenti.
 >> #### *Spiegazione*
 >> Grazie al componente Segna-Punti, l'utente può scegliere il numero di squadre, nonché il nome per ogni squadra, e incrementare o decrementare il punteggio di ciascuna squadra.
 
-<br><br>
+<div class="page-break"></div>
 
 ## 4.2 Diagramma dei componenti
 <center><img alt="Diagramma dei Componenti" src="D2/img/CPD/component-diagram_v4.png" width="100%"/></center>
