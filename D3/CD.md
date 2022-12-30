@@ -143,6 +143,6 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 > Il metodo controllaConnessione() verifica se si è connessi o meno al DBMS.<br>
 > I metodi presenti rappresentano tutti i modi in cui il sistema interagisce con MongoDB.
 
-![MongoDB](D3/img/img16.png)
+<img src="D3/img/img16.png" width=200px/>
 
 <div class="page-break"></div>
