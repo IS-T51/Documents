@@ -143,4 +143,6 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 
 <p align="center"><img src="D3/img/img16.png" width=400px/></p>
 
+<p align="center"><img src="D3/img/def.png" width=6500px/></p>
+
 <div class="page-break"></div>
