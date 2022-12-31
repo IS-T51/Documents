@@ -174,18 +174,30 @@ post: self.dimensione = dim
 ```
 ```js
 context Dado::scegliEstremoPasso(estremo : int, passo : int)
-pre: self.estrazioni = 0 AND self.campione->isEmpty() AND 0<estremo AND estremo<=9.999 AND 1<passo AND passo<=9.99
-post: self.estremoInferiore = estremo AND self.passo = passo AND self.campione->size() = dimensione AND self.campione->first().numero = estremoInferiore AND self.campione->forAll(f:Faccia | self.campione->count(f)=1 AND let i=self.campione->indexOf(f) in if i>1 then f.numero=passo+self.campione->at(i-1) endif)
+pre: self.estrazioni = 0 AND
+     self.campione->isEmpty() AND
+     0<estremo AND estremo<=9.999 AND
+     1<passo AND passo<=9.99
+post: self.estremoInferiore = estremo AND self.passo = passo AND
+      self.campione->size() = dimensione AND
+      self.campione->first().numero = estremoInferiore AND
+      self.campione->forAll(f:Faccia | self.campione->count(f)=1 AND
+      let i=self.campione->indexOf(f) in if i>1 then f.numero=passo+self.campione->at(i-1) endif)
 ```
 ```js
 context Dado::aggiungiElemento(elemento :  Faccia)
-pre: self.estrazioni = 0 AND elemento.tipo = self.tipo AND self.tipo <> "numeri" AND self.campione->size() < dimensione
+pre: self.estrazioni = 0 AND
+     elemento.tipo = self.tipo AND
+     self.tipo <> "numeri" AND
+     self.campione->size() < dimensione
 post: self.campione = self.campione@pre->append(elemento)
 ```
 ```js
 context Dado::estrai() : Faccia
 pre: self.campione->notEmpty()
-post: self.campione@pre->includes(result) AND self.estrazioni = self.estrazione@pre + 1 if (NOT reimmissione) then (self.campione->size() = self.campione@pre->size() AND self.campione->forAll(f:Faccia | let c=self.campione@pre->count(f) in if f<>result then self.campione->count(f)=c else self.campione->count(f)=c-1 endif)) endif
+post: self.campione@pre->includes(result) AND
+      self.estrazioni = self.estrazione@pre + 1 if (NOT reimmissione) then (self.campione->size() = self.campione@pre->size() AND
+      self.campione->forAll(f:Faccia | let c=self.campione@pre->count(f) in if f<>result then self.campione->count(f)=c else self.campione->count(f)=c-1 endif)) endif
 ```
 
 ---
@@ -254,13 +266,7 @@ conferma implies (numeroPartecipanti div numeroSquadre = numeroComponenti)
 |rendiCampiCompatibili()|<ul><li>non dev'essere ancora stata data la conferma dei parametri</li><li>devono essere stati forniti almeno 2 parametri</li></ul>|i parametri diventano confermati|
 |inserisciNome(nome : String)|<ul><li>dev'essere stata data la conferma dei parametri</li><li>nomi deve avere dimensione minore di numeroSquadre</li><li>il nome fornito non deve essere vuoto e la non deve eccedere i 99 caratteri</li></ul>|il nome fornito viene aggiunto a nomi|
 |scegliMetodo(metodo : MetodoDivisione)|dev'essere stata data la conferma dei parametri|l'attributo metodoDivisione viene impostato a quello fornito|
-|generaOrdine()|devono essere stati forniti tutti i nomi|ordineEstrazione deve contenere in posizione i l'indice della squadra a cui assegnare il partecipante i, in particolare:<ul>
-<li>deve avere dimensione pari al numero di partecipanti</li>
-<li>ogni squadra deve comparire un numero di volte pari a numeroComponenti o numeroComponenti + 1 (a seconda del resto della divisione di numeroPartecipanti per numeroSquadre)</li>
-<li>se metodoDivisione assume il valore "Round robin", l'assegnamento delle squadre sarà sequenziale</li>
-<li>se il metodo assume il valore "Fill first" l'assegnamento avverrà per completamento delle squadre, ovvero riempiendo i posti di ogni squadra prima di procedere con l'assegnamento per la prossima</li>
-<li>se il metodo assume il valore "Balanced", a blocchi consecutivi di numeroComponenti assegnamenti tutte le squadre dovranno avere lo stesso numero di partecipanti prima di procedere con il prossimo blocco</li>
-</ul>|
+|generaOrdine()|devono essere stati forniti tutti i nomi|ordineEstrazione deve contenere in posizione i l'indice della squadra a cui assegnare il partecipante i, in particolare:<ul> <li>deve avere dimensione pari al numero di partecipanti</li> <li>ogni squadra deve comparire un numero di volte pari a numeroComponenti o numeroComponenti + 1 (a seconda del resto della divisione di numeroPartecipanti per numeroSquadre)</li> <li>se metodoDivisione assume il valore "Round robin", l'assegnamento delle squadre sarà sequenziale</li> <li>se il metodo assume il valore "Fill first" l'assegnamento avverrà per completamento delle squadre, ovvero riempiendo i posti di ogni squadra prima di procedere con l'assegnamento per la prossima</li> <li>se il metodo assume il valore "Balanced", a blocchi consecutivi di numeroComponenti assegnamenti tutte le squadre dovranno avere lo stesso numero di partecipanti prima di procedere con il prossimo blocco</li> </ul>|
 |estrai() : String|deve essere rimasto almeno un elemento da estrarre|<ul><li>estratti viene incrementato di 1</li><li>il risultato e' il nome della squadra assegnata al primo partecipante non ancora estratto</li></ul>|
 
 ```js
@@ -296,10 +302,12 @@ post: metodoDivisione = metodo
 ```js
 context CreazioneSquadre::generaOrdine()
 pre: nomi->size() = numeroSquadre
-post: ordineEstrazioni.size() = numeroPartecipanti AND Sequence(1...numeroSquadre)->forAll(n : int | let c = ordineEstrazioni.count(i), r = numeroPartecipanti mod numeroSquadre in (if(i <= r) then (c = numeroComponenti) else c = (numeroComponenti + 1)))
-    AND metodoDivisione = roundRobin implies let oE = ordineEstrazioni in (oE->first = 1 AND Sequence{1...numeroPartecipanti-1}->forAll(i : int | (oE->at(i)+1) mod numeroSquadre = (oE->at(i+1)) mod numeroSquadre))
-    AND metodoDivisione = fillFrist implies let oE = ordineEstrazioni, r = numeroPartecipanti mod numeroSquadre, c = numeroComponenti  in (Sequence{1...numeroSquadre -> forAll(i : int | if (i <= r) then (Sequence{(i-1)*(c+1)+1 ... i*(c+1)}->forAll(j : int | oE->at(j)=i)) else (Sequence{r*(c+1)+(i-1-r)*c+1 ... r*(c+1)+(i-r)*c}->forAll(j : int | oE->at(j)=i)) endif)})
-    AND metodoDivisione = balanced implies let oE = ordineEstrazioni, c = numeroComponenti, n = numeroSquadre in (Sequence{1...n}->forAll(s : int | Sequence{1...c}->forAll(i : int | oE->subSequence((i-1)*n+1, i*n)->count(s) = 1) AND (s <= r implies oE->subSequence(c*n+1 ... numeroPartecipanti)->count(s) = 1)))
+post: ordineEstrazioni.size() = numeroPartecipanti AND
+      Sequence(1...numeroSquadre)->forAll(n : int | let c = ordineEstrazioni.count(i), r = numeroPartecipanti mod numeroSquadre in (if(i <= r) then (c = numeroComponenti) else c = (numeroComponenti + 1))) AND
+      metodoDivisione = roundRobin implies let oE = ordineEstrazioni in (oE->first = 1 AND
+      Sequence{1...numeroPartecipanti-1}->forAll(i : int | (oE->at(i)+1) mod numeroSquadre = (oE->at(i+1)) mod numeroSquadre)) AND
+      metodoDivisione = fillFrist implies let oE = ordineEstrazioni, r = numeroPartecipanti mod numeroSquadre, c = numeroComponenti  in (Sequence{1...numeroSquadre -> forAll(i : int | if (i <= r) then (Sequence{(i-1)*(c+1)+1 ... i*(c+1)}->forAll(j : int | oE->at(j)=i)) else (Sequence{r*(c+1)+(i-1-r)*c+1 ... r*(c+1)+(i-r)*c}->forAll(j : int | oE->at(j)=i)) endif)}) AND
+      metodoDivisione = balanced implies let oE = ordineEstrazioni, c = numeroComponenti, n = numeroSquadre in (Sequence{1...n}->forAll(s : int | Sequence{1...c}->forAll(i : int | oE->subSequence((i-1)*n+1, i*n)->count(s) = 1) AND (s <= r implies oE->subSequence(c*n+1 ... numeroPartecipanti)->count(s) = 1)))
 ```
 ```js
 context CreazioneSquadre::estrai() : String
@@ -335,11 +343,7 @@ ruolo = "anonimo" implies id = "000000000000000000000" AND mail = ""
 | --- | --- | --- |
 |login()|<ul><li>l'utente dev'essere online</li><li>l'utente deve avere ruolo anonimo</li></ul>|l'utente deve avere ruolo autenticato o admin|
 |logout()|l'utente deve avere ruolo autenticato o admin|l'utente deve avere ruolo anonimo|
-|cambiaRuolo(promotore : Utente, nuovoRuolo : Ruolo)|<ul>
-<li>non si può cambiare ruolo in anonimo e non si può cambiare ruolo in quello già posseduto</li>
-<li>il promotore deve essere un amministratore</li>
-<li>un amministratore può essere declassato a utente comune unicamente dall’amministratore che lo ha promosso</li>
-</ul>|l'attributo ruolo dell'utente assume il valore di nuovoRuolo|
+|cambiaRuolo(promotore : Utente, nuovoRuolo : Ruolo)|<ul> <li>non si può cambiare ruolo in anonimo e non si può cambiare ruolo in quello già posseduto</li> <li>il promotore deve essere un amministratore</li> <li>un amministratore può essere declassato a utente comune unicamente dall’amministratore che lo ha promosso</li> </ul>|l'attributo ruolo dell'utente assume il valore di nuovoRuolo|
 |verificaRuolo(ruoloNecessario : Ruolo, richiedente : Utente) : bool|||
 |listaUtenti(richiedente : Utente) : Utente[0...N]|||
 
@@ -355,8 +359,13 @@ post: ruolo = "anonimo"
 ```
 ```js
 context Utente::cambiaRuolo(promotore : Utente, nuovoRuolo : Ruolo)
-pre: nuovoRuolo <> anonimo AND nuovoRuolo <> self.ruolo AND self.ruolo <> anonimo AND promotore.Ruolo = "admin" AND (nuovoRuolo = "autenticato" implies promotore = self.promossoDa)
-post: self.ruolo = nuovoRuolo AND (nuovoRuolo = "admin" implies self.promossoDa = promotore)
+pre: nuovoRuolo <> anonimo AND
+     nuovoRuolo <> self.ruolo AND
+     self.ruolo <> anonimo AND
+     promotore.Ruolo = "admin" AND
+     (nuovoRuolo = "autenticato" implies promotore = self.promossoDa)
+post: self.ruolo = nuovoRuolo AND
+      (nuovoRuolo = "admin" implies self.promossoDa = promotore)
 ```
 ```js
 context Utente::verificaRuolo(ruoloNecessario : Ruolo, richiedente : Utente) : bool
@@ -398,8 +407,7 @@ post:
 | Metodo | Precondizioni | Postcondizioni |
 | --- | --- | --- |
 |impostaFiltro(filtro : Filtro, richiedente : Utente)||il filtroAttuale viene impostato al valore fornito|
-|creaAttività(richiedente : Utente, info : Info, banner : URL,  collegamenti : Tuple{testo : String, link : URL}[0...N])
-|<ul><li>se il richiedente non è un amministratore, le informazioni devono avere l'etichetta "proposta"</li><li>il titolo fornito in informazioni non deve coincidere con quello di un'attività esistente e non deve essere vuoto</li><li>il richiedente dev'essere online</li></ul>||viene aggiunta una nuova attività a quelle esistenti|
+|creaAttività(richiedente : Utente, info : Info, banner : URL,  collegamenti : Tuple{testo : String, link : URL}[0...N])|<ul><li>se il richiedente non è un amministratore, le informazioni devono avere l'etichetta "proposta"</li><li>il titolo fornito in informazioni non deve coincidere con quello di un'attività esistente e non deve essere vuoto</li><li>il richiedente dev'essere online</li></ul>||viene aggiunta una nuova attività a quelle esistenti|
 |ottieniCatalogo(richiedente : Utente)|il richiedente dev'essere online o avere il gestore dati offline attivo|gli elementi di lista sono tutte e sole le attività che rispettano il filtro|
 |mostraAttivitàSegnalate(richiedente : Utente)|<ul><li>il richiedente deve essere amministratore</li><li>il richiedente dev'essere online</li></ul>|lista contiene tutte e sole le attività con almeno una segnalazione|
 
@@ -410,25 +418,35 @@ post: filtroAttuale = filtro
 ```
 ```js
 context Catalogo::creaAttività(richiedente : Utente, info : Info, banner : URL,  collegamenti : Tuple{testo : String, link : URL}[0...N])
-pre: (richiedente, ruolo <> "admin" implies info.Etichette->select(e : Etichetta | e.nome = "proposta")->notEmpty()) AND info.titolo <> "" AND Attività.allInstances()->select(a : Attività | a.titolo = info.titolo)->isEmpty()  AND richiedente.online
-post: let aI = Attività.allInstances(), prec = Attività.allInstances@pre() in (aI->size() = prec->size() + 1 AND prec->forAll(a : Attività | aI->includes(a)) AND aI->select(a : Attività | a.info = info AND a.autore = richiedente AND a.banner = banner AND a.collegamenti = collegamenti AND a.ultimaModifica = Data::now()).size() = 1)
+pre: (richiedente, ruolo <> "admin" implies info.Etichette->select(e : Etichetta | e.nome = "proposta")->notEmpty()) AND
+info.titolo <> "" AND
+Attività.allInstances()->select(a : Attività | a.titolo = info.titolo)->isEmpty()  AND
+richiedente.online
+post: let aI = Attività.allInstances(), prec = Attività.allInstances@pre() in (aI->size() = prec->size() + 1 AND
+prec->forAll(a : Attività | aI->includes(a)) AND
+aI->select(a : Attività | a.info = info AND
+a.autore = richiedente AND
+a.banner = banner AND
+a.collegamenti = collegamenti AND
+a.ultimaModifica = Data::now()).size() = 1)
 ```
 ```js
 context Catalogo::ottieniCatalogo(richiedente : Utente) : Catalogo
 pre: richiedente.online OR richiedente.gestoreOffline.attivo
 post: let f = filtroAttuale in lista = Attività.allInstances()->select(a : Attività |
-(f.titolo = "" OR (f.titolo.size() < a.titolo.size() AND Sequence{1...a.titolo.size()-f.titolo.size()+1}->select(i : int | a.titolo.substring(i, i+f.titolo.size()-1) = f.titolo)->notEmpty())
-)
-AND (f.descrizione = "" OR (f.descrizione.size() < a.descrizione.size() AND Sequence{1...a.descrizione.size()-f.descrizione.size()+1}->select(i : int | a.descrizione.substring(i, i+f.descrizione.size()-1) = f.descrizione)->notEmpty())
-)
-AND a.età.da <= f.età.da AND f.età.a <= a.età.a
-AND f.durata.da <= a.durata.da AND a.durata.a <= f.durata.a
-AND a.giocatori.da <= f.giocatori.da AND f.giocatori.a <= a.giocatori.a
-AND f.Etichette->forAll(e : Etichetta | a.Etichette.includes(e))
-AND f.ultimaModifica(lessThan(a.ultimaModifica))
-AND f.autore.id = "000000000000000000000" OR f.autore = a.autore
-AND f.numeroSegnalazioniMinimo <= a.numeroSegnalazioni
-)
+      (f.titolo = "" OR
+      (f.titolo.size() < a.titolo.size() AND
+      Sequence{1...a.titolo.size()-f.titolo.size()+1}->select(i : int | a.titolo.substring(i, i+f.titolo.size()-1) = f.titolo)->notEmpty())) AND
+      (f.descrizione = "" OR
+      (f.descrizione.size() < a.descrizione.size() AND
+      Sequence{1...a.descrizione.size()-f.descrizione.size()+1}->select(i : int | a.descrizione.substring(i, i+f.descrizione.size()-1) = f.descrizione)->notEmpty()))
+      AND a.età.da <= f.età.da AND f.età.a <= a.età.a
+      AND f.durata.da <= a.durata.da AND a.durata.a <= f.durata.a
+      AND a.giocatori.da <= f.giocatori.da AND f.giocatori.a <= a.giocatori.a
+      AND f.Etichette->forAll(e : Etichetta | a.Etichette.includes(e))
+      AND f.ultimaModifica(lessThan(a.ultimaModifica))
+      AND f.autore.id = "000000000000000000000" OR f.autore = a.autore
+      AND f.numeroSegnalazioniMinimo <= a.numeroSegnalazioni)
 ```
 ```js
 context Catalogo::mostraAttivitàSegnalate(richiedente : Utente)
@@ -455,7 +473,9 @@ post: lista = Attività.allInstances()->select(a : Attività | 0 < a.numeroSegna
 
 ```js
 context ListaAttività inv:
-ListaAttività.allInstances()->forAll(l1 : ListaAttività, l2 : ListaAttività | l1 <> l2 implies (l1.id <> l2.id AND (l1.nome <> l2.nome OR l1.autore <> l2.autore)))
+ListaAttività.allInstances()->forAll(l1 : ListaAttività, l2 : ListaAttività | l1 <> l2 implies (l1.id <> l2.id AND
+(l1.nome <> l2.nome OR
+l1.autore <> l2.autore)))
 ```
 ```js
 context ListaAttività inv:
@@ -482,22 +502,40 @@ self.autore.ruolo <> "anonimo" AND self.lista->size() < 10.000
 
 ```js
 context ListaAttività::creaLista(nome : String, autore : Utente)
-pre: autore.ruolo <> "anonimo" AND autore.online AND nome <> "" AND nome.size() <= 20 AND let lA = ListaAttività.allInstances()->select(l : ListaAttività | l.autore = autore) in (lA->size() < 99 AND lA->forAll(l : ListaAttività | l.nome <> nome))
-post: let lA = ListaAttività.allInstances(), prec = ListaAttività.allInstances@prec() in (lA.size() = prec->size()+1 AND let ultimo = lA->last() in (ultimo.nome = nome AND ultimo.autore = autore AND ultimo.lista->isEmpty() AND ultimo.ultimaModifica = Data::now() AND lA = prec->append(lA->last())))
+pre: autore.ruolo <> "anonimo" AND
+     autore.online AND
+     nome <> "" AND
+     nome.size() <= 20 AND
+     let lA = ListaAttività.allInstances()->select(l : ListaAttività | l.autore = autore) in (lA->size() < 99 AND
+     lA->forAll(l : ListaAttività | l.nome <> nome))
+post: let lA = ListaAttività.allInstances(), prec = ListaAttività.allInstances@prec() in (lA.size() = prec->size()+1 AND
+      let ultimo = lA->last() in (ultimo.nome = nome AND
+      ultimo.autore = autore AND
+      ultimo.lista->isEmpty() AND
+      ultimo.ultimaModifica = Data::now() AND
+      lA = prec->append(lA->last())))
 ```
 ```js
 context ListaAttività::aggiungiAttività(attività : Attività)
-pre: self.autore = richiedente AND richiedente.online AND self.lista->size() < 9.999
+pre: self.autore = richiedente AND
+     richiedente.online AND
+     self.lista->size() < 9.999
 post: self.lista = self.lista@pre->append(attività)
 ```
 ```js
 context ListaAttività::eliminaAttività(indice : int)
-pre: self.autore = richiedente AND richiedente.online AND 0 < indice AND indice <= self.lista->size()
+pre: self.autore = richiedente AND
+     richiedente.online AND
+     0 < indice AND
+     indice <= self.lista->size()
 post: let prec = lista@pre, s = lista@pre->size() in (if(s = 1) then lista->isEmpty() else (if (indice = 1) then (lista = prec->subSequence(2...s)) else (if (indice = s) then (lista = pre->subSequence(1, s-1)) else (lista = pre->subSequence(1, indice-1)->union(pre->subSequence(indice+1, s))) endif) endif) endif)
 ```
 ```js
 context ListaAttività::rimuoviLista(richiedente : Utente)
-pre: self.autore = richiedente AND (richiedente.online OR richiedente.gestoreOffline.attivo) AND self.nome <> "Preferiti"
+pre: self.autore = richiedente AND
+     (richiedente.online OR
+     richiedente.gestoreOffline.attivo) AND
+     self.nome <> "Preferiti"
 post: ListaAttività->allInstances() = ListaAttività->allInstances@pre()->excluding(self)
 ```
 ```js
@@ -535,7 +573,11 @@ self.info.titolo <> ""
 
 ```js
 context Attività::modifica(richiedente : Utente, info : Info, banner : URL,  collegamenti : Tuple{testo : String, link : URL}[0...N])
-pre: richiedente.online AND richiedente.ruolo = "admin" OR (richiedente = self.autore AND self.info.Etichette->select(e : Etichetta | e.nome = "proposta")->notEmpty() AND info.Etichette->select(e : Etichetta | e.nome = "proposta")->notEmpty())
+pre: richiedente.online AND
+     richiedente.ruolo = "admin" OR
+     (richiedente = self.autore AND
+     self.info.Etichette->select(e : Etichetta | e.nome = "proposta")->notEmpty() AND
+     info.Etichette->select(e : Etichetta | e.nome = "proposta")->notEmpty())
 post: self.info = info AND self.ultimaModifica = Data::now()
 ```
 ```js
@@ -566,9 +608,19 @@ titolo <> "" AND titolo.size() <= 50 AND messaggio <> "" AND messaggio.size() <=
 
 ```js
 context Segnalazione::inviaSegnalazione(autore : Utente, attività : Attività, titolo : String, messaggio : String)
-pre: titolo <> "" AND titolo.size() <= 50 AND messaggio <> "" AND messaggio.size() <= 500 AND autore.online AND autore.ruolo <> "anonimo"
-post: let aI = Segnalazione.allInstances(), prec = Segnalazione.allInstances@pre() in (aI->size() = prec->size()+1 AND let ultimo = aI->last() in (ultimo.titolo = titolo AND ultimo.messaggio = messaggio AND ultimo.autore = autore AND ultimo.attività = attività) AND aI = prec->append(aI->last()))
-post: attività.numeroSegnalazioni = attività.numeroSegnalazioni@pre + 1 AND attività.utlimaModifica = attività.ultimaModifica@pre
+pre: titolo <> "" AND
+     titolo.size() <= 50 AND
+     messaggio <> "" AND
+     messaggio.size() <= 500 AND
+     autore.online AND autore.ruolo <> "anonimo"
+post: let aI = Segnalazione.allInstances(), prec = Segnalazione.allInstances@pre() in (aI->size() = prec->size()+1 AND
+      let ultimo = aI->last() in (ultimo.titolo = titolo AND
+      ultimo.messaggio = messaggio AND
+      ultimo.autore = autore AND
+      ultimo.attività = attività) AND
+      aI = prec->append(aI->last()))
+post: attività.numeroSegnalazioni = attività.numeroSegnalazioni@pre + 1 AND
+      attività.utlimaModifica = attività.ultimaModifica@pre
 ```
 
 ---
@@ -591,9 +643,16 @@ context Valutazione inv:
 
 ```js
 context Valutazione::inviaValutazione(autore : Utente, attività : Attività, voto : int)
-pre: 0 < voto AND voto <= 10 AND autore.online AND autore.ruolo <> anonimo
-post: let aI = Valutazione.allInstances(), prec = Valutazione.allInstances@pre() in (aI->size() = prec->size()+1 AND let ultimo = aI->last() in (ultimo.voto = voto AND ultimo.autore = autore AND ultimo.attività = attività) AND aI = prec->append(aI->last()))
-post: attività.utlimaModifica = Data::now() AND  let vA = Valutazioni.allInstances()->select(v : Valutazioni | v.attività = attività)->collect(voto : int) in (attività.mediaValutazioni = vA->sum()/vA->size())
+pre: 0 < voto AND
+     voto <= 10 AND
+     autore.online AND
+     autore.ruolo <> anonimo
+post: let aI = Valutazione.allInstances(), prec = Valutazione.allInstances@pre() in (aI->size() = prec->size()+1 AND
+      let ultimo = aI->last() in (ultimo.voto = voto AND
+      ultimo.autore = autore AND ultimo.attività = attività) AND
+      aI = prec->append(aI->last()))
+post: attività.utlimaModifica = Data::now() AND
+      let vA = Valutazioni.allInstances()->select(v : Valutazioni | v.attività = attività)->collect(voto : int) in (attività.mediaValutazioni = vA->sum()/vA->size())
 ```
 
 ---
@@ -772,7 +831,13 @@ self.protocollo = "http" OR self.protocollo = "https" OR self.protocollo = "file
 
 ```js
 context Data inv:
-0 < self.giorno AND self.giorno <= 31 AND (Set{2, 4, 6, 9, 11}->count(self.mese) > 0 implies self.giorno <> 31) AND (self.mese = 2 implies (self.giorno <> 30 AND if ((self.anno % 4 <> 0) OR (self.anno % 100 = 0 AND self.anno % 1000 <> 0)) then self.giorno <> 29 endif))
+0 < self.giorno AND
+self.giorno <= 31 AND
+(Set{2, 4, 6, 9, 11}->count(self.mese) > 0 implies self.giorno <> 31) AND
+(self.mese = 2 implies (self.giorno <> 30 AND
+if ((self.anno % 4 <> 0) OR
+(self.anno % 100 = 0 AND
+self.anno % 1000 <> 0)) then self.giorno <> 29 endif))
 ```
 ```js
 context Data inv:
@@ -837,7 +902,8 @@ context Time inv:
 ```js
 context Etichetta inv:
 Etichetta.allInstances()->forAll(e1, e2 |
-e1 <> e2 implies e1.nome.toLowerCase() <> e2.nome.toLowerCase()) AND self.nome <> "" AND self.nome.size() <= 20
+e1 <> e2 implies e1.nome.toLowerCase() <> e2.nome.toLowerCase()) AND
+self.nome <> "" AND self.nome.size() <= 20
 ```
 ```js
 context Etichetta inv:
@@ -845,7 +911,7 @@ self.descrizione.size() <= 2000
 ```
 ```js
 context Etichetta inv:
-self.categoria <> "" AND  self.categoria.size() <= 20
+self.categoria <> "" AND self.categoria.size() <= 20
 ```
 
 | Metodo | Precondizioni | Postcondizioni |
