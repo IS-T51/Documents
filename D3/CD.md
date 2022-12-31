@@ -1,18 +1,16 @@
 
-# Diagramma delle classi
+# 1. Diagramma delle classi
 Nel presente capitolo vengono presentate le classi previste nell'ambito del progetto Animati. Vengono riportate di seguito le classi individuate a partire dai diagrammi di contesto e dei componenti.
 
 ## Classi enumerative di supporto
-### Unità
-> La classe **Unità** è una classe di supporto utilizzata nella classe Info, che sta ad indicare con i suoi attributi la durata di un'attività.
 ### Ruolo
-> La classe **Ruolo** è una classe di supporto utilizzata nella classe Utente, che sta ad indicare con i suoi attributi il ruolo assunto da uno specifico utente.
+> La classe **Ruolo** è una classe di supporto utilizzata nella classe Utente, che specifica con i suoi attributi il ruolo assunto da un determinato utente.
 ### Formato
-> La classe **Formato** è una classe di supporto utilizzata ogniqualvolta si deve indicare il formato di un file da esportare. In questo caso nella classe ListaAttività, quando viene esportata una lista col metodo esporta(formato : Formato).
+> La classe **Formato** è una classe di supporto utilizzata ogniqualvolta si deve indicare il formato di un file da esportare. Nel diagramma è usata nella classe ListaAttività, quando viene esportata una lista col metodo esporta(formato : Formato).
 ### TipoDado
-> La classe **TipoDado** è una classe di supporto utilizzata nella classe Dado, che sta ad indicare con i suoi attributi il tipo di faccia utilizzata dallo strumento dado.
+> La classe **TipoDado** è una classe di supporto utilizzata nella classe Dado, che specifica con i suoi attributi il tipo di faccia utilizzata dallo strumento dado.
 ### MetodoDivisione
-> La classe **MetodoDivisione** è una classe di supporto utilizzata nella classe CreazioneSquadre, che sta ad indicare con i suoi attributi la metodologia di divisione scelta dall'utente per l'estrazione delle squadre.
+> La classe **MetodoDivisione** è una classe di supporto utilizzata nella classe CreazioneSquadre, che specifica con i suoi attributi la metodologia di divisione scelta dall'utente per l'estrazione delle squadre.
 ### Stato
 > La classe **Stato** è una classe di supporto utilizzata nelle classi Cronometro e Timer, che serve per descrivere lo stato in cui si trovano gli stessi.
 
@@ -20,9 +18,9 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 
 ## Classi di supporto
 ### Data
-> La classe **Data** è una classe di supporto che con i suoi attributi giorno, mese, anno, orario sta ad indicare un preciso momento, col suo metodo now() restituisce i valori di questi attributi e con il metodo lessThan(d2 : Data) : bool può confrontare due date.
+> La classe **Data** è una classe di supporto che con i suoi attributi giorno, mese, anno, orario sta ad indicare un preciso momento nel tempo. Con il suo metodo ci classe now() restituisce il valore di tempo e data corrente, e con il metodo d'istanza lessThan(d2 : Data) : bool può confrontare due date.
 ### URL
-> La classe **URL** è una classe di supporto che con i suoi attributi protocollo e percorso va ad indicare un immagine o un suono, a seconda dell'uso che si fa della classe.<br>
+> La classe **URL** è una classe di supporto che con i suoi attributi protocollo e percorso specifica il percorso di un file, in particolare di un'immagine o un suono a seconda del contesto in cui la classe viene utilizzata.<br>
 > Per esempio, nella classe Suono, l'url utilizzato per l'attributo sorgente rappresenta un suono. Al contrario, nelle classi Faccia, Attività e Utente, gli attributi immagine e banner rappresentano un'immagine.
 ### Time
 > La classe **Time** è una classe di supporto, che con i suoi attributi, va a rappresentare un tempo con precisione massima nell'ordine dei centesimi di secondo.
@@ -32,8 +30,8 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 <p align="center"><img src="D3/img/img2.png" width=400px/></p>
 
 ### Info, Filtro ed Etichetta
-> La classe **Etichetta** è una classe di supporto che con i suoi attributi, va a rappresentare nome, descrizione e categoria di un'etichettà che può essere assegnata ad un'attività. Viene usata nella classe Info.<br>
-> La classe **Info** è una classe di supporto che con i suoi attributi va a definire tutte le informazioni riguardanti un'attività.<br>
+> La classe **Etichetta** è una classe di supporto che, con i suoi attributi, va a rappresentare nome, descrizione e categoria di un'etichettà che può essere assegnata ad un'attività. Viene usata nella classe Info.<br>
+> La classe **Info** è una classe di supporto che con i suoi attributi va a definire tutte le informazioni riguardanti un'attività specificabili da un utente al momento della creazione e modifica della stessa, o al momento di filtraggio delle attività presenti nel catalogo (sono ad esempio esclusi i collegamenti, i quali, pur essendo specificabili al momento di creazione dell'attività, non sono utilizzabili come filtro nel catalogo).<br>
 > La classe **Filtro** è una classe di supporto ed è collegata tramite una generalizzazione alla classe Info. Viene utilizzata per contenere le informazioni secondo le quali le attività devono essere filtrate.
 
 <p align="center"><img src="D3/img/img3.png" width=400px/></p>
@@ -75,8 +73,8 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 ## Utente
 > La classe **Utente** è una classe che rappresenta colui che utilizza l'applicazione. Ci sono quindi attributi che rappresentano i dati identificativi di quell'utente, come anche il ruolo e lo stato, che può essere offline o online.<br>
 > Il metodo login() crea un'istanza di Autenticazione e chiama diversi suoi metodi. Esso è associato al metodo logout().<br>
-> Il metodo verificaRuolo(ruoloNecessario : Ruolo, richiedente : Utente) serve a confrontare due ruoli.<br>
-> Un utente può promuovere gli altri utenti, ma l'attributo promossoDa, serve nel caso un utente voglia declassare un altro utente che ha il ruolo di amministratore. In tal caso, l'utente deve essere quello che lo ha promosso a tale.<br>
+> Il metodo verificaRuolo(ruoloNecessario : Ruolo, richiedente : Utente) serve a verificare che l'utente in sessione abbia il ruolo richiesto per compiere una determinata operazione.<br>
+> Un utente amministratore può promuovere gli altri utenti ad amministratore, o abbassare il ruolo di un amministratore a utente normale, ma, per compiere quest'ultima azione, l'utente che richiede il declassamento deve essere colui che per ultimo ha promosso l'utente da declassare ad amministratore. Tale informazione da controllare è memorizzata nell'attributo promossoDa.<br>
 > Il metodo listaUtenti(richiedente : Utente) : Utente[0..N] fornisce una lista di utenti.<br>
 > Un utente può creare una o più attività e/o liste di attività, rappresentate rispettivamente dalle classi Attività e ListaAttività.<br>
 > Un utente può effettuare una o più segnalazioni e/o valutazioni, rappresentate rispettivamente dalle classi Segnalazione e Valutazione.
@@ -86,7 +84,7 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 ## Autenticazione
 > La classe **Autenticazione** è una classe che rappresenta il processo di login di un utente. <br>
 > Quando viene chiamato il metodo login() della classe Utente, viene creata un'istanza di Autenticazione e viene chiamata richiestaAutorizzativa().<br>
-> Se il codice è valido viene chiamato il metodo richiestaToken() e successivamente dettagliAccount() che mette i risultati negli attributi id e mail dell'utente. <br>
+> Se il codice recuperato da tale metodo è valido viene chiamato il metodo richiestaToken() e successivamente dettagliAccount() che mette i risultati negli attributi id e mail dell'utente. <br>
 > Viene chiesto a MongoDB il ruolo dell'utente e la sua foto profilo che vengono a loro volta assegnati agli attributi ruolo e immagine dell'utente.<br>
 > Infine avviene un aggiornamento dei dati locali.
 
@@ -94,7 +92,7 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 
 ## Segnalazione
 > La classe **Segnalazione** è una classe che rappresenta la segnalazione fatta da un utente ad un'attività. Più segnalazioni possono riferirsi ad una stessa attività. Ogni segnalazione è stata effettuata da un solo utente. <br>
-> Gli attributi rappresentano le informazioni relative alla segnalazione, ovvero descrizione, utente da cui è stata fatta e attività alla quale si riferisce. <br>
+> Gli attributi rappresentano le informazioni relative alla segnalazione, ovvero breve titolo riassuntivo, descrizione, utente da cui è stata fatta e attività alla quale si riferisce. <br>
 > Un utente può effettuare una segnalazione grazie al metodo presente.<br>
 > Se un utente non esiste più le segnalazioni effettuate dallo stesso rimangono.
 ## Valutazione
@@ -106,7 +104,7 @@ Nel presente capitolo vengono presentate le classi previste nell'ambito del prog
 <p align="center"><img src="D3/img/img11.png" width=650px/></p>
 
 ## GestoreDatiOffline
-> La classe **GestoreDatiOffline** è una classe che rappresenta tutte le operazioni che vengono fatte sui dati presenti localmente, ovvero che non necessitano che l'utente sia online.<br>
+> La classe **GestoreDatiOffline** è una classe che contiene tutte le operazioni che vengono fatte sui dati aggregati forniti dal sistema e memorizzati, qualora il dispositivo dell'utente lo permetta, localmente, che possono dunque essere effettuate senza la necessità che l'utente sia online.<br>
 > Oltre a ciò si occupa anche di aggiornare i dati locali grazie al metodo omonimo.
 
 <p align="center"><img src="D3/img/img12.png" width=300px/></p>

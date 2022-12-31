@@ -1,6 +1,6 @@
 
-# Codice in Object Constraint Language
-In questo capitolo è descritta in modo formale la logica prevista nell’ambito di alcune operazioni di alcune classi. Tale logica viene descritta in Object Constraint Language (OCL) (https://www.omg.org/spec/OCL/2.4/PDF) perché tali concetti non sono esprimibili in nessun altro modo formale nel contesto di UML.
+# 2. Codice in Object Constraint Language
+In questo capitolo è descritta in modo formale la logica prevista nell’ambito di alcune operazioni di alcune classi. Tale logica viene descritta in Object Constraint Language ([OCL](#https://www.omg.org/spec/OCL/2.4/PDF)) perché tali concetti non sono esprimibili in nessun altro modo formale nel contesto di UML.
 
 ## **Cronometro**
 

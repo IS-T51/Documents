@@ -12,7 +12,7 @@ pdf_options:
             }
         </style>
         <section>
-            D3 - Animati - Architettura v0.1 [pre-release]
+            D3 - Animati - Architettura v1.2
         </section>
     footerTemplate: |-
         <section>
