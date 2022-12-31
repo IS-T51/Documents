@@ -410,6 +410,7 @@ La seconda figura mostra in dettaglio i principali casi d'uso dell’applicazion
 >> 4. [[extension 1](#extension-points-20)] [[extension 2](#extension-points-20)] [[extension 3](#extension-points-20)] [[extension 4](#extension-points-20)] [[extension 5](#extension-points-20)] [[extension 6](#extension-points-20)] [[extension 7](#extension-points-20)]
 > #### **Exceptions:**
 >> [exception 1] Il file selezionato supera i 100MB, il sistema informa l'utente che non è possibile caricare il suono selezionato.
+>> [exception 2] Il valore massimo del timer è 99:59:59.
 > #### **Extension points:**
 >> - [extension 1] Allo step [4](#descrizione-20), l'utente può scorrere sulle cifre per modificare il valore di partenza del timer.
 >> - [extension 2] Allo step [4](#descrizione-20), l'utente può far partire il timer cliccando sul pulsante "Avvia". In quel momento al posto del pulsante "Avvia", compariranno due pulsanti, "Pausa" e "Annulla".

@@ -113,7 +113,7 @@ post: self.stato = "reset"
 ```
 ```js
 context Timer::imposta(ore : int, minuti : int, secondi : int)
-pre: 0<=ore AND 0<=minuti AND minuti<60 AND 0<=secondi AND secondi<60
+pre: 0<=ore AND ore < 100 AND 0<=minuti AND minuti<60 AND 0<=secondi AND secondi<60
 post: self.tempo = tempo
 ```
 ```js
