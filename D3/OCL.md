@@ -556,7 +556,7 @@ post: result = ListaAttività->allInstances()->select(l : ListaAttività | l.aut
 #### titolo : String
 - il titolo dev'essere non vuoto e dev'essere univoco tra le attività esistenti
 #### mediaValutazioni : real
-- la media dev'essere compresa tra 0 e 5 inclusi
+- la media dev'essere compresa tra 0 e 10 inclusi
 
 ```js
 context Attività inv:
