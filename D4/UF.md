@@ -1,5 +1,85 @@
 
 # User Flows
-[...]
+In questa sezione del documento di sviluppo riportiamo gli "user flows" per i tre diversi ruoli: anonimo, autenticato e amministratore, nonché quelli degli strumenti.
+
+## Utente Anonimo
+La figura sottostante descrive lo user flow relativo alle azioni che un utente anonimo, ovvero senza autenticazione, riesce ad eseguire.
+L'utente inizialmente, dal menù, può consultare il catalogo e la lista degli strumenti e può effettuare l'accesso con Google.
+- A partire dal catalogo l'utente può applicare dei filtri, facendo in modo di consultare un sottoinsieme del catalogo completo con le caratteristiche desiderate. Oltre a ciò l'utente, sia prima che dopo aver eventualmente applicato dei filtri, può consultare le attività del catalogo.
+- A partire dalla lista degli strumenti, l'utente può selezionare uno strumento presente.
+
+<img src="img/uf/anonimo.png" width=1070px>
+
+## Utente Autenticato
+La figura sottostante descrive lo user flow relativo alle azioni che un utente autenticato, ovvero che ha effettuato l'accesso con il suo account Google, riesce ad eseguire.
+L'utente inizialmente, dal menù, può consultare il catalogo e la lista degli strumenti, andare sul proprio profilo utente, consultare la lista di liste di attività e i preferiti e proporre nuove attività.
+- A partire dal catalogo, l'utente autenticato può eseguire le stesse operazioni che può eseguire un utente anonimo, ovvero applicare dei filtri e cliccare sulle attività per consultarle.
+- A partire da un'attività, l'utente autenticato può cliccare sui collegamenti (se esistono), aggiungere l'attività ai preferiti o ad una lista, aggiungere una valutazione, creare una segnalazione e, se l'utente è autore dell'attività stessa, modificarla.
+- A partire da Segnala, Modifica e Proponi attività, l'utente autenticato può confermare l'azione oppure annullarla, tornando al menù.
+- A partire da Preferiti e da Liste di attività (dopo aver selezionato una lista), l'utente autenticato va sulla lista stessa e da li può cliccare su un'attività, esportare la lista, se la lista non è quella dei preferiti, eliminarla, ed eliminare un'attività dalla lista.
+- Da Liste di attività, un utente autenticato può anche creare una nuova lista, dovendo poi confermare (andando alla lista di attività) o annullare (tornando a liste di attività).
+- A partire dalla lista degli strumenti, l'utente autenticato può eseguire le stesse azioni di un utente anonimo, ovvero selezionare uno strumento presente.
+
+<img src="img/uf/autenticato.png" width=1070px>
+
+## Utente Amministratore
+La figura sottostante descrive lo user flow relativo alle azioni che un utente amministratore, ovvero un'utente autenticato con privilegi speciali di coordinamento dell'applicazione, riesce ad eseguire. L'utente inizialmente, dal menù, può consultare il catalogo e la lista degli strumenti, andare sul proprio profilo utente, consultare la lista di liste di attività e i preferiti, proporre nuove attività, consultare l'elenco delle segnalazioni e entrare in gestione utenti.
+- A partire dal catalogo, l'utente amministratore può eseguire le stesse operazioni che può eseguire un utente anonimo, ovvero applicare dei filtri e cliccare sulle attività per consultarle.
+- A partire da un'attività, l'utente amministratore può cliccare sui collegamenti (se esistono), aggiungere l'attività ai preferiti o ad una lista, aggiungere una valutazione, creare una segnalazione e modificare l'attività.
+- A partire da Segnala, Modifica e Proponi attività, l'utente amministratore può confermare l'azione oppure annullarla, tornando al menù.
+- A partire da Preferiti e da Liste di attività (dopo aver selezionato una lista), l'utente amministratore va sulla lista stessa e da li può cliccare su un'attività, esportare la lista, se la lista non è quella dei preferiti, eliminarla, ed eliminare un'attività dalla lista.
+- Da Liste di attività, un utente amministratore può anche creare una nuova lista, dovendo poi confermare (andando alla lista di attività) o annullare (tornando a liste di attività).
+- A partire dalla lista degli strumenti, l'utente amministratore può eseguire le stesse azioni di un utente anonimo, ovvero selezionare uno strumento presente.
+- A partire dall'elenco delle segnalazioni, l'utente amministratore può cliccare su un'attività segnalata per vedere le segnalazioni dell'attività stessa.
+- A partire da Gestione utenti, l'utente amministratore può promuovere qualsiasi utente e retrocedere gli utenti di cui è stato promotore.
+
+<img src="img/uf/amministratore.png" width=1070px>
+
+## Strumenti
+### Timer
+La figura sottostante descrive lo user flow dello strumento Timer, utilizzabile da tutti gli utenti.
+- A partire da Timer, l'utente può premere Avvia, iniziando il conto alla rovescia, tornare indietro alla lista degli strumenti e scegliere un suono.
+- A partire da Contando, l'utente può premere Pausa, fermando momentaneamente il timer, premenre Elimina, cancellando il timer e tornando all'inizio, oppure aspettare lo scadere dello stesso, seguito dalla riproduzione del suono scelto al punto precedente.
+- A partire da Pausa, l'utente può premere Riprendi, continuando il conto alla rovescia precendentemente fermato, o Elimina, cancellando il timer e tornando all'inizio.
+- A partire da Timer suona, l'utente deve premere Stop per poter fermare il suono in riproduzione al termine del timer. Una volta fatto ciò viene riportato all'inizio.
+
+<img src="img/uf/timer.png" width=1070px>
+
+### Cronometro
+La figura sottostante descrive lo user flow dello strumento Cronometro, utilizzabile da tutti gli utenti.
+- A partire da Cronometro, l'utente può premere Start, facendo partire il cronometro e tornare indietro alla lista degli strumenti.
+- A partire da Contando, l'utente può premere Pausa, fermando temporaneamente il cronometro, o parziale, salvando il tempo di quell'istante in una lista visualizzata sotto il cronometro senza fermare il cronometro.
+- A partire da Pausa, l'utente può premere Riprendi per riavviare il cronometro dall'istante in cui era stato fermato, oppure premere Stop, per tornare all'inizio.
+
+<img src="img/uf/cronometro.png" width=1070px>
+
+### Fischietto
+La figura sottostante descrive lo user flow dello strumento Fischietto, utilizzabile da tutti gli utenti.
+- A partire da Fischietto, l'utente può premere il pulsante per fischiare, tornare indietro alla lista degli strumenti e scegliere un suono.
+- A partire da Scelta suono, l'utente può selezionare un suono oppure aggiungerne uno.
+- A partire da Fischietto suona, l'utente deve tenere premuto per l'intera durata del fischio desiderato. Nel momento in cui il pulsante viene rilasciato il suono smette di essere riprodotto.
+
+<img src="img/uf/fischietto.png" width=1070px>
+
+### Segna-Punti
+La figura sottostante descrive lo user flow dello strumento Segna-Punti, utilizzabile da tutti gli utenti.
+- A partire da Segna Punti, l'utente può aggiungere un contatore, tornare indietro alla lista degli strumenti o procedere al contatore.
+- A partire da Aggiungi contatore, l'utente può confermare o annullare l'azione.
+- A partire da Contatori, l'utente può decrementare o incrementare i contatori esistenti.
+
+<img src="img/uf/segnapunti.png" width=1070px>
+
+### Dado
+La figura sottostante descrive lo user flow dello strumento Dado, utilizzabile da tutti gli utenti.
+- A partire da Dado, l'utente può scegliere la tipologia di faccia usata e tornare indietro.
+- A partire da Dado Immagini, Dado Colori, Dado Parole e Dado Numeri, l'utente può iniziare l'estrazione fino a che non finisce.
+
+<img src="img/uf/dado.png" width=1070px>
+
+### Creazione Squadre
+La figura sottostante descrive lo user flow dello strumento Creazione Squadre, utilizzabile da tutti gli utenti.
+- A partire da Creazione squadre, l'utente può cambiare i parametri grazie a incrementa e decrementa contatore o può decidere di iniziare l'estrazione, che andrà avanti fino a che non finisce.
+
+<img src="img/uf/squadre.png" width=1070px>
 
 <div class="page-break"></div>
