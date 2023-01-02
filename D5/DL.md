@@ -1,7 +1,7 @@
 
 # Carico e distribuzione del lavoro
 
-Seguono i grafici rafficuranti il cario e la distribuzione del lavoro.
+Seguono i grafici raffiguranti il carico e la distribuzione del lavoro.
 
 Diviso per deliverable:
 ![Grafico per deliverable](D5/img/grafico-deliverable.png)
