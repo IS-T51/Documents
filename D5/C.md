@@ -1,4 +1,3 @@
-
 # Criticità
 
 Durante il nostro progetto, abbiamo dovuto affrontare numerose sfide che hanno richiesto la revisione di alcuni obiettivi iniziali per mantenere la coerenza con gli obiettivi decisi all'inizio del progetto. Una di queste sfide è stata mantenere la concentrazione e la dedizione per un periodo di tempo lungo, soprattutto a causa di periodi di malattia e difficoltà familiari.
