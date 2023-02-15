@@ -11,7 +11,7 @@ I primi 7 requisiti assumono che l'utente disponga di una connessione a Internet
 
 | Indice | Proprietà | Descrizione | Misura |
 | --- | --- | --- | --- |
-| RNF1. | Tempo consultazione e filtraggio catalogo | Tempo massimo di risposta del sistema a richieste di consultazione e filtraggio del catalogo da parte dell'utente | 1 secondo |
+| RNF1. | Tempo consultazione e filtraggio catalogo | Tempo massimo di risposta del sistema a richieste di consultazione e filtraggio del catalogo da parte dell'utente | 5 secondi se impostati filtri sul testo, 1 secondo altrimenti |
 | RNF1.1 | Tempo consultazione liste personali | Tempo massimo di risposta del sistema a richieste di consultazione delle proprie liste da parte dell'utente | 1 secondo |
 | RNF2. | Tempo modifica dati | Tempo massimo di risposta del sistema a richieste di modifica dati da parte dell'utente | 1 secondo, garantito dall'impiego di meccanismi di aggiornamento sequenziale |
 | RNF3. | Frequenza aggiornamento catalogo locale | Frequenza di aggiornamento della copia locale del catalogo sul dispositivo dell'utente, qualora esso (il dispositivo) lo permetta | Almeno una volta ogni 30 minuti, ad ogni avvio dell'app da parte dell'utente, a condizione che il dispositivo sia connesso ad Internet, e ogni volta che l'utente compirà un'operazione di modifica dei dati presenti sul catalogo o dei suoi dati personali |
@@ -20,7 +20,7 @@ I primi 7 requisiti assumono che l'utente disponga di una connessione a Internet
 | RNF6. | Tempo login | Tempo massimo di risposta da parte del sistema nell'operazione di login | Tempo impiegato dall'utente per inserire i propri dati quando si trova sull'interfaccia di Google, più ulteriori 10 secondi |
 | RNF7. | Tempi funzionalità offline | Tempo massimo di risposta del sistema a richieste di consultazione e filtraggio del catalogo, consultazione delle proprie liste e utilizzo dei tools in assenza di connessione ad Internet | 1 secondo qualora il dispositivo dell'utente permetta di svolgere le funzionalità riportate in modalità offline |
 | RNF8 | Tempo logout | Tempo massimo di risposta da parte del sistema nell'operazione di logout | 100ms |
-| RNF9. | Banda consumata | Consumo medio di dati Internet da parte del dispositivo dell'utente richiesti dal sistema | inferiore a 20MB settimanalmente, con un'aggiunta di ulteriori 20MB in occasione di ogni creazione della copia locale del catalogo |
+| RNF9. | Banda consumata | Consumo medio di dati Internet da parte del dispositivo dell'utente richiesti dal sistema | inferiore a 40MB settimanalmente, con un'aggiunta di ulteriori 40MB in occasione di ogni creazione della copia locale del catalogo |
 
 
 Nota: il tempo di visualizzazione dei risultati delle richieste al sistema da parte dell'utente dipende, oltre che dal tempo di risposta del sistema, anche dal tempo di che caricamento del browser, che non è di competenza dell'applicazione.
@@ -32,7 +32,7 @@ Nota2: si renderà necessaria la creazione della copia locale del catalogo ogni 
 
 | Indice | Proprietà | Descrizione | Misura |
 | --- | --- | --- | --- |
-| RNF10. | Spazio sul dispositivo | Spazio massimo occupato dai dati salvati sul dispositivo dell'utente | 20MB |
+| RNF10. | Spazio sul dispositivo | Spazio massimo occupato dai dati salvati sul dispositivo dell'utente | 40MB |
 | RNF11. | Dati utenti non autenticati | Informazioni sui dati raccolti per gli utenti non autenticati | - |
 | RNF11.1 | Dati utenti non autenticati sul server | Dati raccolti sugli utenti non autenticati e memorizzati su un server | Nessuno |
 | RNF11.2 | Cookie tecnici| Dati raccolti sugli utenti non autenticati e memorizzati sul browser dell'utente sotto forma di cookie tecnico | Conferma di non voler più visualizzare un tutorial o un messaggio di errore relativo all'impossibilità di aggiornare i dati locali, dopo che l'utente avrà visualizzato il contenuto di un tutorial o messaggio di errore ed espresso tale preferenza; consenso a memorizzare dei dati nel browser in stato persistente; raccolti sotto forma di cookie tecnico, ovvero non disattivabile |
