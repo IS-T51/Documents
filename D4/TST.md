@@ -1,5 +1,5 @@
 
-# Testing
+# 6. Testing
 
 Per effettuare il testing abbiamo utilizzato la libreria Jest e il modulo superjest per il testing e l’invocazione delle API.
 
@@ -18,7 +18,7 @@ Sono presenti API di tipo GET, POST, PUT, PATCH e DELETE.
 
 ## Risultati del testing
 
-Per effettuare il testing abbiamo innanzitutto aggiunto il seguente script al file package.json: 
+Per effettuare il testing abbiamo innanzitutto aggiunto il seguente script al file package.json:
 - "test": "jest --coverage --detectOpenHandles"
 
 In questo modo facendo il comando npm test dalla root del progetto verranno eseguiti tutti i file .test.js da noi definiti.

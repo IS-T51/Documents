@@ -1,12 +1,12 @@
 
-# Application Implementation and Documentation
+# 2. Application Implementation and Documentation
 Nelle sezioni precedenti abbiamo identificato le varie features che devono essere implementate
 per la nostra applicazione con uno schema precisa di come i nostri utenti finali possono utilizzarle nel
 suo flusso applicativo.
 
 Il server è stato sviluppato utilizzando NodeJS e OAS3-Tools, il client è stato sviluppato utilizzando Bootstrap e JQuery, mentre per la gestione dei dati abbiamo fatto affidamento a MongoDB.
 
-## Project Structure
+## 2.1 Project Structure
 ### Server
 La struttura del server è la seguente:
 > **api/** - *cartella per la configurazione delle api*
@@ -89,7 +89,7 @@ La struttura del client è la seguente:
 >
 > **sw.js** - *file contenente la definizione del service worker del client*
 
-## Project Dependencies
+## 2.2 Project Dependencies
 ### Server
 Le dipendenze del server sono le seguenti:
 | Nome | Versione |
@@ -117,7 +117,7 @@ Le dipendenze del client sono le seguenti:
 | purify | v0.7.4 |
 | fontawesome-free | v5.12.0 |
 
-## Project Data
+## 2.3 Project Data
 Per la gestione dei dati, Animati utilizza un database MongoDB. Tale database è stato creato su MongoDB Atlas, un servizio cloud offerto da MongoDB. Il database è stato creato tramite il servizio Atlas e contiene le seguenti collezioni:
 | Nome | Descrizione |
 | --- | --- |
