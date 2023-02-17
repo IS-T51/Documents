@@ -13,6 +13,6 @@ Tabella ore:
 
 | Componente del Team | D1 | D2 | D3 | D4 | D5 | Totale |
 | --- | --- | --- | --- | --- | --- | --- |
-| Carmen Casulli *(in blu)* | 31,92 | 34,417 |30,58 | 28,92 | 8,33 | 134,17 |
-| Kevin Delugan *(in viola)* | 23,50 | 28,17 | 12,45 | 89,83 | 9,33 | 163,28 |
-| Teodora Panjkovic *(in verde)* | 36,67 | 26,75 | 30,78 | 36,58 | 9,33 |139,61 |
+| Carmen Casulli *(in verde)* | 31,92 | 35.08 | 30,58 | 74.42 | 11.17 | 183.17 |
+| Kevin Delugan *(in blu)* | 23,50 | 28,17 | 12,45 | 97.50 | 10,33 | 171.95 |
+| Teodora Panjkovic *(in arancione)* | 36,17 | 27,25 | 30,78 | 62.42 | 10.58 | 167.20 |

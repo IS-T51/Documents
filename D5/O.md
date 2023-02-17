@@ -8,6 +8,6 @@ Le riunioni legate al progetto sono state periodiche e il mezzo di comunicazione
 
 È stato utilizzato un documento Google condiviso per organizzare le attivià da fare e un progetto su Github per gestire le mansioni individuali di tutti. Carmen Casulli è stata la responsabile del progetto, ma si è sempre confrontata con gli altri membri del gruppo prima di prendere decisioni importanti.
 
-Durante il progetto non ci sono stati conflitti fra i membri del gruppo. Il clima lavorativo è sempre stato sereno e collaborativo.Tuttavia, c'è stata una distribuzione poco uniforme del lavoro nel tempo a causa di numerosi periodi di malattia e problemi familiari che hanno colpito alcuni membri del gruppo in periodi diversi.<br/>
-Complessivamente, però, l'organizzazione del lavoro è stata efficiente e l'aiuto e l'impegno da parte di tutti ha reso possibile superare gli ostacoli che si sono presentati.
+Durante il progetto non ci sono stati conflitti fra i membri del gruppo. Il clima lavorativo è sempre stato sereno e collaborativo. Tuttavia, c'è stata una distribuzione poco uniforme del lavoro nel tempo a causa di numerosi periodi di malattia e problemi familiari che hanno colpito alcuni membri del gruppo in periodi diversi.<br/>
+Complessivamente però, l'organizzazione del lavoro è stata efficiente e l'aiuto e l'impegno da parte di tutti ha reso possibile superare gli ostacoli che si sono presentati.
 
