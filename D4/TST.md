@@ -28,7 +28,7 @@ che impedisce al testing di terminare.
 
 Questi sono i risultati dei nostri test:
 
-![test](./img/tst/test.png)
+![test](D4/img/tst/test.png)
 
 Tutte e cinque le test suites sono state eseguite e tutti i 73 casi di test (definiti dai metodi test()) risultano passati.
 
@@ -36,7 +36,7 @@ Un report per visualizzare i risultati del test si trova nella cartella coverage
 e successivamente nella cartella lcov-report/.
 Il file index.html apre una pagina di ipertesto in cui verificare ed analizzare i risultati ottenuti.
 
-![test](./img/tst/test_results.png)
+![test](D4/img/tst/test_results.png)
 Nella prima schermata che appare abbiamo un riassunto degli statements, dei branches, delle funzioni e delle linee di codice coperte dal nostro testing.
 La cartella che più interessa è chiaramente la cartella src/controllers in cui sono definite tutte le API
 (ed infatti è la cartella più grande).
@@ -48,7 +48,7 @@ La copertura cala un po’ quando andiamo a verificare i branches esplorati (ovv
 Premendo sulla cartella src/controllers otteniamo tutti i dati del testing effettuato su ogni file .js che
 contiene il codice delle varie API.
 
-![test](./img/tst/test_controllers.png)
+![test](D4/img/tst/test_controllers.png)
 
 I numeri sono simili per i vari gruppi di API: le funzioni testate sono intorno all'80%, le linee di
 codice testate sono intorno al 85% di media e gli statements verificati sull’85%.
