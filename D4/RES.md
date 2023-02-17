@@ -1,3 +1,4 @@
+
 ## 2.4 Project APIs
 In questa parte del documento vengono descritte le varie API individuate a partire dal diagramma delle classi del documento D3-T51 e quali sono state implementate. Useremo un diagramma per rappresentare l’estrazione delle risorse a partire dal class diagram e uno per rappresentare le risorse sviluppate.
 
@@ -13,13 +14,9 @@ In questa parte del documento vengono descritte le varie API individuate a parti
 ### Risorse
 
 <br/>
-<image src="D4/img/res/DELETE-etichette-nomeEtichetta.png" width="1070px">
-<br/>
 <image src="D4/img/res/DELETE-lista-idLista-idAttivita.png" width="1070px">
 <br/>
 <image src="D4/img/res/DELETE-lista-idLista.png" width="1070px">
-<br/>
-<image src="D4/img/res/DELETE_attivita_idAttivita.png" width="1070px">
 <br/>
 <image src="D4/img/res/GET-attivita-idAttivita-segnalazioni.png" width="1070px">
 <br/>
@@ -29,15 +26,11 @@ In questa parte del documento vengono descritte le varie API individuate a parti
 <br/>
 <image src="D4/img/res/GET-etichette.png" width="1070px">
 <br/>
-<image src="D4/img/res/GET-liste-aggiorna.png" width="1070px">
-<br/>
 <image src="D4/img/res/GET-liste-idLista.png" width="1070px">
 <br/>
 <image src="D4/img/res/GET-liste.png" width="1070px">
 <br/>
 <image src="D4/img/res/GET-ping.png" width="1070px">
-<br/>
-<image src="D4/img/res/GET-valutazioni-attivita.png" width="1070px">
 <br/>
 <image src="D4/img/res/GET_catalogo.png" width="1070px">
 <br/>
