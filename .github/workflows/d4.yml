@@ -20,7 +20,7 @@ jobs:
           ref: main
       - name: Unione dei file Markdown
         run: |
-          cat D4/header.md D4/I.md D4/S.md D4/UF.md D4/AID.md D4/RES.md D4/APIdev.md D4/APIdoc.md D4/DP.md D4/TST.md > D4-T51.md
+          cat D4/header.md D4/I.md D4/S.md D4/UF.md D4/AID.md D4/RES.md D4/APIdev.md D4/APIdoc.md D4/FE.md D4/DP.md D4/TST.md > D4-T51.md
       - name: Setup di NodeJS
         continue-on-error: true
         uses: actions/setup-node@v3.5.0
